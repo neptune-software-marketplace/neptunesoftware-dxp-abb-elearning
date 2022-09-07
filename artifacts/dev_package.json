@@ -1,0 +1,226 @@
+{
+	"id": "1D063863-5CCB-42C8-A7DF-323605FE1EE3",
+	"createdAt": "2021-03-08T16:10:37.000Z",
+	"createdBy": "admin",
+	"git": {
+		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-elearning",
+		"targetServers": [],
+		"testServers": [],
+		"packageJSON": [
+			"==OBJECT STRING==",
+			"{",
+			"  \"name\": \"elearning-dev\",",
+			"  \"version\": \"1.0.0\",",
+			"  \"description\": \"Package for developing elearning content\",",
+			"  \"author\": \"Neptune Software\",",
+			"  \"license\": \"LicenseRef-LICENSE\",",
+			"  \"private\": true,",
+			"  \"scripts\": {",
+			"    \"deploy\": \"ts-node src/deploy.ts\",",
+			"    \"test\": \"jest --passWithNoTests\"",
+			"  },",
+			"  \"engines\": {",
+			"    \"node\": \"14.16.0\"",
+			"  },",
+			"  \"devDependencies\": {",
+			"    \"@types/jest\": \"^26.0.23\",",
+			"    \"typescript\": \"^4.2.3\",",
+			"    \"ts-node\": \"^10.0.0\",",
+			"    \"axios\": \"^0.21.1\",",
+			"    \"jest\": \"^27.0.4\",",
+			"    \"ts-jest\": \"^27.0.3\"",
+			"  }",
+			"}",
+			""
+		]
+	},
+	"name": "elearning-dev",
+	"description": "Package for developing elearning content",
+	"ver": "22.9.7.1543",
+	"enableCICD": true,
+	"apps": [
+		{
+			"id": "2B9790D7-BC4A-EC11-981F-0050F2794553",
+			"application": "3fieldworkerinspect_offline_version",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "F75C24FD-AA32-4BB7-8F0F-0ED6972ACE3B",
+			"application": "planet9_inbox_tile",
+			"title": "Inbox Live Tile",
+			"description": "Inbox Live Tile"
+		},
+		{
+			"id": "AEC2C73B-B9B5-45F9-A181-23EDC445E82D",
+			"application": "3fieldworkerinspect",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "3323D8A7-477C-472C-AE04-7AD5095B63D0",
+			"application": "1createnewequipment",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "9C5578FF-7EB8-EB11-A7AC-A085FCBC9F85",
+			"application": "planet9_inbox_f3_v2",
+			"title": "Workflow Inbox",
+			"description": "Workflow Inbox - Fiori 3"
+		},
+		{
+			"id": "3080F44C-3E82-4992-BB4C-E39BE159338A",
+			"application": "2viewandeditequipment",
+			"title": "",
+			"description": ""
+		}
+	],
+	"api": [
+		{
+			"id": "F9F77060-A79F-4EDB-9906-7B31BA53173E",
+			"name": "APIGetSingleInspection",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "14A2137E-9E64-4383-9848-8E468F3834D6",
+			"name": "API equipment",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "51DCDBEC-93FF-4733-B351-DCEAD0A6E34F",
+			"name": "API inspections",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "8D54547D-AFF9-4E0A-BA13-DF649DA7B78A",
+			"name": "Equipment Check Server Scripts",
+			"description": null,
+			"apiGroup": null
+		}
+	],
+	"odataSource": [],
+	"odataMock": [],
+	"dictionary": [
+		{
+			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
+			"name": "inspections",
+			"description": null
+		},
+		{
+			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
+			"name": "equipment",
+			"description": null
+		}
+	],
+	"jsclass": [
+		{
+			"id": "65B01AAB-2565-4427-B37F-6077DCA7BF86",
+			"name": "rejectedWF",
+			"description": null
+		},
+		{
+			"id": "CFF149EF-AD51-4E96-B14C-C62E9A568EE9",
+			"name": "approvedWF",
+			"description": null
+		}
+	],
+	"jsscript_group": [
+		{
+			"id": "089A48C6-6626-4C48-AADE-68129C29A97B",
+			"name": "elearningWFScript",
+			"description": null
+		}
+	],
+	"theme": [],
+	"pdf": [],
+	"rulesengine": [],
+	"reports": [],
+	"api_authentication": [],
+	"api_group": [],
+	"tile": [
+		{
+			"id": "7DDC995C-0E80-EB11-85AA-0003FF1E43FB",
+			"description": null,
+			"name": "MY INBOX"
+		},
+		{
+			"id": "821DFB5A-0E3B-EC11-981F-0050F2794553",
+			"description": null,
+			"name": "Maintenance_Video"
+		},
+		{
+			"id": "20D64B6A-2F72-4CE4-AA7D-00C53B29E20E",
+			"description": "",
+			"name": "Maintenance Status"
+		},
+		{
+			"id": "0516C7ED-6910-4343-8D07-3E4115A6E585",
+			"description": null,
+			"name": "3FieldWorkerInspect"
+		},
+		{
+			"id": "9E3D4088-63CD-4196-9F1F-6249C7B66F60",
+			"description": null,
+			"name": "2ViewAndEditEquipment_v2"
+		},
+		{
+			"id": "B2D8B76E-6D1B-4C93-A515-6B5CF9F05CFA",
+			"description": null,
+			"name": "3FieldWorkerInspect - Offline"
+		},
+		{
+			"id": "BDAEC96D-680B-49DB-A058-E022E4B4FB58",
+			"description": null,
+			"name": "1AddEquipment"
+		}
+	],
+	"category": [
+		{
+			"id": "2827E03B-2676-4FB8-8140-1F2BDC5C892A",
+			"description": null,
+			"name": "Manager Apps"
+		},
+		{
+			"id": "3253AE3E-38CF-4B6A-82F7-1FF998820397",
+			"description": null,
+			"name": "Main Apps"
+		},
+		{
+			"id": "9881522D-C327-4EE7-8627-B31A8E879DA7",
+			"description": null,
+			"name": "All Apps"
+		}
+	],
+	"launchpad": [
+		{
+			"id": "E13BAE95-5FD0-4E1C-A48C-A8771BFDA440",
+			"name": "eLearning Launchpad",
+			"description": null
+		}
+	],
+	"certificates": [],
+	"role": [
+		{
+			"id": "29FB0DE4-C31A-EC11-AE72-DC9840105A9F",
+			"name": "FieldWorkers",
+			"description": null
+		}
+	],
+	"systems": [],
+	"doc": [],
+	"wf_notifications": [],
+	"department": [
+		{
+			"id": "6BC5CF5C-28D1-4F53-914B-21EFE0B119A2",
+			"name": "Field Workers",
+			"description": null
+		}
+	],
+	"script_scheduler": [],
+	"wf_definition": [],
+	"connector": []
+}

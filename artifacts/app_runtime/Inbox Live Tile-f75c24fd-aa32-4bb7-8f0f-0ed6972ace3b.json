@@ -1,0 +1,227 @@
+{
+	"id": "f75c24fd-aa32-4bb7-8f0f-0ed6972ace3b",
+	"createdAt": "2021-09-09T12:47:14.163Z",
+	"createdBy": "james",
+	"objects": [
+		{
+			"fieldNo": "d3d24670-c80b-4efc-e414-5481ce72df16",
+			"fieldName": "panTile",
+			"fieldParent": 0,
+			"fieldType": "sap.m.Panel",
+			"script": "",
+			"request": [],
+			"response": [],
+			"attributes": [
+				{
+					"attribute": "backgroundDesign",
+					"grouping": "Properties",
+					"value": "Transparent",
+					"script": "",
+					"translation": []
+				}
+			],
+			"data": [
+				{
+					"fieldNo": "8c5508da-5d5e-4afd-9a5d-ed21bd000bb5",
+					"fieldName": "boxNumber",
+					"fieldParent": "d3d24670-c80b-4efc-e414-5481ce72df16",
+					"fieldType": "sap.m.HBox",
+					"script": "",
+					"request": [],
+					"response": [],
+					"attributes": [
+						{
+							"attribute": "width",
+							"grouping": "Properties",
+							"value": "100%",
+							"script": "",
+							"translation": []
+						},
+						{
+							"attribute": "justifyContent",
+							"grouping": "Properties",
+							"value": "SpaceBetween",
+							"script": "",
+							"translation": []
+						},
+						{
+							"attribute": "alignContent",
+							"grouping": "Properties",
+							"value": "SpaceBetween",
+							"script": "",
+							"translation": []
+						}
+					],
+					"data": [
+						{
+							"fieldNo": "780bbc92-6fac-446a-a483-916e7c5bb0e3",
+							"fieldName": "tileDescription",
+							"fieldParent": "8c5508da-5d5e-4afd-9a5d-ed21bd000bb5",
+							"fieldType": "sap.m.Text",
+							"script": "",
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "width",
+									"grouping": "Properties",
+									"value": "100%",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "text",
+									"grouping": "Properties",
+									"value": "Access your personal universal inbox",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "styleClass",
+									"grouping": "Properties",
+									"value": "nepTileSubTitle",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": []
+						},
+						{
+							"fieldNo": "f37073fb-5ace-4edd-bbe8-91d6ea4ee3f4",
+							"fieldName": "tileNumber",
+							"fieldParent": "8c5508da-5d5e-4afd-9a5d-ed21bd000bb5",
+							"fieldType": "sap.m.Text",
+							"script": "",
+							"request": [],
+							"response": [],
+							"attributes": [
+								{
+									"attribute": "wrapping",
+									"grouping": "Properties",
+									"value": "false",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "textAlign",
+									"grouping": "Properties",
+									"value": "End",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "text",
+									"grouping": "Properties",
+									"value": "0",
+									"script": "",
+									"translation": []
+								},
+								{
+									"attribute": "styleClass",
+									"grouping": "Properties",
+									"value": "p9TileNumber",
+									"script": "",
+									"translation": []
+								}
+							],
+							"data": []
+						}
+					]
+				},
+				{
+					"fieldNo": "dc502c96-ecff-4561-9709-d085a09e1106",
+					"fieldName": "oHTMLObject",
+					"fieldParent": "d3d24670-c80b-4efc-e414-5481ce72df16",
+					"fieldType": "sap.ui.core.HTML",
+					"script": "",
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": [
+						{
+							"fieldNo": "4deb1694-45ec-46fd-d761-3fb6a22f53d0",
+							"fieldName": "oHTML",
+							"fieldParent": "dc502c96-ecff-4561-9709-d085a09e1106",
+							"fieldType": "neptune.Html",
+							"script": [
+								"==OBJECT STRING==",
+								"<style>",
+								"    .p9TileNumber {",
+								"        font-size: 1.4rem;",
+								"    }",
+								"</style>"
+							],
+							"request": [],
+							"response": [],
+							"attributes": [],
+							"data": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"fieldNo": 99999,
+			"data": [
+				{
+					"fieldNo": "e9cbf969-0469-4a8d-cb22-7937594c016a",
+					"fieldName": "onInit",
+					"fieldParent": 99999,
+					"fieldType": "neptune.event.oninit",
+					"script": [
+						"==OBJECT STRING==",
+						"sap.n.Planet9.function({",
+						"    id: \"WorkflowInbox\",",
+						"    method: \"List\",",
+						"    success: function(data) {",
+						"        tileNumber.setText(data.length);",
+						"    }",
+						"});"
+					],
+					"request": [],
+					"response": [],
+					"attributes": [],
+					"data": []
+				}
+			]
+		},
+		{
+			"fieldNo": 99998,
+			"data": []
+		}
+	],
+	"ver": "22.9.7.1734",
+	"application": "planet9_inbox_tile",
+	"title": "Inbox Live Tile",
+	"description": "Inbox Live Tile",
+	"enableFileStorage": false,
+	"enableManifest": false,
+	"enableStylesheet": false,
+	"enableObfuscate": true,
+	"onlyRunLaunchpad": false,
+	"disabled": false,
+	"loadLaunchpadCode": null,
+	"loadApplicationCode": null,
+	"appType": "",
+	"ui5_m": true,
+	"ui5_f": false,
+	"ui5_table": false,
+	"ui5_tnt": false,
+	"ui5_uxap": false,
+	"ui5_chart": false,
+	"ui5_theme": "sap_belize",
+	"ui5_version": "",
+	"ui5_language": null,
+	"cus_theme": "",
+	"css": "",
+	"header": "",
+	"manifest": "",
+	"globalScript": "",
+	"deleted": false,
+	"libHighchart": false,
+	"libHighmap": false,
+	"publicAccess": false,
+	"ui5_bootstrap": false,
+	"apis": [],
+	"package": "1D063863-5CCB-42C8-A7DF-323605FE1EE3"
+}

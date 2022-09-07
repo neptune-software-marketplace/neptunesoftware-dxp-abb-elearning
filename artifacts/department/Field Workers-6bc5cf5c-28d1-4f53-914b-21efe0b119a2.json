@@ -1,0 +1,21 @@
+{
+	"id": "6bc5cf5c-28d1-4f53-914b-21efe0b119a2",
+	"createdAt": "2021-03-23T18:42:38.000Z",
+	"createdBy": "lloyd",
+	"name": "Field Workers",
+	"description": null,
+	"ver": "22.9.7.1536",
+	"parent": null,
+	"isExternal": false,
+	"idpSource": "local",
+	"idpSourceId": null,
+	"idpSourceKey": null,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"roles": [
+		{
+			"id": "29FB0DE4-C31A-EC11-AE72-DC9840105A9F",
+			"name": "FieldWorkers",
+			"ver": "22.9.7.1535"
+		}
+	]
+}

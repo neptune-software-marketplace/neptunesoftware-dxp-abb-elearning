@@ -1,0 +1,504 @@
+{
+	"id": "c90c723a-682f-ed11-a27c-0050f27989a1",
+	"createdAt": "2022-09-08T11:20:23.210Z",
+	"createdBy": "lloyd",
+	"tasks": [
+		{
+			"id": "object-ddf6b9d2-a6e9-4083-818e-b1056b701cb6",
+			"taskType": "UserTask",
+			"inboxApp": "wf_details_embedded_app",
+			"title": "User Task",
+			"subTitle": "",
+			"userDeterminationLocal": "50890CF6-F41A-EC11-AE72-DC9840105A9F",
+			"taskAction": "CA5AEFF9-AA6F-4057-B88F-FB5036EF3239",
+			"scriptId": "",
+			"runScriptInFork": false,
+			"customApproverScript": "",
+			"enableForward": false,
+			"enableQuery": false,
+			"enableNotification": false,
+			"taskNotification": "",
+			"senderEmail": "",
+			"enableSave": false,
+			"enableApprove": true,
+			"enableReject": true,
+			"approveTask": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17",
+			"approveTaskType": "ScriptTask",
+			"approveLabel": "Approve",
+			"approveButtonType": "Accept",
+			"rejectTask": "object-2a91eeef-fda3-4299-f549-688ad5bfd421",
+			"rejectTaskType": "ScriptTask",
+			"rejectLabel": "Reject",
+			"rejectButtonType": "Reject"
+		},
+		{
+			"id": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17",
+			"taskType": "ScriptTask",
+			"inboxApp": "",
+			"title": "Script Task",
+			"subTitle": "",
+			"userDeterminationLocal": "",
+			"taskAction": "",
+			"scriptId": "CFF149EF-AD51-4E96-B14C-C62E9A568EE9",
+			"runScriptInFork": false,
+			"customApproverScript": "",
+			"enableForward": false,
+			"enableQuery": false,
+			"enableNotification": false,
+			"taskNotification": "",
+			"senderEmail": "",
+			"enableSave": false,
+			"enableApprove": false,
+			"enableReject": false,
+			"scriptTask": "object-118fefbc-9b5e-4f01-8c82-bbd69f36d9ce",
+			"scriptTaskType": "Completed"
+		},
+		{
+			"id": "object-2a91eeef-fda3-4299-f549-688ad5bfd421",
+			"taskType": "ScriptTask",
+			"inboxApp": "",
+			"title": "Script Task",
+			"subTitle": "",
+			"userDeterminationLocal": "",
+			"taskAction": "",
+			"scriptId": "65B01AAB-2565-4427-B37F-6077DCA7BF86",
+			"runScriptInFork": false,
+			"customApproverScript": "",
+			"enableForward": false,
+			"enableQuery": false,
+			"enableNotification": false,
+			"taskNotification": "",
+			"senderEmail": "",
+			"enableSave": false,
+			"enableApprove": false,
+			"enableReject": false,
+			"scriptTask": "object-adf4f4d0-cc75-4369-b91b-99c826e2cfcf",
+			"scriptTaskType": "Cancel"
+		}
+	],
+	"translation": [],
+	"flowEditor": {
+		"objects": [
+			{
+				"id": "object-383a2a2e-0467-4649-c1f1-8e91ab9e3439",
+				"name": "Start",
+				"description": "",
+				"templateId": "Start",
+				"templateName": "Start",
+				"typeCSS": "start",
+				"typeImage": "start",
+				"group": "",
+				"input": [],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-a7d00689-554e-405d-a30f-23f2eb124740"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-a4a7ac08-6413-4439-f53a-9c689bf345f2",
+						"source": "output-a7d00689-554e-405d-a30f-23f2eb124740",
+						"target": "input-7d1592a9-67c0-4c1c-d6d5-dd3d7307c3c3"
+					}
+				],
+				"posX": 435.0000305175781,
+				"posY": 68.66667175292969
+			},
+			{
+				"id": "object-26023e39-b482-46bf-fc09-398c0c6b4311",
+				"name": "Approve",
+				"description": "",
+				"templateId": "Approve",
+				"templateName": "Approve",
+				"typeCSS": "approve",
+				"typeImage": "action",
+				"actionLabel": "Approve",
+				"actionButtonType": "Accept",
+				"group": "useraction",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-3769ef7a-fe0c-4310-f3ab-b3652eba0050"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-54db229a-2ed4-4f3b-f0e9-01609667c767"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-ebf3eab7-4c3c-4bb1-8b41-992d02bcccd0",
+						"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+						"target": "input-3769ef7a-fe0c-4310-f3ab-b3652eba0050"
+					},
+					{
+						"id": "link-383298d3-7e37-4278-f530-f733575e9631",
+						"source": "output-54db229a-2ed4-4f3b-f0e9-01609667c767",
+						"target": "input-4a81a92a-da6d-4d24-be0e-7b1292887403"
+					}
+				],
+				"posX": 346.17047119140625,
+				"posY": 309.99365234375
+			},
+			{
+				"id": "object-b75d0646-2488-4077-98f3-a9b938d49b27",
+				"name": "Reject",
+				"description": "",
+				"templateId": "Reject",
+				"templateName": "Reject",
+				"actionLabel": "Reject",
+				"actionButtonType": "Reject",
+				"typeCSS": "reject",
+				"typeImage": "action",
+				"group": "useraction",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-ac48fe1c-8db4-415a-8703-f5749602aaa9"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-1513c39e-4d7a-42ac-8e75-008283fc8625"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-b6445c86-0ba0-4adc-c84b-b94686451acc",
+						"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+						"target": "input-ac48fe1c-8db4-415a-8703-f5749602aaa9"
+					},
+					{
+						"id": "link-135820f6-2e74-4973-a96e-4c6380e09b68",
+						"source": "output-1513c39e-4d7a-42ac-8e75-008283fc8625",
+						"target": "input-503ef195-1158-47ed-fd5e-8344a8f3030e"
+					}
+				],
+				"posX": 540.8621215820312,
+				"posY": 310.44061279296875
+			},
+			{
+				"id": "object-ddf6b9d2-a6e9-4083-818e-b1056b701cb6",
+				"name": "User Task",
+				"description": "",
+				"templateId": "UserTask",
+				"templateName": "User Task",
+				"typeCSS": "usertask",
+				"typeImage": "task",
+				"group": "task",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-7d1592a9-67c0-4c1c-d6d5-dd3d7307c3c3"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-a4a7ac08-6413-4439-f53a-9c689bf345f2",
+						"source": "output-a7d00689-554e-405d-a30f-23f2eb124740",
+						"target": "input-7d1592a9-67c0-4c1c-d6d5-dd3d7307c3c3"
+					},
+					{
+						"id": "link-ebf3eab7-4c3c-4bb1-8b41-992d02bcccd0",
+						"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+						"target": "input-3769ef7a-fe0c-4310-f3ab-b3652eba0050"
+					},
+					{
+						"id": "link-b6445c86-0ba0-4adc-c84b-b94686451acc",
+						"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+						"target": "input-ac48fe1c-8db4-415a-8703-f5749602aaa9"
+					}
+				],
+				"posX": 441.5054016113281,
+				"posY": 187.53868103027344,
+				"inboxApp": "wf_details_embedded_app",
+				"userDeterminationLocal": "50890CF6-F41A-EC11-AE72-DC9840105A9F",
+				"taskAction": "CA5AEFF9-AA6F-4057-B88F-FB5036EF3239"
+			},
+			{
+				"id": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17",
+				"name": "Script Task",
+				"description": "",
+				"templateId": "ScriptTask",
+				"templateName": "Script Task",
+				"typeCSS": "scripttask",
+				"typeImage": "task",
+				"group": "task",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-4a81a92a-da6d-4d24-be0e-7b1292887403"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-b7a2ce89-8ac9-429d-e09d-36ba9241d5ca"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-383298d3-7e37-4278-f530-f733575e9631",
+						"source": "output-54db229a-2ed4-4f3b-f0e9-01609667c767",
+						"target": "input-4a81a92a-da6d-4d24-be0e-7b1292887403"
+					},
+					{
+						"id": "link-c967ec99-58f0-4d81-f59e-6384d702a1ff",
+						"source": "output-b7a2ce89-8ac9-429d-e09d-36ba9241d5ca",
+						"target": "input-a9cd1883-02e0-4994-c06b-ae76ba6e18cb"
+					}
+				],
+				"posX": 345.39794921875,
+				"posY": 418.4051933288574,
+				"scriptId": "CFF149EF-AD51-4E96-B14C-C62E9A568EE9"
+			},
+			{
+				"id": "object-2a91eeef-fda3-4299-f549-688ad5bfd421",
+				"name": "Script Task",
+				"description": "",
+				"templateId": "ScriptTask",
+				"templateName": "Script Task",
+				"typeCSS": "scripttask",
+				"typeImage": "task",
+				"group": "task",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-503ef195-1158-47ed-fd5e-8344a8f3030e"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-8397fc31-c614-4403-8a2f-35eaf1f976d0"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-135820f6-2e74-4973-a96e-4c6380e09b68",
+						"source": "output-1513c39e-4d7a-42ac-8e75-008283fc8625",
+						"target": "input-503ef195-1158-47ed-fd5e-8344a8f3030e"
+					},
+					{
+						"id": "link-56dd93c8-3ad7-406d-b215-f35e59195a58",
+						"source": "output-8397fc31-c614-4403-8a2f-35eaf1f976d0",
+						"target": "input-834f102f-21c7-4eb5-e3aa-b97f65d31d2d"
+					}
+				],
+				"posX": 546.39794921875,
+				"posY": 420.4051818847656,
+				"scriptId": "65B01AAB-2565-4427-B37F-6077DCA7BF86"
+			},
+			{
+				"id": "object-118fefbc-9b5e-4f01-8c82-bbd69f36d9ce",
+				"name": "Completed",
+				"description": "",
+				"templateId": "Completed",
+				"templateName": "Completed",
+				"typeCSS": "completed",
+				"typeImage": "exit",
+				"group": "event",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-a9cd1883-02e0-4994-c06b-ae76ba6e18cb"
+					}
+				],
+				"object": {},
+				"output": [],
+				"connections": [
+					{
+						"id": "link-c967ec99-58f0-4d81-f59e-6384d702a1ff",
+						"source": "output-b7a2ce89-8ac9-429d-e09d-36ba9241d5ca",
+						"target": "input-a9cd1883-02e0-4994-c06b-ae76ba6e18cb"
+					}
+				],
+				"posX": 342.39794921875,
+				"posY": 547.4052124023438
+			},
+			{
+				"id": "object-adf4f4d0-cc75-4369-b91b-99c826e2cfcf",
+				"name": "Cancel",
+				"description": "",
+				"templateId": "Cancel",
+				"templateName": "Cancel",
+				"typeCSS": "cancel",
+				"typeImage": "exit",
+				"group": "event",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-834f102f-21c7-4eb5-e3aa-b97f65d31d2d"
+					}
+				],
+				"object": {},
+				"output": [],
+				"connections": [
+					{
+						"id": "link-56dd93c8-3ad7-406d-b215-f35e59195a58",
+						"source": "output-8397fc31-c614-4403-8a2f-35eaf1f976d0",
+						"target": "input-834f102f-21c7-4eb5-e3aa-b97f65d31d2d"
+					}
+				],
+				"posX": 544.39794921875,
+				"posY": 543.4052124023438
+			}
+		],
+		"connections": [
+			{
+				"id": "link-a4a7ac08-6413-4439-f53a-9c689bf345f2",
+				"source": "output-a7d00689-554e-405d-a30f-23f2eb124740",
+				"sourceNode": "object-383a2a2e-0467-4649-c1f1-8e91ab9e3439",
+				"target": "input-7d1592a9-67c0-4c1c-d6d5-dd3d7307c3c3",
+				"targetNode": "object-ddf6b9d2-a6e9-4083-818e-b1056b701cb6"
+			},
+			{
+				"id": "link-ebf3eab7-4c3c-4bb1-8b41-992d02bcccd0",
+				"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+				"sourceNode": "object-ddf6b9d2-a6e9-4083-818e-b1056b701cb6",
+				"target": "input-3769ef7a-fe0c-4310-f3ab-b3652eba0050",
+				"targetNode": "object-26023e39-b482-46bf-fc09-398c0c6b4311"
+			},
+			{
+				"id": "link-b6445c86-0ba0-4adc-c84b-b94686451acc",
+				"source": "output-b945e3e0-3b03-4ef4-bece-41288ece5d27",
+				"sourceNode": "object-ddf6b9d2-a6e9-4083-818e-b1056b701cb6",
+				"target": "input-ac48fe1c-8db4-415a-8703-f5749602aaa9",
+				"targetNode": "object-b75d0646-2488-4077-98f3-a9b938d49b27"
+			},
+			{
+				"id": "link-383298d3-7e37-4278-f530-f733575e9631",
+				"source": "output-54db229a-2ed4-4f3b-f0e9-01609667c767",
+				"sourceNode": "object-26023e39-b482-46bf-fc09-398c0c6b4311",
+				"target": "input-4a81a92a-da6d-4d24-be0e-7b1292887403",
+				"targetNode": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17"
+			},
+			{
+				"id": "link-135820f6-2e74-4973-a96e-4c6380e09b68",
+				"source": "output-1513c39e-4d7a-42ac-8e75-008283fc8625",
+				"sourceNode": "object-b75d0646-2488-4077-98f3-a9b938d49b27",
+				"target": "input-503ef195-1158-47ed-fd5e-8344a8f3030e",
+				"targetNode": "object-2a91eeef-fda3-4299-f549-688ad5bfd421"
+			},
+			{
+				"id": "link-c967ec99-58f0-4d81-f59e-6384d702a1ff",
+				"source": "output-b7a2ce89-8ac9-429d-e09d-36ba9241d5ca",
+				"sourceNode": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17",
+				"target": "input-a9cd1883-02e0-4994-c06b-ae76ba6e18cb",
+				"targetNode": "object-118fefbc-9b5e-4f01-8c82-bbd69f36d9ce"
+			},
+			{
+				"id": "link-56dd93c8-3ad7-406d-b215-f35e59195a58",
+				"source": "output-8397fc31-c614-4403-8a2f-35eaf1f976d0",
+				"sourceNode": "object-2a91eeef-fda3-4299-f549-688ad5bfd421",
+				"target": "input-834f102f-21c7-4eb5-e3aa-b97f65d31d2d",
+				"targetNode": "object-adf4f4d0-cc75-4369-b91b-99c826e2cfcf"
+			}
+		]
+	},
+	"title": "Inspection Approval",
+	"subTitle": null,
+	"daysUntilOverdue": 1,
+	"daysNotificationInterval": null,
+	"enableNotifications": false,
+	"omitFriday": false,
+	"omitSaturday": false,
+	"omitSunday": false,
+	"icon": null,
+	"ver": "22.9.8.1126",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

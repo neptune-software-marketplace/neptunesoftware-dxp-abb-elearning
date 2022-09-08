@@ -118,6 +118,16 @@
 	],
 	"jsclass": [
 		{
+			"id": "4E2FF763-F6D1-EC11-997E-0050F279C413",
+			"name": "test",
+			"description": null
+		},
+		{
+			"id": "66743392-BDDD-480A-BEE9-2471E4F1E22C",
+			"name": "Calculate days_until_check",
+			"description": null
+		},
+		{
 			"id": "65B01AAB-2565-4427-B37F-6077DCA7BF86",
 			"name": "rejectedWF",
 			"description": null
@@ -126,12 +136,32 @@
 			"id": "CFF149EF-AD51-4E96-B14C-C62E9A568EE9",
 			"name": "approvedWF",
 			"description": null
+		},
+		{
+			"id": "31BA43F4-6F1F-EC11-AE72-DC9840105A9F",
+			"name": "DailyTableReset",
+			"description": null
+		},
+		{
+			"id": "F2ECF6D8-7D11-ED11-B47A-DC9840109DAC",
+			"name": "ztest",
+			"description": null
+		},
+		{
+			"id": "F5C61A24-229B-41AE-B0F0-F25E36B7DB3A",
+			"name": "Get Field Worker Tasks",
+			"description": null
 		}
 	],
 	"jsscript_group": [
 		{
 			"id": "089A48C6-6626-4C48-AADE-68129C29A97B",
 			"name": "elearningWFScript",
+			"description": null
+		},
+		{
+			"id": "E891CAD6-6EB4-4711-B05E-DD1234C0CBFF",
+			"name": "EquipmentCheckupScripts",
 			"description": null
 		}
 	],

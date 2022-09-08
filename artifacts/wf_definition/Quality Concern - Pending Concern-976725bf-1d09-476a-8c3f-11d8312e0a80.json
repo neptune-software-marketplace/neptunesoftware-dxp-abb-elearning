@@ -1,0 +1,425 @@
+{
+	"id": "976725bf-1d09-476a-8c3f-11d8312e0a80",
+	"createdAt": "2021-05-03T15:30:32.500Z",
+	"createdBy": "lloyd",
+	"tasks": [
+		{
+			"id": "object-34c37b32-3d9b-4f94-a410-6a953de6b0b9",
+			"taskType": "UserTask",
+			"inboxApp": "ccar_workflowinbox_embedded",
+			"title": "User Task",
+			"subTitle": "",
+			"userDeterminationLocal": "92543C70-A1A1-4664-9A58-3670FE170AC4",
+			"taskAction": "796139B8-64DD-480E-A20A-21468C2FFDBC",
+			"scriptId": "",
+			"runScriptInFork": false,
+			"customApproverScript": "",
+			"enableForward": false,
+			"enableQuery": false,
+			"enableNotification": false,
+			"taskNotification": "",
+			"senderEmail": "",
+			"enableSave": false,
+			"enableApprove": true,
+			"enableReject": true,
+			"approveTask": "object-6a676e8c-673a-47b1-d972-1148c46e4da5",
+			"approveTaskType": "ScriptTask",
+			"approveLabel": "Approve",
+			"approveButtonType": "Accept",
+			"rejectTask": "object-e7d59da9-a0df-42c1-f78a-e697f6b5c8a3",
+			"rejectTaskType": "Cancel",
+			"rejectLabel": "Reject",
+			"rejectButtonType": "Reject"
+		},
+		{
+			"id": "object-6a676e8c-673a-47b1-d972-1148c46e4da5",
+			"taskType": "ScriptTask",
+			"inboxApp": "",
+			"title": "Move Pending Concern to Level0 Concern Table",
+			"subTitle": "",
+			"userDeterminationLocal": "",
+			"taskAction": "",
+			"scriptId": "BB0AD313-3E9C-4D17-9C99-6A0CB242AECA",
+			"runScriptInFork": false,
+			"customApproverScript": "",
+			"enableForward": false,
+			"enableQuery": false,
+			"enableNotification": false,
+			"taskNotification": "",
+			"senderEmail": "",
+			"enableSave": false,
+			"enableApprove": false,
+			"enableReject": false,
+			"scriptTask": "object-9c48e087-a64e-45f3-a2a7-ffc08200f5a4",
+			"scriptTaskType": "Completed"
+		}
+	],
+	"translation": [],
+	"flowEditor": {
+		"objects": [
+			{
+				"id": "object-986c93d6-2af2-4f65-cae4-068cdd0af9e9",
+				"name": "Start",
+				"description": "",
+				"templateId": "Start",
+				"templateName": "Start",
+				"typeCSS": "start",
+				"typeImage": "start",
+				"group": "",
+				"input": [],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-d80826be-5cfb-4fb7-e03c-03f332d3550d"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-9baa9851-811d-4470-b153-aaab4dcd983e",
+						"source": "output-d80826be-5cfb-4fb7-e03c-03f332d3550d",
+						"target": "input-382f94c5-9cb1-4eea-a825-59641331ad01"
+					}
+				],
+				"posX": 355.4737243652344,
+				"posY": -187.86279296875
+			},
+			{
+				"id": "object-999e5549-120f-4d8c-a8df-2525ee7d9493",
+				"name": "Approve",
+				"description": "",
+				"templateId": "Approve",
+				"templateName": "Approve",
+				"typeCSS": "approve",
+				"typeImage": "action",
+				"actionLabel": "Approve",
+				"actionButtonType": "Accept",
+				"group": "useraction",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-fc444bb9-788e-4c91-a545-1f6d7a9c61bf"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-62602add-c3aa-4450-c7a4-75fb6e690fb3"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-500a502c-3bb5-48f0-9eb1-46e8eb8cd74d",
+						"source": "output-62602add-c3aa-4450-c7a4-75fb6e690fb3",
+						"target": "input-4f152dba-80fc-4b25-e6fb-9c3ee70fee38"
+					},
+					{
+						"id": "link-61892e5b-858c-4807-f882-d90a5b9b89eb",
+						"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+						"target": "input-fc444bb9-788e-4c91-a545-1f6d7a9c61bf"
+					}
+				],
+				"posX": 241.70274353027344,
+				"posY": 229.7303466796875
+			},
+			{
+				"id": "object-b81321a7-923c-47b5-f1b5-eb75fa196e31",
+				"name": "Reject",
+				"description": "",
+				"templateId": "Reject",
+				"templateName": "Reject",
+				"actionLabel": "Reject",
+				"actionButtonType": "Reject",
+				"typeCSS": "reject",
+				"typeImage": "action",
+				"group": "useraction",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-f3055b99-957e-4d20-e8f7-6e55e533a25e"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-653c3783-7054-461b-e34f-4a9e3ba56795"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-09916bbd-23bc-45b1-cbff-3240440f66e4",
+						"source": "output-653c3783-7054-461b-e34f-4a9e3ba56795",
+						"target": "input-6fbc0cd7-7585-4a83-a071-6a6ddd66aca0"
+					},
+					{
+						"id": "link-3440831b-5a2b-4834-fc8f-09ad9b9b1e04",
+						"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+						"target": "input-f3055b99-957e-4d20-e8f7-6e55e533a25e"
+					}
+				],
+				"posX": 427.68145751953125,
+				"posY": 243.62631225585938
+			},
+			{
+				"id": "object-9c48e087-a64e-45f3-a2a7-ffc08200f5a4",
+				"name": "Completed",
+				"description": "",
+				"templateId": "Completed",
+				"templateName": "Completed",
+				"typeCSS": "completed",
+				"typeImage": "exit",
+				"group": "event",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-ce2b8cbf-5d24-411a-9fe2-08c05fa97462"
+					}
+				],
+				"object": {},
+				"output": [],
+				"connections": [
+					{
+						"id": "link-5c5fa8cb-56d6-4abc-c5f1-5e9fee50a8b5",
+						"source": "output-9dceee30-b871-4f0a-8b3d-f8fd4537ac09",
+						"target": "input-ce2b8cbf-5d24-411a-9fe2-08c05fa97462"
+					}
+				],
+				"posX": 235.12632751464844,
+				"posY": 619.1533813476562
+			},
+			{
+				"id": "object-e7d59da9-a0df-42c1-f78a-e697f6b5c8a3",
+				"name": "Cancel",
+				"description": "",
+				"templateId": "Cancel",
+				"templateName": "Cancel",
+				"typeCSS": "cancel",
+				"typeImage": "exit",
+				"group": "event",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-6fbc0cd7-7585-4a83-a071-6a6ddd66aca0"
+					}
+				],
+				"object": {},
+				"output": [],
+				"connections": [
+					{
+						"id": "link-09916bbd-23bc-45b1-cbff-3240440f66e4",
+						"source": "output-653c3783-7054-461b-e34f-4a9e3ba56795",
+						"target": "input-6fbc0cd7-7585-4a83-a071-6a6ddd66aca0"
+					}
+				],
+				"posX": 516.8153076171875,
+				"posY": 609.9959106445312
+			},
+			{
+				"id": "object-6a676e8c-673a-47b1-d972-1148c46e4da5",
+				"name": "Move Pending Concern to Level0 Concern Table",
+				"description": "",
+				"templateId": "ScriptTask",
+				"templateName": "Script Task",
+				"typeCSS": "scripttask",
+				"typeImage": "task",
+				"group": "task",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-4f152dba-80fc-4b25-e6fb-9c3ee70fee38"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-9dceee30-b871-4f0a-8b3d-f8fd4537ac09"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-500a502c-3bb5-48f0-9eb1-46e8eb8cd74d",
+						"source": "output-62602add-c3aa-4450-c7a4-75fb6e690fb3",
+						"target": "input-4f152dba-80fc-4b25-e6fb-9c3ee70fee38"
+					},
+					{
+						"id": "link-5c5fa8cb-56d6-4abc-c5f1-5e9fee50a8b5",
+						"source": "output-9dceee30-b871-4f0a-8b3d-f8fd4537ac09",
+						"target": "input-ce2b8cbf-5d24-411a-9fe2-08c05fa97462"
+					}
+				],
+				"posX": 166.0386962890625,
+				"posY": 419.1399230957031,
+				"scriptId": "BB0AD313-3E9C-4D17-9C99-6A0CB242AECA"
+			},
+			{
+				"id": "object-34c37b32-3d9b-4f94-a410-6a953de6b0b9",
+				"name": "User Task",
+				"description": "",
+				"templateId": "UserTask",
+				"templateName": "User Task",
+				"typeCSS": "usertask",
+				"typeImage": "task",
+				"group": "task",
+				"input": [
+					{
+						"name": "input",
+						"value": "",
+						"grouping": "Input",
+						"parent": "Input",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "input-382f94c5-9cb1-4eea-a825-59641331ad01"
+					}
+				],
+				"object": {},
+				"output": [
+					{
+						"name": "output",
+						"value": "",
+						"grouping": "Output",
+						"parent": "Output",
+						"show_script": false,
+						"show_label": false,
+						"show_button": false,
+						"id": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6"
+					}
+				],
+				"connections": [
+					{
+						"id": "link-9baa9851-811d-4470-b153-aaab4dcd983e",
+						"source": "output-d80826be-5cfb-4fb7-e03c-03f332d3550d",
+						"target": "input-382f94c5-9cb1-4eea-a825-59641331ad01"
+					},
+					{
+						"id": "link-61892e5b-858c-4807-f882-d90a5b9b89eb",
+						"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+						"target": "input-fc444bb9-788e-4c91-a545-1f6d7a9c61bf"
+					},
+					{
+						"id": "link-3440831b-5a2b-4834-fc8f-09ad9b9b1e04",
+						"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+						"target": "input-f3055b99-957e-4d20-e8f7-6e55e533a25e"
+					}
+				],
+				"posX": 334,
+				"posY": -2,
+				"inboxApp": "ccar_workflowinbox_embedded",
+				"userDeterminationLocal": "92543C70-A1A1-4664-9A58-3670FE170AC4",
+				"taskAction": "796139B8-64DD-480E-A20A-21468C2FFDBC"
+			}
+		],
+		"connections": [
+			{
+				"id": "link-500a502c-3bb5-48f0-9eb1-46e8eb8cd74d",
+				"source": "output-62602add-c3aa-4450-c7a4-75fb6e690fb3",
+				"sourceNode": "object-999e5549-120f-4d8c-a8df-2525ee7d9493",
+				"target": "input-4f152dba-80fc-4b25-e6fb-9c3ee70fee38",
+				"targetNode": "object-6a676e8c-673a-47b1-d972-1148c46e4da5"
+			},
+			{
+				"id": "link-5c5fa8cb-56d6-4abc-c5f1-5e9fee50a8b5",
+				"source": "output-9dceee30-b871-4f0a-8b3d-f8fd4537ac09",
+				"sourceNode": "object-6a676e8c-673a-47b1-d972-1148c46e4da5",
+				"target": "input-ce2b8cbf-5d24-411a-9fe2-08c05fa97462",
+				"targetNode": "object-9c48e087-a64e-45f3-a2a7-ffc08200f5a4"
+			},
+			{
+				"id": "link-09916bbd-23bc-45b1-cbff-3240440f66e4",
+				"source": "output-653c3783-7054-461b-e34f-4a9e3ba56795",
+				"sourceNode": "object-b81321a7-923c-47b5-f1b5-eb75fa196e31",
+				"target": "input-6fbc0cd7-7585-4a83-a071-6a6ddd66aca0",
+				"targetNode": "object-e7d59da9-a0df-42c1-f78a-e697f6b5c8a3"
+			},
+			{
+				"id": "link-9baa9851-811d-4470-b153-aaab4dcd983e",
+				"source": "output-d80826be-5cfb-4fb7-e03c-03f332d3550d",
+				"sourceNode": "object-986c93d6-2af2-4f65-cae4-068cdd0af9e9",
+				"target": "input-382f94c5-9cb1-4eea-a825-59641331ad01",
+				"targetNode": "object-34c37b32-3d9b-4f94-a410-6a953de6b0b9"
+			},
+			{
+				"id": "link-61892e5b-858c-4807-f882-d90a5b9b89eb",
+				"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+				"sourceNode": "object-34c37b32-3d9b-4f94-a410-6a953de6b0b9",
+				"target": "input-fc444bb9-788e-4c91-a545-1f6d7a9c61bf",
+				"targetNode": "object-999e5549-120f-4d8c-a8df-2525ee7d9493"
+			},
+			{
+				"id": "link-3440831b-5a2b-4834-fc8f-09ad9b9b1e04",
+				"source": "output-8b7b7bbc-54fd-4283-d9fb-d62c427565f6",
+				"sourceNode": "object-34c37b32-3d9b-4f94-a410-6a953de6b0b9",
+				"target": "input-f3055b99-957e-4d20-e8f7-6e55e533a25e",
+				"targetNode": "object-b81321a7-923c-47b5-f1b5-eb75fa196e31"
+			}
+		]
+	},
+	"title": "Quality Concern - Pending Concern",
+	"subTitle": null,
+	"daysUntilOverdue": 1,
+	"daysNotificationInterval": null,
+	"enableNotifications": false,
+	"omitFriday": false,
+	"omitSaturday": false,
+	"omitSunday": false,
+	"icon": "sap-icon://quality-issue",
+	"ver": "22.9.8.1038",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

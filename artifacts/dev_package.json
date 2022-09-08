@@ -36,7 +36,7 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "22.9.7.1543",
+	"ver": "22.9.8.1131",
 	"enableCICD": true,
 	"apps": [
 		{
@@ -72,6 +72,12 @@
 		{
 			"id": "3080F44C-3E82-4992-BB4C-E39BE159338A",
 			"application": "2viewandeditequipment",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "773EB49A-0788-4BB9-A019-F8B083251255",
+			"application": "wf_details_embedded_app",
 			"title": "",
 			"description": ""
 		}

@@ -55,9 +55,9 @@
 	"foreignKeys": [],
 	"name": "inspections",
 	"description": null,
-	"ver": "22.9.7.1735",
+	"ver": "22.12.20.1053",
 	"enableAudit": false,
-	"includeDataInPackage": false,
+	"includeDataInPackage": true,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"rolesRead": [],
 	"rolesWrite": []

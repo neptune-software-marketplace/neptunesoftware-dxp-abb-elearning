@@ -1,0 +1,47 @@
+[
+	{
+		"id": "9f684db5-c239-4410-a85b-bab0ec1cc2ca",
+		"createdAt": "1637918686778",
+		"updatedAt": "1671456131571",
+		"createdBy": "admin",
+		"updatedBy": "admin",
+		"employeeID": "5B8BE037-C01A-EC11-AE72-DC9840105A9F",
+		"employeeName": "fieldworker1",
+		"part_number": "HIG805202",
+		"status": "Assigned",
+		"equipment_barcode_scan": null,
+		"comments": null,
+		"attachments": null,
+		"signature": null
+	},
+	{
+		"id": "270ba232-e091-47ed-864f-1ee9dd6a4a0e",
+		"createdAt": "1637918686778",
+		"updatedAt": "1671456131571",
+		"createdBy": "admin",
+		"updatedBy": "admin",
+		"employeeID": "5B8BE037-C01A-EC11-AE72-DC9840105A9F",
+		"employeeName": "fieldworker1",
+		"part_number": "POW898625",
+		"status": "Assigned",
+		"equipment_barcode_scan": null,
+		"comments": null,
+		"attachments": null,
+		"signature": null
+	},
+	{
+		"id": "2150aec2-5ab4-4a28-8555-048dbca56687",
+		"createdAt": "1637918686778",
+		"updatedAt": "1671456131571",
+		"createdBy": "admin",
+		"updatedBy": "admin",
+		"employeeID": "5B8BE037-C01A-EC11-AE72-DC9840105A9F",
+		"employeeName": "fieldworker1",
+		"part_number": "BOW367810",
+		"status": "Assigned",
+		"equipment_barcode_scan": null,
+		"comments": null,
+		"attachments": null,
+		"signature": null
+	}
+]

@@ -73,13 +73,13 @@
 			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
 			"name": "MY INBOX",
 			"title": "Maintenance Inbox",
-			"ver": "22.11.21.116"
+			"ver": "22.12.20.1043"
 		},
 		{
 			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
 			"name": "Maintenance Status",
 			"title": "Activities",
-			"ver": "22.9.7.1528"
+			"ver": "22.12.20.1043"
 		}
 	],
 	"tilegroups": []

@@ -1,29 +1,19 @@
 {
-	"id": "31ba43f4-6f1f-ec11-ae72-dc9840105a9f",
-	"createdAt": "2021-09-27T08:50:25.143Z",
-	"createdBy": "admin",
+	"id": "5f5599ee-5a80-ed11-9f60-0022489e239a",
+	"createdAt": "2022-12-20T11:39:23.460Z",
+	"createdBy": "lloyd",
 	"globalScripts": [],
 	"externalModules": [],
 	"entitySets": [
 		{
-			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
-			"name": "equipment",
-			"contextname": "equipment"
-		},
-		{
 			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
 			"name": "inspections",
 			"contextname": "inspections"
-		},
-		{
-			"id": "C7B94B81-701F-EC11-AE72-DC9840105A9F",
-			"name": "equipmenttemplate",
-			"contextname": "equipmenttemplate"
 		}
 	],
 	"apis": [],
-	"name": "DailyTableReset",
-	"ver": "21.9.27.1038",
+	"name": "CreateInspectionStats",
+	"ver": "22.12.20.1139",
 	"description": null,
 	"content": "file:///content.script",
 	"useAsGlobalScript": false,

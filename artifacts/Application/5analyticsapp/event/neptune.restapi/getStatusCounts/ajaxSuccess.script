@@ -1,0 +1,25 @@
+console.log("Status Data:: ", modelstatusCounts.getData());
+
+var {complete, submitted, assigned, rejected} = modelstatusCounts.getData();
+
+console.log(complete);
+
+
+StatusChart.update(
+            {    
+                yAxis: {
+                    tickInterval: 1
+                },
+                xAxis: {
+                    categories: ["Completed", "Submitted", "Assigned", "Rejected"]
+                },
+                series: [
+                    {   
+                        type: "column",
+                        name: "Statuses",
+                        color: 'orange',
+                        data: [complete, submitted, assigned, rejected]
+                    }
+                ]
+            }
+        );

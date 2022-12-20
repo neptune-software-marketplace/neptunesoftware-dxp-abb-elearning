@@ -1,24 +1,24 @@
 {
-	"id": "4e2ff763-f6d1-ec11-997e-0050f279c413",
-	"createdAt": "2022-05-12T13:21:12.093Z",
+	"id": "f158fd21-5b80-ed11-9f60-0022489e239a",
+	"createdAt": "2022-12-20T11:40:42.900Z",
 	"createdBy": "lloyd",
 	"globalScripts": [],
 	"externalModules": [],
 	"entitySets": [
 		{
-			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
-			"name": "inspections",
-			"contextname": "inspections"
+			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
+			"name": "equipment",
+			"contextname": "equipment"
 		}
 	],
 	"apis": [],
-	"name": "test",
-	"ver": "22.5.12.1322",
+	"name": "CreateLotsOfEquipment",
+	"ver": "22.12.20.1140",
 	"description": null,
 	"content": "file:///content.script",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,
-	"lastRunSuccessful": true,
+	"lastRunSuccessful": false,
 	"isTypescript": false,
 	"language": "javascript",
 	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",

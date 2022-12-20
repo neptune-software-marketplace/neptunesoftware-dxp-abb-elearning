@@ -37,6 +37,12 @@
 			"description": ""
 		},
 		{
+			"id": "3c9af25e-4fc2-4dec-978e-fbb7d45b603b",
+			"application": "5analyticsapp",
+			"title": "",
+			"description": ""
+		},
+		{
 			"id": "3323d8a7-477c-472c-ae04-7ad5095b63d0",
 			"application": "1createnewequipment",
 			"title": "",
@@ -59,6 +65,12 @@
 		{
 			"id": "f9f77060-a79f-4edb-9906-7b31ba53173e",
 			"name": "APIGetSingleInspection",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
+			"name": "inspectionStats",
 			"description": null,
 			"apiGroup": null
 		},
@@ -102,8 +114,8 @@
 			"description": null
 		},
 		{
-			"id": "f2ecf6d8-7d11-ed11-b47a-dc9840109dac",
-			"name": "ztest",
+			"id": "f158fd21-5b80-ed11-9f60-0022489e239a",
+			"name": "CreateLotsOfEquipment",
 			"description": null
 		},
 		{
@@ -122,13 +134,8 @@
 			"description": null
 		},
 		{
-			"id": "4e2ff763-f6d1-ec11-997e-0050f279c413",
-			"name": "test",
-			"description": null
-		},
-		{
-			"id": "31ba43f4-6f1f-ec11-ae72-dc9840105a9f",
-			"name": "DailyTableReset",
+			"id": "5f5599ee-5a80-ed11-9f60-0022489e239a",
+			"name": "CreateInspectionStats",
 			"description": null
 		}
 	],

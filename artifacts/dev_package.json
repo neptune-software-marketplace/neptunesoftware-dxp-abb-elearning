@@ -1,109 +1,82 @@
 {
-	"id": "1D063863-5CCB-42C8-A7DF-323605FE1EE3",
+	"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"createdAt": "2021-03-08T16:10:37.000Z",
 	"createdBy": "admin",
 	"git": {
 		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-elearning",
 		"targetServers": [],
-		"testServers": [],
-		"packageJSON": [
-			"==OBJECT STRING==",
-			"{",
-			"  \"name\": \"elearning-dev\",",
-			"  \"version\": \"1.0.0\",",
-			"  \"description\": \"Package for developing elearning content\",",
-			"  \"author\": \"Neptune Software\",",
-			"  \"license\": \"LicenseRef-LICENSE\",",
-			"  \"private\": true,",
-			"  \"scripts\": {",
-			"    \"deploy\": \"ts-node src/deploy.ts\",",
-			"    \"test\": \"jest --passWithNoTests\"",
-			"  },",
-			"  \"engines\": {",
-			"    \"node\": \"14.16.0\"",
-			"  },",
-			"  \"devDependencies\": {",
-			"    \"@types/jest\": \"^26.0.23\",",
-			"    \"typescript\": \"^4.2.3\",",
-			"    \"ts-node\": \"^10.0.0\",",
-			"    \"axios\": \"^0.21.1\",",
-			"    \"jest\": \"^27.0.4\",",
-			"    \"ts-jest\": \"^27.0.3\"",
-			"  }",
-			"}",
-			""
-		]
+		"testServers": []
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "22.9.8.1131",
+	"ver": "22.9.8.131",
 	"enableCICD": true,
 	"apps": [
 		{
-			"id": "2B9790D7-BC4A-EC11-981F-0050F2794553",
-			"application": "3fieldworkerinspect_offline_version",
-			"title": "",
-			"description": ""
-		},
-		{
-			"id": "F75C24FD-AA32-4BB7-8F0F-0ED6972ACE3B",
+			"id": "f75c24fd-aa32-4bb7-8f0f-0ed6972ace3b",
 			"application": "planet9_inbox_tile",
 			"title": "Inbox Live Tile",
 			"description": "Inbox Live Tile"
 		},
 		{
-			"id": "AEC2C73B-B9B5-45F9-A181-23EDC445E82D",
+			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
 			"application": "3fieldworkerinspect",
 			"title": "",
 			"description": ""
 		},
 		{
-			"id": "3323D8A7-477C-472C-AE04-7AD5095B63D0",
-			"application": "1createnewequipment",
-			"title": "",
-			"description": ""
-		},
-		{
-			"id": "9C5578FF-7EB8-EB11-A7AC-A085FCBC9F85",
+			"id": "9c5578ff-7eb8-eb11-a7ac-a085fcbc9f85",
 			"application": "planet9_inbox_f3_v2",
 			"title": "Workflow Inbox",
 			"description": "Workflow Inbox - Fiori 3"
 		},
 		{
-			"id": "3080F44C-3E82-4992-BB4C-E39BE159338A",
+			"id": "773eb49a-0788-4bb9-a019-f8b083251255",
+			"application": "wf_details_embedded_app",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "3323d8a7-477c-472c-ae04-7ad5095b63d0",
+			"application": "1createnewequipment",
+			"title": "",
+			"description": ""
+		},
+		{
+			"id": "3080f44c-3e82-4992-bb4c-e39be159338a",
 			"application": "2viewandeditequipment",
 			"title": "",
 			"description": ""
 		},
 		{
-			"id": "773EB49A-0788-4BB9-A019-F8B083251255",
-			"application": "wf_details_embedded_app",
+			"id": "2b9790d7-bc4a-ec11-981f-0050f2794553",
+			"application": "3fieldworkerinspect_offline_version",
 			"title": "",
 			"description": ""
 		}
 	],
 	"api": [
 		{
-			"id": "F9F77060-A79F-4EDB-9906-7B31BA53173E",
+			"id": "f9f77060-a79f-4edb-9906-7b31ba53173e",
 			"name": "APIGetSingleInspection",
 			"description": null,
 			"apiGroup": null
 		},
 		{
-			"id": "14A2137E-9E64-4383-9848-8E468F3834D6",
-			"name": "API equipment",
+			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
+			"name": "Equipment Check Server Scripts",
 			"description": null,
 			"apiGroup": null
 		},
 		{
-			"id": "51DCDBEC-93FF-4733-B351-DCEAD0A6E34F",
+			"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
 			"name": "API inspections",
 			"description": null,
 			"apiGroup": null
 		},
 		{
-			"id": "8D54547D-AFF9-4E0A-BA13-DF649DA7B78A",
-			"name": "Equipment Check Server Scripts",
+			"id": "14a2137e-9e64-4383-9848-8e468f3834d6",
+			"name": "API equipment",
 			"description": null,
 			"apiGroup": null
 		}
@@ -112,62 +85,62 @@
 	"odataMock": [],
 	"dictionary": [
 		{
-			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
+			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
 			"name": "inspections",
 			"description": null
 		},
 		{
-			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
+			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
 			"name": "equipment",
 			"description": null
 		}
 	],
 	"jsclass": [
 		{
-			"id": "4E2FF763-F6D1-EC11-997E-0050F279C413",
-			"name": "test",
+			"id": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a",
+			"name": "Get Field Worker Tasks",
 			"description": null
 		},
 		{
-			"id": "66743392-BDDD-480A-BEE9-2471E4F1E22C",
-			"name": "Calculate days_until_check",
-			"description": null
-		},
-		{
-			"id": "65B01AAB-2565-4427-B37F-6077DCA7BF86",
-			"name": "rejectedWF",
-			"description": null
-		},
-		{
-			"id": "CFF149EF-AD51-4E96-B14C-C62E9A568EE9",
-			"name": "approvedWF",
-			"description": null
-		},
-		{
-			"id": "31BA43F4-6F1F-EC11-AE72-DC9840105A9F",
-			"name": "DailyTableReset",
-			"description": null
-		},
-		{
-			"id": "F2ECF6D8-7D11-ED11-B47A-DC9840109DAC",
+			"id": "f2ecf6d8-7d11-ed11-b47a-dc9840109dac",
 			"name": "ztest",
 			"description": null
 		},
 		{
-			"id": "F5C61A24-229B-41AE-B0F0-F25E36B7DB3A",
-			"name": "Get Field Worker Tasks",
+			"id": "cff149ef-ad51-4e96-b14c-c62e9a568ee9",
+			"name": "approvedWF",
+			"description": null
+		},
+		{
+			"id": "66743392-bddd-480a-bee9-2471e4f1e22c",
+			"name": "Calculate days_until_check",
+			"description": null
+		},
+		{
+			"id": "65b01aab-2565-4427-b37f-6077dca7bf86",
+			"name": "rejectedWF",
+			"description": null
+		},
+		{
+			"id": "4e2ff763-f6d1-ec11-997e-0050f279c413",
+			"name": "test",
+			"description": null
+		},
+		{
+			"id": "31ba43f4-6f1f-ec11-ae72-dc9840105a9f",
+			"name": "DailyTableReset",
 			"description": null
 		}
 	],
 	"jsscript_group": [
 		{
-			"id": "089A48C6-6626-4C48-AADE-68129C29A97B",
-			"name": "elearningWFScript",
+			"id": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
+			"name": "EquipmentCheckupScripts",
 			"description": null
 		},
 		{
-			"id": "E891CAD6-6EB4-4711-B05E-DD1234C0CBFF",
-			"name": "EquipmentCheckupScripts",
+			"id": "089a48c6-6626-4c48-aade-68129c29a97b",
+			"name": "elearningWFScript",
 			"description": null
 		}
 	],
@@ -179,61 +152,61 @@
 	"api_group": [],
 	"tile": [
 		{
-			"id": "7DDC995C-0E80-EB11-85AA-0003FF1E43FB",
+			"id": "bdaec96d-680b-49db-a058-e022e4b4fb58",
 			"description": null,
-			"name": "MY INBOX"
+			"name": "1AddEquipment"
 		},
 		{
-			"id": "821DFB5A-0E3B-EC11-981F-0050F2794553",
-			"description": null,
-			"name": "Maintenance_Video"
-		},
-		{
-			"id": "20D64B6A-2F72-4CE4-AA7D-00C53B29E20E",
-			"description": "",
-			"name": "Maintenance Status"
-		},
-		{
-			"id": "0516C7ED-6910-4343-8D07-3E4115A6E585",
-			"description": null,
-			"name": "3FieldWorkerInspect"
-		},
-		{
-			"id": "9E3D4088-63CD-4196-9F1F-6249C7B66F60",
-			"description": null,
-			"name": "2ViewAndEditEquipment_v2"
-		},
-		{
-			"id": "B2D8B76E-6D1B-4C93-A515-6B5CF9F05CFA",
+			"id": "b2d8b76e-6d1b-4c93-a515-6b5cf9f05cfa",
 			"description": null,
 			"name": "3FieldWorkerInspect - Offline"
 		},
 		{
-			"id": "BDAEC96D-680B-49DB-A058-E022E4B4FB58",
+			"id": "9e3d4088-63cd-4196-9f1f-6249c7b66f60",
 			"description": null,
-			"name": "1AddEquipment"
+			"name": "2ViewAndEditEquipment_v2"
+		},
+		{
+			"id": "821dfb5a-0e3b-ec11-981f-0050f2794553",
+			"description": null,
+			"name": "Maintenance_Video"
+		},
+		{
+			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
+			"description": null,
+			"name": "MY INBOX"
+		},
+		{
+			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
+			"description": "",
+			"name": "Maintenance Status"
+		},
+		{
+			"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
+			"description": null,
+			"name": "3FieldWorkerInspect"
 		}
 	],
 	"category": [
 		{
-			"id": "2827E03B-2676-4FB8-8140-1F2BDC5C892A",
+			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
 			"description": null,
-			"name": "Manager Apps"
+			"name": "All Apps"
 		},
 		{
-			"id": "3253AE3E-38CF-4B6A-82F7-1FF998820397",
+			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
 			"description": null,
 			"name": "Main Apps"
 		},
 		{
-			"id": "9881522D-C327-4EE7-8627-B31A8E879DA7",
+			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
 			"description": null,
-			"name": "All Apps"
+			"name": "Manager Apps"
 		}
 	],
 	"launchpad": [
 		{
-			"id": "E13BAE95-5FD0-4E1C-A48C-A8771BFDA440",
+			"id": "e13bae95-5fd0-4e1c-a48c-a8771bfda440",
 			"name": "eLearning Launchpad",
 			"description": null
 		}
@@ -241,7 +214,7 @@
 	"certificates": [],
 	"role": [
 		{
-			"id": "29FB0DE4-C31A-EC11-AE72-DC9840105A9F",
+			"id": "29fb0de4-c31a-ec11-ae72-dc9840105a9f",
 			"name": "FieldWorkers",
 			"description": null
 		}
@@ -251,7 +224,7 @@
 	"wf_notifications": [],
 	"department": [
 		{
-			"id": "6BC5CF5C-28D1-4F53-914B-21EFE0B119A2",
+			"id": "6bc5cf5c-28d1-4f53-914b-21efe0b119a2",
 			"name": "Field Workers",
 			"description": null
 		}
@@ -259,10 +232,20 @@
 	"script_scheduler": [],
 	"wf_definition": [
 		{
-			"id": "C90C723A-682F-ED11-A27C-0050F27989A1",
+			"id": "c90c723a-682f-ed11-a27c-0050f27989a1",
 			"title": "Inspection Approval",
 			"subTitle": null
 		}
 	],
-	"connector": []
+	"connector": [],
+	"events": [],
+	"media_library": [
+		{
+			"id": "3F6B9CB3-2316-EC11-AE72-0050F255283A",
+			"updatedAt": "2022-12-20T10:26:35.473Z",
+			"name": "eLearningMedia",
+			"parent": null,
+			"package": "1D063863-5CCB-42C8-A7DF-323605FE1EE3"
+		}
+	]
 }

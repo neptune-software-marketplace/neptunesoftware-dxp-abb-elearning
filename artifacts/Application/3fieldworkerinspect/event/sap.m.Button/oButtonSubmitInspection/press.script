@@ -1,0 +1,22 @@
+var wfData = {
+    "id": "C90C723A-682F-ED11-A27C-0050F27989A1",
+    "objectType": oObjectAttributeEquipmentName.getText(),
+    "objectKey": oObjectAttributePartNumber.getText(),
+    "amount": oObjectAttributeEquipmentName.getText(),
+    "currency": "",
+    "approver": ""
+}
+$.ajax({
+    type: "POST",
+    contentType: "application/json",
+    url: "/api/functions/WorkflowInbox/Start",
+    data: JSON.stringify(wfData),
+
+    success: function(data) {
+        submitInspection()
+    },
+    error: function(result, status) {
+        sap.m.MessageToast.show("Failed to submit...");
+    }
+
+});

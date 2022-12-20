@@ -1,0 +1,17 @@
+tabUsers.setBusy(true);
+sap.n.Planet9.function({
+    id: "User",
+    method: "List",
+    data: {
+        appType: sap.n.Planet9.appType || ""
+    },
+    success: function(data) {
+        modeltabUsers.setData(data.userRecords);
+        objHeaderUser.setNumber(data.userRecords.length);
+        tabUsers.setBusy(false);
+    },
+    error: function(data) {
+        sap.m.MessageToast.show(data.status);
+        tabUsers.setBusy(false);
+    }
+});

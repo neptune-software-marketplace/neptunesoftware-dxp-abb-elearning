@@ -1,0 +1,2 @@
+informForwardUsers.removeAllTokens();
+diaUser.close();

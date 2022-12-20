@@ -1,0 +1,10 @@
+var context = oEvent.oSource.getBindingContext();  
+var data = context.getObject();
+
+informForwardUsers.addToken(new sap.m.Token({
+    key: data.username,
+    text: data.name
+}));
+
+diaUser.close();
+

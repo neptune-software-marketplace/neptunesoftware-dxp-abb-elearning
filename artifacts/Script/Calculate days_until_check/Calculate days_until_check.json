@@ -1,0 +1,33 @@
+{
+	"id": "66743392-bddd-480a-bee9-2471e4f1e22c",
+	"createdAt": "2021-03-24T11:48:04.000Z",
+	"createdBy": "lloyd",
+	"globalScripts": [],
+	"externalModules": [
+		{
+			"id": "internal_moment",
+			"name": "moment",
+			"contextname": "moment",
+			"path": "moment"
+		}
+	],
+	"entitySets": [
+		{
+			"id": "988B3DAD-64AB-4137-8B22-7C84B30685B3",
+			"name": "equipment",
+			"contextname": "equipment"
+		}
+	],
+	"apis": [],
+	"name": "Calculate days_until_check",
+	"ver": "21.3.29.1134",
+	"description": null,
+	"content": "file:///content.script",
+	"useAsGlobalScript": false,
+	"transpiledContent": null,
+	"lastRunSuccessful": true,
+	"isTypescript": false,
+	"language": "javascript",
+	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

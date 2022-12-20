@@ -1,0 +1,7 @@
+// Clears all the data from the given table, e.g.
+//await entities.equipment.clear();
+
+const entity = await entities.equipment.insert(equipmenttemplate);
+
+//const qur = await entities.equipment.query(`INSERT INTO equipment SELECT * FROM equipmenttemplate`);
+

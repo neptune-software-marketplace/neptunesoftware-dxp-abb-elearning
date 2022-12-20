@@ -1,0 +1,12 @@
+
+// Set List Filter
+var binding = tabUsers.getBinding("items");
+var filter = new sap.ui.model.Filter({
+    filters: [
+        new sap.ui.model.Filter("username", "Contains", this.getValue()),
+        new sap.ui.model.Filter("name", "Contains", this.getValue()),
+        new sap.ui.model.Filter("email", "Contains", this.getValue())
+    ],
+    and: false
+})
+binding.filter([filter]);

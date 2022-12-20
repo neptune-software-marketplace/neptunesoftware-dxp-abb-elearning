@@ -1,0 +1,64 @@
+{
+	"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
+	"createdAt": "2021-09-15T09:39:16.680Z",
+	"createdBy": "admin",
+	"fields": [
+		{
+			"id": "19c7a368-721a-4e58-b81e-64919fbeb0cc",
+			"fieldName": "employeeID",
+			"fieldType": "text"
+		},
+		{
+			"id": "4b5c220e-37fb-47ff-808b-e647e3706aff",
+			"fieldName": "employeeName",
+			"fieldType": "text",
+			"isNullable": false
+		},
+		{
+			"id": "16412441-ead3-43fe-8eac-d8b55567b447",
+			"fieldName": "part_number",
+			"fieldType": "text"
+		},
+		{
+			"id": "c4ee4cdf-874a-4f7b-a1e7-bf340d979b80",
+			"fieldName": "status",
+			"fieldType": "text",
+			"default": "Assigned",
+			"description": "Assigned / Submitted / Complete / Rejected"
+		},
+		{
+			"id": "e8bbaf52-442e-4f28-fd7b-5277e33e594b",
+			"fieldName": "equipment_barcode_scan",
+			"fieldType": "text",
+			"isNullable": true
+		},
+		{
+			"id": "66dfad54-6da4-464c-f875-66b7020d7c8a",
+			"fieldName": "comments",
+			"fieldType": "text",
+			"isNullable": true
+		},
+		{
+			"id": "6e646c58-6980-498f-e982-4836ea9e039e",
+			"fieldName": "attachments",
+			"fieldType": "text",
+			"isNullable": true
+		},
+		{
+			"id": "ef4d0199-d685-4062-83d7-94b8b094462b",
+			"fieldName": "signature",
+			"fieldType": "text",
+			"isNullable": true
+		}
+	],
+	"indices": [],
+	"foreignKeys": [],
+	"name": "inspections",
+	"description": null,
+	"ver": "22.9.7.1735",
+	"enableAudit": false,
+	"includeDataInPackage": false,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"rolesRead": [],
+	"rolesWrite": []
+}

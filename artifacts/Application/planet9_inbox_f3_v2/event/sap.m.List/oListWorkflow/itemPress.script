@@ -1,0 +1,62 @@
+var selectedItem = this.getSelectedItem();
+sap.ui.core.BusyIndicator.show(0);
+if (selectedItem) {
+
+    var context = selectedItem.getBindingContext();
+    var data = context.getObject();
+
+    // Start WF
+    sap.n.Planet9.function({
+        id: "WorkflowInbox",
+        method: "Get",
+        data: data,
+        success: function (data) {
+
+            modeloPageDetail.setData(data);
+            modeloListNotes.setData(data.notes || []);
+            modeloListAttachment.setData(data.attachment);
+            modeltabLog.setData(data.log);
+
+            if (!modeloListAttachment.oData.length) oSectionAttachment.setVisible(false);
+            if (!modeloListNotes.oData.length) oSectionNotes.setVisible(false);
+
+            if (data.inboxApp) {
+                AppCache.Load(data.inboxApp, {
+                    appGUID: ModelData.genID(), 
+                    parentObject: appContent,
+                    startParams: data
+                });
+            } else {
+                appContent.destroyContent();
+            }
+
+            navigateToDetail();
+            oObjectPageLayout._scrollTo(0);
+
+            // Make WF Data available in global memory 
+            sap.n.Inbox = {
+                id: data.id,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt,
+                createdBy: data.createdBy,
+                changedBy: data.changedBy,
+                objectType: data.objectType,
+                objectKey: data.objectKey,
+                overDueDate: data.overDueDate,
+                amount: data.amount,
+                currency: data.currency,
+                status: data.status,
+                title: data.title,
+                subTitle: data.subTitle,
+                icon: data.icon,
+            }
+            sap.ui.core.BusyIndicator.hide();
+        },
+        error: function (data) {
+            sap.m.MessageToast.show(data.status);
+            sap.ui.core.BusyIndicator.hide();
+        }
+
+    });
+
+}

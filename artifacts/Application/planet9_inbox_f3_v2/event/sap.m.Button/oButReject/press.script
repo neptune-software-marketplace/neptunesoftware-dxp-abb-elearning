@@ -1,0 +1,16 @@
+sap.m.MessageToast.show("Inspection rejected!");
+// Start WF
+// sap.ui.core.BusyIndicator.show(0);
+// sap.n.Planet9.function({
+//     id: "WorkflowInbox",
+//     method: "Reject",
+//     data: { id: modeloPageDetail.oData.id },
+//     success: function (data) {
+//         handleUpdate("Reject");
+//         sap.ui.core.BusyIndicator.hide();
+//     },
+//     error: function (data) {
+//         sap.ui.core.BusyIndicator.hide();
+
+//     }
+// });

@@ -1,0 +1,22 @@
+// User information
+const user = req.user;
+const userId = user.id;
+log.info(userId);
+
+const joinedTables = await entities.inspections.createQueryBuilder()
+
+    .select(["inspections","e"])
+
+    .leftJoin("equipment", "e", "inspections.part_number = e.part_number")
+
+    //.where("inspections.employeeID = :employeeID", { employeeID: userId })
+    
+    .getRawMany()
+
+result = joinedTables;
+
+console.log(joinedTables)
+console.log(typeof joinedTables); // = Object
+console.log(JSON.stringify(joinedTables))
+
+complete();

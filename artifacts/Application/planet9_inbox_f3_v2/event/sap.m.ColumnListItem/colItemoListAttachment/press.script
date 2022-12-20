@@ -1,0 +1,65 @@
+var context = oEvent.oSource.getBindingContext();
+var dataFile = context.getObject();
+
+sap.n.Planet9.function({
+    id: "Gos",
+    method: "Get",
+    data: dataFile,
+    success: function(data) {
+
+        // Mobile 
+        if (isCordova()) {
+            var fileData = data.content.split(",");
+            attachmentNativeOpen(fileData[1], dataFile.fileType, dataFile.name);
+        } else {
+            // Download Browser
+            if (window.navigator.msSaveOrOpenBlob) {
+                var fileData = [data.content];
+                var blobObject = new Blob(fileData);
+                window.navigator.msSaveOrOpenBlob(blobObject, dataFile.name);
+            } else {
+                a = document.createElement('a');
+                a.setAttribute("href", data.content);
+                a.setAttribute("download", dataFile.name);
+                a.click();
+            }
+
+        }
+
+    },
+    error: function(data) {
+        console.log(data);
+    }
+});var context = oEvent.oSource.getBindingContext();
+var dataFile = context.getObject();
+
+sap.n.Planet9.function({
+    id: "Gos",
+    method: "Get",
+    data: dataFile,
+    success: function(data) {
+
+        // Mobile 
+        if (isCordova()) {
+            var fileData = data.content.split(",");
+            attachmentNativeOpen(fileData[1], dataFile.fileType, dataFile.name);
+        } else {
+            // Download Browser
+            if (window.navigator.msSaveOrOpenBlob) {
+                var fileData = [data.content];
+                var blobObject = new Blob(fileData);
+                window.navigator.msSaveOrOpenBlob(blobObject, dataFile.name);
+            } else {
+                a = document.createElement('a');
+                a.setAttribute("href", data.content);
+                a.setAttribute("download", dataFile.name);
+                a.click();
+            }
+
+        }
+
+    },
+    error: function(data) {
+        console.log(data);
+    }
+});

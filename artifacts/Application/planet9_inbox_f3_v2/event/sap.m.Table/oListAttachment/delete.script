@@ -1,0 +1,29 @@
+var deleteItem = oEvent.getParameter("listItem");
+var context = deleteItem.getBindingContext();
+var dataFile = context.getObject();
+
+sap.n.Planet9.function({
+    id: "Gos",
+    method: "Delete",
+    data: dataFile,
+    success: function(data) {
+        ModelData.Delete(oListAttachment, "id", dataFile.id);
+    },
+    error: function(data) {
+        console.log(data);
+    }
+});var deleteItem = oEvent.getParameter("listItem");
+var context = deleteItem.getBindingContext();
+var dataFile = context.getObject();
+
+sap.n.Planet9.function({
+    id: "Gos",
+    method: "Delete",
+    data: dataFile,
+    success: function(data) {
+        ModelData.Delete(oListAttachment, "id", dataFile.id);
+    },
+    error: function(data) {
+        console.log(data);
+    }
+});

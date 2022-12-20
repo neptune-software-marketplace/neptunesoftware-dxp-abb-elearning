@@ -1,0 +1,9 @@
+var context = oEvent.oSource.getBindingContext();
+var data = context.getObject();
+
+modeltabApprovers.setData(data.approvers);
+diaApprovers.open();var context = oEvent.oSource.getBindingContext();
+var data = context.getObject();
+
+modeltabApprovers.setData(data.approvers);
+diaApprovers.open();

@@ -1,0 +1,30 @@
+/* Main Page List Tiles */
+.sapMFlexItemAlignAuto.sapMFlexBoxBGTransparent.sapMFlexItem {
+    width: 100%
+}
+.sapMLIB {
+    border-bottom: rgba(255,255,255,0);
+}
+.ListJobIconPreview>.sapMITH {
+    box-shadow: none;
+}
+.customListItem {
+    border: none;
+}
+/* Page Styling */
+/* .basePage {
+    background: linear-gradient(220deg, #f5f4f4 38%, rgb(255, 255, 255) 100%);
+    background-size: cover;
+} */
+.sapMListNoDataText {
+    color: white;
+}
+
+/* Used Across the 'viewInspectionJob' tabs */
+.standardHBOX{
+    width: 300px !important;
+}
+
+#signature-pad {
+  outline: #89919a 1px solid !important;
+}

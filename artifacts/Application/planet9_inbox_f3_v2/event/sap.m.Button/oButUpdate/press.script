@@ -1,0 +1,50 @@
+sap.ui.core.BusyIndicator.show(0);
+sap.n.Planet9.function({
+    id: "WorkflowInbox",
+    method: "List",
+    success: function (data) {
+        // if (!modeloListWorkflow.oData.length) closeDetail();
+        // modeloGridList.setData(data);
+        groupedInbox = groupBy(data, item => item.taskTitle);
+        var inboxGroups = [];
+        var inboxGroupItem;
+        var uniqueTaskTitles = data.map(item => item.taskTitle).filter((value, index, self) => self.indexOf(value) === index);
+
+        $.each(uniqueTaskTitles, function (i, uniqueTaskTitle) {
+            inboxGroupItem = {};
+            inboxGroupItem.taskTitle = uniqueTaskTitle;
+            var taskItems = JSON.parse(JSON.stringify(groupedInbox.get(uniqueTaskTitle)));
+            inboxGroupItem.icon = taskItems[0].icon;
+            taskItems.sort(function (a, b) {
+                return new Date(a.overDueDate) - new Date(b.overDueDate);
+            });
+            inboxGroupItem.totalItems = taskItems.length;
+
+            var overdueItems = taskItems.filter(function (item) {
+                return new Date(item.overDueDate).getTime() < new Date().getTime();
+            });
+
+            inboxGroupItem.overdueItems = overdueItems.length;
+            inboxGroupItem.earliestOverdueDate = taskItems[taskItems.length - 1].overDueDate;
+
+            inboxGroupItem.topThree = taskItems.splice(0, 3);
+
+            inboxGroups.push(inboxGroupItem);
+        })
+        modeloGridList.setData(inboxGroups);
+        modeloGridList.refresh(true);
+
+        if (currTaskTitle !== "") {
+            showMaster(currTaskTitle);
+            if (modeloListWorkflow.oData.length === 0) {
+                oPageMaster.fireNavButtonPress();
+            }
+        }
+
+        sap.ui.core.BusyIndicator.hide();
+    },
+    error: function (data) {
+        sap.ui.core.BusyIndicator.hide();
+    }
+
+});

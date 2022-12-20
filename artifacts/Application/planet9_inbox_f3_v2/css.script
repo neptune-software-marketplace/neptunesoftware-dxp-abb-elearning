@@ -1,0 +1,3 @@
+.sapMObjectNumberEmph>.sapMObjectNumberText {
+    font-size: 2rem !important;
+}

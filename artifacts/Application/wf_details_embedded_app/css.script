@@ -1,0 +1,9 @@
+
+
+img {
+    border-radius: 10px;
+}
+
+.sapMLabel.sapUiSelectable.sapMLabelWrapped.sapMLabelMaxWidth.sapUiFormLabel-CTX bdi{
+    color: #2A4572;
+}

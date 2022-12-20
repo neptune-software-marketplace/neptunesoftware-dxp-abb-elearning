@@ -1,0 +1,31 @@
+{
+	"id": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a",
+	"createdAt": "2021-03-29T14:12:52.000Z",
+	"createdBy": "lloyd",
+	"globalScripts": [],
+	"externalModules": [],
+	"entitySets": [
+		{
+			"id": "988B3DAD-64AB-4137-8B22-7C84B30685B3",
+			"name": "equipment",
+			"contextname": "equipment"
+		},
+		{
+			"id": "473F3569-67AB-46B6-89E6-F2D3F11F937C",
+			"name": "inspections",
+			"contextname": "inspections"
+		}
+	],
+	"apis": [],
+	"name": "Get Field Worker Tasks",
+	"ver": "21.8.6.1613",
+	"description": null,
+	"content": "file:///content.script",
+	"useAsGlobalScript": false,
+	"transpiledContent": null,
+	"lastRunSuccessful": true,
+	"isTypescript": false,
+	"language": "javascript",
+	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

@@ -1,0 +1,9 @@
+var selectedItem = this.getSelectedItem();
+sap.ui.core.BusyIndicator.show(0);
+if (selectedItem) {
+    var context = selectedItem.getBindingContext();
+    var taskTitleClicked = context.getProperty("taskTitle");
+    currTaskTitle = taskTitleClicked;
+    showMaster(taskTitleClicked);
+    sap.ui.core.BusyIndicator.hide();
+}

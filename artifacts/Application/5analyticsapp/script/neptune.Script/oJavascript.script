@@ -8,7 +8,7 @@ sap.ui.getCore().attachInit(function(startParams) {
 
 function setGPDData() {
     $.ajax({
-        url: 'https://dxpdemo.neptune-software.cloud/media/root/eLearningMedia/NorwayGDPData.json',
+        url: '/media/root/eLearningMedia/NorwayGDPData.json',
         complete: function(json) {
             data = JSON.parse(json.responseText);
             // set some variable to host data

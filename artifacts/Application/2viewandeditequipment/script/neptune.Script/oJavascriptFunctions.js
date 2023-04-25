@@ -102,7 +102,7 @@ function lockUnlock(){
 
 function findAllFieldWorkers(){
     var options = {
-        data: {"id":"6bc5cf5c-28d1-4f53-914b-21efe0b119a2"}
+        data: {"id":"429dc3f7-4ee3-ed11-9f73-000d3a672630"}
     };
 
     apigetListOfFieldWorkers(options);

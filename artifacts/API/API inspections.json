@@ -1,0 +1,417 @@
+{
+	"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
+	"createdAt": "2021-03-29T10:19:43.000Z",
+	"createdBy": "lloyd",
+	"auth": [],
+	"endpoints": [],
+	"paths": [
+		{
+			"id": "e2fbff13-678d-4f9b-fb82-c1cba04061a8",
+			"path": "/inspections",
+			"method": "GET",
+			"headers": [],
+			"parameters": [
+				{
+					"name": "where",
+					"description": [
+						"==OBJECT STRING==",
+						"{ \"fieldName\": \"value\"}  or { \"fieldName\": \"Not(value)\"} or { \"fieldName\": \"Between(1,10)\"} or {fieldName: In([\"value1\", \"value2\"])}",
+						" Other operators - LessThan, LessThanOrEqual, MoreThan, MoreThanOrEqual, Like, Any, IsNull, Raw"
+					]
+				},
+				{
+					"name": "select",
+					"description": "fieldName1,fieldName2,fieldName3"
+				},
+				{
+					"name": "take",
+					"description": "Limit (paginated) - max number of entities that should be taken"
+				},
+				{
+					"name": "skip",
+					"description": "Offset (paginated) from where entities should be taken"
+				},
+				{
+					"name": "order",
+					"description": "{\"fieldName1\": \"ASC\", \"fieldName2\": \"DESC\"}"
+				}
+			],
+			"content": [],
+			"responses": [
+				{
+					"status": 200,
+					"headers": [],
+					"content": [
+						{
+							"id": "a399b027-957e-40df-a7cc-801de6d3fd06",
+							"name": "inspections",
+							"objectType": "array"
+						}
+					]
+				},
+				{
+					"status": 400,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "object",
+							"name": "Error"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "a0e1d15a-5f2b-4c79-d643-3beda70e9cb7",
+			"path": "/inspections",
+			"method": "PUT",
+			"headers": [],
+			"parameters": [],
+			"content": [
+				{
+					"objectType": "array",
+					"name": "inspections"
+				}
+			],
+			"responses": [
+				{
+					"status": 200,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "array",
+							"name": "inspections"
+						}
+					]
+				},
+				{
+					"status": 400,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "object",
+							"name": "Error"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "f363595c-9035-4ba9-f584-7be8f33c55b9",
+			"path": "/inspections",
+			"method": "POST",
+			"headers": [],
+			"parameters": [
+				{
+					"name": "where",
+					"example": [
+						"==OBJECT STRING==",
+						"{ \"fieldName\": \"value\"}  or { \"fieldName\": \"Not(value)\"} or { \"fieldName\": \"Between(1,10)\"} or {fieldName: In([\"value1\", \"value2\"])}",
+						" Other operators - LessThan, LessThanOrEqual, MoreThan, MoreThanOrEqual, Like, Any, IsNull, Raw"
+					]
+				}
+			],
+			"content": [
+				{
+					"objectType": "array",
+					"name": "inspections"
+				}
+			],
+			"responses": [
+				{
+					"status": 200,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "array",
+							"name": "inspections"
+						}
+					]
+				},
+				{
+					"status": 400,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "object",
+							"name": "Error"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "bdd9e6f7-72d6-4efb-bcb0-1e6f7160826c",
+			"path": "/inspections",
+			"method": "DELETE",
+			"headers": [],
+			"parameters": [
+				{
+					"name": "where",
+					"example": [
+						"==OBJECT STRING==",
+						"{ \"fieldName\": \"value\"}  or { \"fieldName\": \"Not(value)\"} or { \"fieldName\": \"Between(1,10)\"} or {fieldName: In([\"value1\", \"value2\"])}",
+						" Other operators - LessThan, LessThanOrEqual, MoreThan, MoreThanOrEqual, Like, Any, IsNull, Raw"
+					]
+				}
+			],
+			"content": [],
+			"responses": [
+				{
+					"status": 200,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "array",
+							"name": "inspections"
+						}
+					]
+				},
+				{
+					"status": 400,
+					"headers": [],
+					"content": [
+						{
+							"objectType": "object",
+							"name": "Error"
+						}
+					]
+				}
+			]
+		}
+	],
+	"definitions": [
+		{
+			"id": "236ce732-bc11-4e9c-e761-ae8e68573d3a",
+			"name": "inspections",
+			"properties": [
+				{
+					"id": "4b3dd9a6-a723-4fc2-c3bd-921ef2d1fa0f",
+					"name": "id",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "4bab9179-c18e-43fd-804b-70870f2ba20d",
+					"name": "createdAt",
+					"parent": "",
+					"description": "",
+					"objectType": "number",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "7295f3a7-3204-4e36-8a36-6c3d73f066c9",
+					"name": "updatedAt",
+					"parent": "",
+					"description": "",
+					"objectType": "number",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "cbcf65e0-d522-4b45-fefa-3d0eaeeab68e",
+					"name": "createdBy",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "ab5091dc-c16d-417d-c65a-17681f9ac264",
+					"name": "updatedBy",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "78c4f89a-069e-4e6b-eff1-5ce5635127ba",
+					"name": "employeeID",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "6c7d82b0-7829-4526-ad14-c4f12645df8a",
+					"name": "employeeName",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "de1e12e5-4a29-4d22-daea-2db2df811b46",
+					"name": "part_number",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "a1b5f2e0-0d7f-40f3-b241-9266f3097e42",
+					"name": "status",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "c3ca8ea2-6850-408a-e7d5-94d634bab021",
+					"name": "equipment_barcode_scan",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"objectName": "equipment_barcode_scan",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "bfa33d46-0a17-4273-99ea-1422ce690c87",
+					"name": "comments",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"objectName": "comments",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "e9053e77-f208-467b-fb78-c6e63b452f9e",
+					"name": "attachments",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"objectName": "attachments",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "a2c98449-d13e-4f16-928e-07d2e9b40d3e",
+					"name": "signature",
+					"parent": "",
+					"description": "",
+					"objectType": "string",
+					"objectName": "signature",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "2156cd11-a168-453b-8fef-d1a4e2022e62",
+					"name": "submitted",
+					"parent": "",
+					"description": "",
+					"objectType": "boolean",
+					"isParent": false,
+					"enableValueHelp": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				}
+			]
+		},
+		{
+			"id": "7abb5d43-bf7a-437b-fa45-99a1d02baf34",
+			"name": "Error",
+			"properties": [
+				{
+					"id": "61ac5c47-6af6-4f15-e7c8-7e1c834647d5",
+					"parent": "",
+					"name": "status",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"canAddSubNode": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				},
+				{
+					"id": "686543bd-8b80-4b46-a45c-18bbc4379bcc",
+					"parent": "",
+					"name": "message",
+					"objectType": "string",
+					"isParent": false,
+					"enableValueHelp": false,
+					"canAddSubNode": false,
+					"enabled": true,
+					"showNameField": true,
+					"children": []
+				}
+			]
+		}
+	],
+	"documentation": [],
+	"name": "API inspections",
+	"endpoint": "/api/entity",
+	"ver": "23.4.25.1728",
+	"version": null,
+	"description": null,
+	"mediaType": "application/json",
+	"securitySchemes": null,
+	"swaggerURI": null,
+	"swaggerSystem": null,
+	"apiType": "table",
+	"about": null,
+	"enableProxy": false,
+	"restrictAccess": false,
+	"enableTrace": false,
+	"enableIDE": true,
+	"internalAPI": false,
+	"isPublic": false,
+	"tlsAllowUntrusted": false,
+	"useOwnProcess": false,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"apiGroup": null,
+	"apiFormat": 0,
+	"roles": []
+}

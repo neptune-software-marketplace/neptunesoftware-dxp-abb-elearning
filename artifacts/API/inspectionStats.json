@@ -1,0 +1,67 @@
+{
+	"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
+	"createdAt": "2021-04-15T15:36:42.000Z",
+	"createdBy": "james",
+	"auth": [],
+	"endpoints": [],
+	"paths": [
+		{
+			"id": "ce3ab0a0-1901-4a38-e595-1904aeafee77",
+			"method": "GET",
+			"path": "/getStatusCounts",
+			"description": "",
+			"parameters": [],
+			"headers": [],
+			"responses": [
+				{
+					"status": "200",
+					"description": "OK",
+					"headers": [],
+					"body": [],
+					"content": [
+						{
+							"id": "677d22a0-8e59-4bae-c599-896122b40bc6",
+							"name": "counts",
+							"objectType": "object"
+						}
+					]
+				}
+			],
+			"serverScript": "5f5599ee-5a80-ed11-9f60-0022489e239a"
+		}
+	],
+	"definitions": [
+		{
+			"id": "eb993ba3-6815-4f53-8b8f-1f3d685467ac",
+			"name": "counts",
+			"description": "",
+			"isInclude": false,
+			"properties": [],
+			"type": "object"
+		}
+	],
+	"documentation": [],
+	"name": "inspectionStats",
+	"endpoint": "/api/serverscript/inspectionstats",
+	"ver": "23.4.25.1728",
+	"version": null,
+	"description": null,
+	"mediaType": null,
+	"securitySchemes": null,
+	"swaggerURI": null,
+	"swaggerSystem": null,
+	"apiType": "script",
+	"about": null,
+	"enableProxy": false,
+	"restrictAccess": false,
+	"enableTrace": false,
+	"enableIDE": true,
+	"internalAPI": false,
+	"isPublic": false,
+	"tlsAllowUntrusted": false,
+	"useOwnProcess": false,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"apiGroup": null,
+	"apiFormat": 1,
+	"roles": []
+}

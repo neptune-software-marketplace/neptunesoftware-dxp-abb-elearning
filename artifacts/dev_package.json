@@ -69,8 +69,20 @@
 			"apiGroup": null
 		},
 		{
+			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
+			"name": "inspectionStats",
+			"description": null,
+			"apiGroup": null
+		},
+		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
 			"name": "Equipment Check Server Scripts",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
+			"name": "API inspections",
 			"description": null,
 			"apiGroup": null
 		},

@@ -9,7 +9,7 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "23.4.25.1040",
+	"ver": "23.4.25.1041",
 	"enableCICD": true,
 	"apps": [
 		{
@@ -117,9 +117,39 @@
 	"api_group": [],
 	"tile": [
 		{
+			"id": "bdaec96d-680b-49db-a058-e022e4b4fb58",
+			"description": null,
+			"name": "1AddEquipment"
+		},
+		{
+			"id": "b2d8b76e-6d1b-4c93-a515-6b5cf9f05cfa",
+			"description": null,
+			"name": "3FieldWorkerInspect - Offline"
+		},
+		{
+			"id": "9e3d4088-63cd-4196-9f1f-6249c7b66f60",
+			"description": null,
+			"name": "2ViewAndEditEquipment_v2"
+		},
+		{
 			"id": "821dfb5a-0e3b-ec11-981f-0050f2794553",
 			"description": null,
 			"name": "Maintenance_Video"
+		},
+		{
+			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
+			"description": null,
+			"name": "MY INBOX"
+		},
+		{
+			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
+			"description": "",
+			"name": "Maintenance Status"
+		},
+		{
+			"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
+			"description": null,
+			"name": "3FieldWorkerInspect"
 		}
 	],
 	"category": [
@@ -127,6 +157,16 @@
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
 			"description": null,
 			"name": "All Apps"
+		},
+		{
+			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
+			"description": null,
+			"name": "Main Apps"
+		},
+		{
+			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
+			"description": null,
+			"name": "Manager Apps"
 		}
 	],
 	"launchpad": [

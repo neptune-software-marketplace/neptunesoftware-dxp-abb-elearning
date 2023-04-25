@@ -77,7 +77,18 @@
 	],
 	"odataSource": [],
 	"odataMock": [],
-	"dictionary": [],
+	"dictionary": [
+		{
+			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
+			"name": "inspections",
+			"description": null
+		},
+		{
+			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
+			"name": "equipment",
+			"description": null
+		}
+	],
 	"jsclass": [
 		{
 			"id": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a",

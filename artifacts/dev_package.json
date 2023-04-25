@@ -61,7 +61,20 @@
 			"description": ""
 		}
 	],
-	"api": [],
+	"api": [
+		{
+			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
+			"name": "Equipment Check Server Scripts",
+			"description": null,
+			"apiGroup": null
+		},
+		{
+			"id": "14a2137e-9e64-4383-9848-8e468f3834d6",
+			"name": "API equipment",
+			"description": null,
+			"apiGroup": null
+		}
+	],
 	"odataSource": [],
 	"odataMock": [],
 	"dictionary": [],

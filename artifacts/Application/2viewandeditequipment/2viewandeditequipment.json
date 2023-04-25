@@ -1954,7 +1954,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "22.10.4.124",
+	"ver": "23.4.25.154",
 	"application": "2viewandeditequipment",
 	"title": "",
 	"description": "",
@@ -1976,7 +1976,7 @@
 	"ui5_theme": "sap_fiori_3",
 	"ui5_version": "",
 	"ui5_language": null,
-	"ui5_url": null,
+	"ui5_url": "",
 	"cus_theme": "",
 	"css": "",
 	"compiledCss": null,
@@ -1997,7 +1997,7 @@
 		{
 			"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
 			"name": "CoreAPI Security_Group eLearning",
-			"ver": "23.4.25.1253"
+			"ver": "23.4.25.1255"
 		},
 		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",

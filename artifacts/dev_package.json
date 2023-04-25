@@ -9,7 +9,7 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "22.9.8.131",
+	"ver": "23.4.25.1040",
 	"enableCICD": true,
 	"apps": [
 		{
@@ -130,11 +130,6 @@
 		}
 	],
 	"launchpad": [
-		{
-			"id": "e9245d53-5f80-ed11-9f60-0022489e239a",
-			"name": "eLearning Launchpad - Copy Debugging",
-			"description": null
-		},
 		{
 			"id": "e13bae95-5fd0-4e1c-a48c-a8771bfda440",
 			"name": "eLearning Launchpad",

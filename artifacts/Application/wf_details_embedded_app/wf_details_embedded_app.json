@@ -507,7 +507,7 @@
 			"data": []
 		}
 	],
-	"componentInterface": null,
+	"componentInterface": [],
 	"ver": "22.9.8.1459",
 	"application": "wf_details_embedded_app",
 	"title": "",

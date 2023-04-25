@@ -174,7 +174,7 @@
 			"data": []
 		}
 	],
-	"componentInterface": null,
+	"componentInterface": [],
 	"ver": "22.9.7.1734",
 	"application": "planet9_inbox_tile",
 	"title": "Inbox Live Tile",

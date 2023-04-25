@@ -5,7 +5,7 @@
 	"translation": [],
 	"storeItem": {},
 	"settings": null,
-	"title": "Maintenance Demo",
+	"title": "Demo",
 	"subTitle": "Overview",
 	"description": null,
 	"categoryID": null,
@@ -56,7 +56,7 @@
 	"helpText": "<p><br></p>",
 	"helpEnabled": false,
 	"openClickTile": true,
-	"ver": "22.12.20.1037",
+	"ver": "23.1.17.1024",
 	"actionWebApp": "",
 	"name": "Maintenance_Video",
 	"cardWidth": null,
@@ -75,6 +75,7 @@
 	"roleTag": null,
 	"sapICFNode": null,
 	"actionType": "U",
+	"cockpitTile": false,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"roles": []
 }

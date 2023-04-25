@@ -22,7 +22,7 @@
 	"name": "Calculate days_until_check",
 	"ver": "21.3.29.1134",
 	"description": null,
-	"content": "file:///content.script",
+	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,
 	"lastRunSuccessful": true,

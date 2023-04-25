@@ -22,7 +22,7 @@
 	"name": "rejectedWF",
 	"ver": "21.8.12.1427",
 	"description": null,
-	"content": "file:///content.script",
+	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,
 	"lastRunSuccessful": true,

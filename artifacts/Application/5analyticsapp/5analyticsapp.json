@@ -207,7 +207,7 @@
 					"fieldName": "oJavascript",
 					"fieldParent": 99999,
 					"fieldType": "neptune.Script",
-					"script": "file://script/neptune.Script/oJavascript.script",
+					"script": "file://script/neptune.Script/oJavascript.js",
 					"customComponent": false,
 					"request": [],
 					"response": [],
@@ -247,6 +247,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "",
+	"compiledCss": null,
 	"header": "",
 	"manifest": "",
 	"globalScript": "",
@@ -258,11 +259,13 @@
 	"ui5_ionic": false,
 	"useV2AppHandler": false,
 	"compilerTarget": 3,
+	"tabWidth": null,
+	"printWidth": null,
 	"apis": [
 		{
 			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
 			"name": "inspectionStats",
-			"ver": "22.12.20.1141"
+			"ver": "23.1.25.1036"
 		}
 	],
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"

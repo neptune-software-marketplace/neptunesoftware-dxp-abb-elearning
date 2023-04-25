@@ -61,52 +61,10 @@
 			"description": ""
 		}
 	],
-	"api": [
-		{
-			"id": "f9f77060-a79f-4edb-9906-7b31ba53173e",
-			"name": "APIGetSingleInspection",
-			"description": null,
-			"apiGroup": null
-		},
-		{
-			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
-			"name": "inspectionStats",
-			"description": null,
-			"apiGroup": null
-		},
-		{
-			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
-			"name": "Equipment Check Server Scripts",
-			"description": null,
-			"apiGroup": null
-		},
-		{
-			"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
-			"name": "API inspections",
-			"description": null,
-			"apiGroup": null
-		},
-		{
-			"id": "14a2137e-9e64-4383-9848-8e468f3834d6",
-			"name": "API equipment",
-			"description": null,
-			"apiGroup": null
-		}
-	],
+	"api": [],
 	"odataSource": [],
 	"odataMock": [],
-	"dictionary": [
-		{
-			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
-			"name": "inspections",
-			"description": null
-		},
-		{
-			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
-			"name": "equipment",
-			"description": null
-		}
-	],
+	"dictionary": [],
 	"jsclass": [
 		{
 			"id": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a",
@@ -159,39 +117,9 @@
 	"api_group": [],
 	"tile": [
 		{
-			"id": "bdaec96d-680b-49db-a058-e022e4b4fb58",
-			"description": null,
-			"name": "1AddEquipment"
-		},
-		{
-			"id": "b2d8b76e-6d1b-4c93-a515-6b5cf9f05cfa",
-			"description": null,
-			"name": "3FieldWorkerInspect - Offline"
-		},
-		{
-			"id": "9e3d4088-63cd-4196-9f1f-6249c7b66f60",
-			"description": null,
-			"name": "2ViewAndEditEquipment_v2"
-		},
-		{
 			"id": "821dfb5a-0e3b-ec11-981f-0050f2794553",
 			"description": null,
 			"name": "Maintenance_Video"
-		},
-		{
-			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
-			"description": null,
-			"name": "MY INBOX"
-		},
-		{
-			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
-			"description": "",
-			"name": "Maintenance Status"
-		},
-		{
-			"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
-			"description": null,
-			"name": "3FieldWorkerInspect"
 		}
 	],
 	"category": [
@@ -199,19 +127,14 @@
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
 			"description": null,
 			"name": "All Apps"
-		},
-		{
-			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
-			"description": null,
-			"name": "Main Apps"
-		},
-		{
-			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
-			"description": null,
-			"name": "Manager Apps"
 		}
 	],
 	"launchpad": [
+		{
+			"id": "e9245d53-5f80-ed11-9f60-0022489e239a",
+			"name": "eLearning Launchpad - Copy Debugging",
+			"description": null
+		},
 		{
 			"id": "e13bae95-5fd0-4e1c-a48c-a8771bfda440",
 			"name": "eLearning Launchpad",
@@ -231,9 +154,9 @@
 	"wf_notifications": [],
 	"department": [
 		{
-			"id": "6bc5cf5c-28d1-4f53-914b-21efe0b119a2",
-			"name": "Field Workers",
-			"description": null
+			"id": "429dc3f7-4ee3-ed11-9f73-000d3a672630",
+			"name": "FieldWorkers",
+			"description": ""
 		}
 	],
 	"script_scheduler": [],
@@ -254,5 +177,8 @@
 			"parent": null,
 			"package": "1D063863-5CCB-42C8-A7DF-323605FE1EE3"
 		}
-	]
+	],
+	"code_snippets": [],
+	"wf_determination": [],
+	"wf_taskaction": []
 }

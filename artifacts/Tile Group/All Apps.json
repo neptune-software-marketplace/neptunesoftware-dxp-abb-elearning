@@ -59,6 +59,7 @@
 	"imageMobileSize": null,
 	"hideFromMenu": false,
 	"roleTag": null,
+	"cockpitTileGroup": false,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"roles": [],
 	"tiles": [],
@@ -67,13 +68,13 @@
 			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
 			"name": "Main Apps",
 			"title": "Field Worker - Inspection Management",
-			"ver": "22.9.7.1529"
+			"ver": "23.1.25.1030"
 		},
 		{
 			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
 			"name": "Manager Apps",
 			"title": "Maintenance Manager",
-			"ver": "22.9.7.1527"
+			"ver": "23.1.25.1032"
 		}
 	]
 }

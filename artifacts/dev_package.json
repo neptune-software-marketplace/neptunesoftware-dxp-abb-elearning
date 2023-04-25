@@ -63,6 +63,12 @@
 	],
 	"api": [
 		{
+			"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
+			"name": "CoreAPI Security_Group eLearning",
+			"description": "Used to get a list of the FieldWorkers",
+			"apiGroup": null
+		},
+		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
 			"name": "Equipment Check Server Scripts",
 			"description": null,

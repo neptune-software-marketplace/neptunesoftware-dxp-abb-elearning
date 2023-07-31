@@ -19,48 +19,50 @@ function populateInspectionJobPage(data) {
     var jobLocationMapDiv = jobLocationMap.getDomRef()
     console.log("jobLocationMapDiv:")
     console.log(jobLocationMapDiv)
-
-    // If NOT already rendered on the page...
+    
+     // If NOT already rendered on the page...
     if (jobLocationMapDiv === null) {
-
         // --- Build Map ---
-        console.log("Build Map")
+        console.log("Build Map");
 
         // Navigate to the page
         // (Need to load the page before we can set the map)
-        oApp.to(viewInspectionJob);
+        oApp.to(oPageViewInspectionJob);
 
         // Check if running on a Launchpad...
         // Handle the localViewID prefix if so
         if (sap.n) {
-            var reference = (localViewID+'--jobLocationMap');
+            var reference = localViewID + "--jobLocationMap";
         } else {
-            var reference = 'jobLocationMap';
+            var reference = "jobLocationMap";
         }
+
         console.log(reference);
 
-        // setView(Lat, Long , Zoom level)
-        Map = L.map(reference).setView([data.equip_latitude, data.equip_longitude], 13);
+        setTimeout(function () {
+            // setView(Lat, Long , Zoom level)
+            map = L.map(reference).setView([data.equip_latitude, data.equip_longitude], 13);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoibGxveWRuZXB0dW5lIiwiYSI6ImNrbXZ3MWM3djA3Z2cydXA5YWxzeTJtYmkifQ.DS3_2MJUUfwksiEZmD8EZQ'
-        }).addTo(Map);
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution:
+                    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }).addTo(map);
 
-        L.marker([data.equip_latitude, data.equip_longitude]).addTo(Map);
-
+            L.marker([data.equip_latitude, data.equip_longitude]).addTo(map);
+        }, 100);
     } else {
         // --- Update Map ---
+
         console.log("Update Map")
 
-        Map.setView([data.equip_latitude, data.equip_longitude], 13);
-        L.marker([data.equip_latitude, data.equip_longitude]).addTo(Map);
 
-        oApp.to(viewInspectionJob);
+        setTimeout(function () {
+            map.setView([data.equip_latitude, data.equip_longitude], 13);
+            L.marker([data.equip_latitude, data.equip_longitude]).addTo(map);
+        }, 100);
+        // Navigate to the page
+        oApp.to(oPageViewInspectionJob);
     }
 
     // ----- Inspection Data -----

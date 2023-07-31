@@ -9,7 +9,7 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "23.4.25.1041",
+	"ver": "23.7.31.1726",
 	"enableCICD": true,
 	"apps": [
 		{
@@ -248,11 +248,11 @@
 	"events": [],
 	"media_library": [
 		{
-			"id": "3F6B9CB3-2316-EC11-AE72-0050F255283A",
-			"updatedAt": "2022-12-20T10:26:35.473Z",
+			"id": "2bc76a2a-4242-42e2-b755-2ac4eedcf63b",
+			"updatedAt": "2023-07-28T13:57:31.000Z",
 			"name": "eLearningMedia",
 			"parent": null,
-			"package": "1D063863-5CCB-42C8-A7DF-323605FE1EE3"
+			"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 		}
 	],
 	"code_snippets": [],

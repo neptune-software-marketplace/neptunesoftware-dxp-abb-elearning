@@ -27,7 +27,7 @@ function populateInspectionJobPage(data) {
 
         // Navigate to the page
         // (Need to load the page before we can set the map)
-        oApp.to(oPageViewInspectionJob);
+        oApp.to(viewInspectionJob);
 
         // Check if running on a Launchpad...
         // Handle the localViewID prefix if so
@@ -62,7 +62,7 @@ function populateInspectionJobPage(data) {
             L.marker([data.equip_latitude, data.equip_longitude]).addTo(map);
         }, 100);
         // Navigate to the page
-        oApp.to(oPageViewInspectionJob);
+        oApp.to(viewInspectionJob);
     }
 
     // ----- Inspection Data -----

@@ -9,56 +9,80 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "23.7.31.1726",
+	"ver": "24.1.25.1633",
 	"enableCICD": true,
 	"apps": [
 		{
 			"id": "f75c24fd-aa32-4bb7-8f0f-0ed6972ace3b",
 			"application": "planet9_inbox_tile",
 			"title": "Inbox Live Tile",
-			"description": "Inbox Live Tile"
+			"description": "Inbox Live Tile",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
 			"application": "3fieldworkerinspect",
 			"title": "",
-			"description": ""
+			"description": "",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "9c5578ff-7eb8-eb11-a7ac-a085fcbc9f85",
 			"application": "planet9_inbox_f3_v2",
 			"title": "Workflow Inbox",
-			"description": "Workflow Inbox - Fiori 3"
+			"description": "Workflow Inbox - Fiori 3",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "773eb49a-0788-4bb9-a019-f8b083251255",
 			"application": "wf_details_embedded_app",
 			"title": "",
-			"description": ""
+			"description": "",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "3c9af25e-4fc2-4dec-978e-fbb7d45b603b",
 			"application": "5analyticsapp",
 			"title": "",
-			"description": ""
+			"description": "",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "3323d8a7-477c-472c-ae04-7ad5095b63d0",
 			"application": "1createnewequipment",
 			"title": "",
-			"description": ""
+			"description": "",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "3080f44c-3e82-4992-bb4c-e39be159338a",
 			"application": "2viewandeditequipment",
 			"title": "",
-			"description": "For the eLearning package"
+			"description": "For the eLearning package",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		},
 		{
 			"id": "2b9790d7-bc4a-ec11-981f-0050f2794553",
 			"application": "3fieldworkerinspect_offline_version",
 			"title": "",
-			"description": ""
+			"description": "",
+			"package": {
+				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+			}
 		}
 	],
 	"api": [
@@ -246,16 +270,13 @@
 	],
 	"connector": [],
 	"events": [],
-	"media_library": [
-		{
-			"id": "2bc76a2a-4242-42e2-b755-2ac4eedcf63b",
-			"updatedAt": "2023-07-28T13:57:31.000Z",
-			"name": "eLearningMedia",
-			"parent": null,
-			"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-		}
-	],
 	"code_snippets": [],
 	"wf_determination": [],
-	"wf_taskaction": []
+	"wf_taskaction": [
+		{
+			"id": "90da28be-1e6e-46bb-a1df-2549d26ccb61",
+			"name": "eLearning-Inspection Approve",
+			"description": null
+		}
+	]
 }

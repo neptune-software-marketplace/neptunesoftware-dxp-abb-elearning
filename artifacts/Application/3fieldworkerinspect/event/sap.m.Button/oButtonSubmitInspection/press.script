@@ -1,5 +1,5 @@
 var wfData = {
-    "id": "C90C723A-682F-ED11-A27C-0050F27989A1",
+    "id": "c90c723a-682f-ed11-a27c-0050f27989a1",
     "objectType": oObjectAttributeEquipmentName.getText(),
     "objectKey": oObjectAttributePartNumber.getText(),
     "amount": oObjectAttributeEquipmentName.getText(),

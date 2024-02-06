@@ -1,1 +1,0 @@
-<input name='_wf_fileUploader' accept='*' id='_wf_fileUploader' type='file' onchange='uploadFile(event)' style='display:none;' value='' />

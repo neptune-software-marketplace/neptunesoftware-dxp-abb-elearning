@@ -1,3 +1,0 @@
-var binding = oGridList.getBinding("items");
-var filter = new sap.ui.model.Filter("taskTitle", "Contains", this.getValue());
-binding.filter([filter]);

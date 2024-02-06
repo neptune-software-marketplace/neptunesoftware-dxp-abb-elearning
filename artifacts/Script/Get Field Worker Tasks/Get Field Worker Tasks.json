@@ -20,6 +20,7 @@
 	"name": "Get Field Worker Tasks",
 	"ver": "21.8.6.1613",
 	"description": null,
+	"folder": null,
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,

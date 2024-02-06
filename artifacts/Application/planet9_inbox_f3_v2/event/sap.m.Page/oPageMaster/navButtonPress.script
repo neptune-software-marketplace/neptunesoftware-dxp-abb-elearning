@@ -1,8 +1,0 @@
-currTaskTitle = "";
-oGridList.removeSelections();
-closeDetail();
-if (sap.n) {
-    oLayoutMain.backToPage(localViewID + '--oPageMasterCards');
-} else {
-    oLayoutMain.to('oPageMasterCards');
-}

@@ -1,4 +1,0 @@
-var context = oEvent.oSource.getBindingContext();
-var data = context.getObject();
-modelpopLogDate.setData(data);
-popLogDate.openBy(this);

@@ -20,6 +20,7 @@
 	"name": "approvedWF",
 	"ver": "21.8.12.1431",
 	"description": null,
+	"folder": null,
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,

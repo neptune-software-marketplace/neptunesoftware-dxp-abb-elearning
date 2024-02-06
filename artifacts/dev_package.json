@@ -13,28 +13,10 @@
 	"enableCICD": true,
 	"apps": [
 		{
-			"id": "f75c24fd-aa32-4bb7-8f0f-0ed6972ace3b",
-			"application": "planet9_inbox_tile",
-			"title": "Inbox Live Tile",
-			"description": "Inbox Live Tile",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
-		},
-		{
 			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
 			"application": "3fieldworkerinspect",
 			"title": "",
 			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
-		},
-		{
-			"id": "9c5578ff-7eb8-eb11-a7ac-a085fcbc9f85",
-			"application": "planet9_inbox_f3_v2",
-			"title": "Workflow Inbox",
-			"description": "Workflow Inbox - Fiori 3",
 			"package": {
 				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 			}

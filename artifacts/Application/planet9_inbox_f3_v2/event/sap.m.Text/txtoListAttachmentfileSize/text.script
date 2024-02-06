@@ -1,7 +1,0 @@
-if (typeof fileSize === "undefined" || fileSize === null || fileSize === "") {
-    return;
-}
-return oFileSizeFormat.format(fileSize);if (typeof fileSize === "undefined" || fileSize === null || fileSize === "") {
-    return;
-}
-return oFileSizeFormat.format(fileSize);

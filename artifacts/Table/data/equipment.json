@@ -306,6 +306,23 @@
 		"pdf": null
 	},
 	{
+		"id": "b7e6730d-cae6-41ad-9c0b-cdb515fc80a4",
+		"createdAt": "1707498247213",
+		"updatedAt": "1707833940862",
+		"createdBy": "admin",
+		"updatedBy": "admin",
+		"name": "Test",
+		"part_number": "Test",
+		"latitude": 123,
+		"longitude": 123,
+		"checkup_date": "2024-02-09T00:00:00.000Z",
+		"checkup_interval": 77,
+		"days_until_check": 72,
+		"assigned_for_checking": false,
+		"assigned_to": null,
+		"pdf": ""
+	},
+	{
 		"id": "b59f5bb3-14cf-403d-b2a6-39e21180ed8d",
 		"createdAt": "1632732907151",
 		"updatedAt": "1682428234773",

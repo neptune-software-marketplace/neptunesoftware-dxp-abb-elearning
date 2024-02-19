@@ -253,7 +253,13 @@
 	"connector": [],
 	"events": [],
 	"code_snippets": [],
-	"wf_determination": [],
+	"wf_determination": [
+		{
+			"id": "8ffb1515-f8fc-450d-b751-9d519470e39f",
+			"name": "eLearning-Inspection Approvers",
+			"description": null
+		}
+	],
 	"wf_taskaction": [
 		{
 			"id": "90da28be-1e6e-46bb-a1df-2549d26ccb61",

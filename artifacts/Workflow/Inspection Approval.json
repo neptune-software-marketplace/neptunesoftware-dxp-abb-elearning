@@ -10,7 +10,7 @@
 			"daysUntilOverdue": 1,
 			"title": "User Task",
 			"subTitle": "",
-			"userDeterminationLocal": "41e8259f-012e-45bc-b498-4d2a746045a1",
+			"userDeterminationLocal": "8ffb1515-f8fc-450d-b751-9d519470e39f",
 			"taskAction": "90da28be-1e6e-46bb-a1df-2549d26ccb61",
 			"scriptId": "",
 			"runScriptInFork": false,
@@ -274,7 +274,7 @@
 				"posX": 441.5054016113281,
 				"posY": 187.53868103027344,
 				"inboxApp": "wf_details_embedded_app",
-				"userDeterminationLocal": "41e8259f-012e-45bc-b498-4d2a746045a1",
+				"userDeterminationLocal": "8ffb1515-f8fc-450d-b751-9d519470e39f",
 				"taskAction": "90da28be-1e6e-46bb-a1df-2549d26ccb61"
 			},
 			{
@@ -505,6 +505,6 @@
 	"omitSaturday": false,
 	"omitSunday": false,
 	"icon": null,
-	"ver": "24.1.25.1632",
+	"ver": "24.02.19.1442",
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 }

@@ -9,7 +9,7 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "24.1.25.1633",
+	"ver": "24.04.11.0956",
 	"enableCICD": true,
 	"apps": [
 		{

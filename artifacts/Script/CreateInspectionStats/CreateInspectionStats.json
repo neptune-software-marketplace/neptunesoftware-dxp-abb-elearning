@@ -9,11 +9,16 @@
 			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
 			"name": "inspections",
 			"contextname": "inspections"
+		},
+		{
+			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
+			"name": "inspections",
+			"contextname": "inspections"
 		}
 	],
 	"apis": [],
 	"name": "CreateInspectionStats",
-	"ver": "22.12.20.1139",
+	"ver": "24.04.19.1034",
 	"description": null,
 	"folder": null,
 	"content": "file:///content.js",

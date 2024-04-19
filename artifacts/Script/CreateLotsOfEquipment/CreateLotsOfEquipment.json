@@ -9,11 +9,16 @@
 			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
 			"name": "equipment",
 			"contextname": "equipment"
+		},
+		{
+			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
+			"name": "equipment",
+			"contextname": "equipment"
 		}
 	],
 	"apis": [],
 	"name": "CreateLotsOfEquipment",
-	"ver": "22.12.20.1140",
+	"ver": "24.04.19.1030",
 	"description": null,
 	"folder": null,
 	"content": "file:///content.js",

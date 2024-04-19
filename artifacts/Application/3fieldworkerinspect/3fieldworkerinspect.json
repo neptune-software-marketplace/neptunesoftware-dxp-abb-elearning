@@ -1864,7 +1864,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "file:///css.css",
-	"compiledCss": "file:///compiledCss.css",
+	"compiledCss": "file://script/undefined/undefined.script",
 	"header": "file:///header.html",
 	"manifest": "",
 	"globalScript": "",

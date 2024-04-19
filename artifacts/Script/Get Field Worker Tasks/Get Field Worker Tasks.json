@@ -14,11 +14,16 @@
 			"id": "473F3569-67AB-46B6-89E6-F2D3F11F937C",
 			"name": "inspections",
 			"contextname": "inspections"
+		},
+		{
+			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
+			"name": "inspections",
+			"contextname": "inspections"
 		}
 	],
 	"apis": [],
 	"name": "Get Field Worker Tasks",
-	"ver": "21.8.6.1613",
+	"ver": "24.04.19.1037",
 	"description": null,
 	"folder": null,
 	"content": "file:///content.js",

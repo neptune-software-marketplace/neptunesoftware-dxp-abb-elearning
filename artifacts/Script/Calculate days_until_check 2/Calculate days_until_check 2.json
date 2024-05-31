@@ -1,24 +1,12 @@
 {
-	"id": "66743392-bddd-480a-bee9-2471e4f1e22c",
-	"createdAt": "2021-03-24T11:48:04.000Z",
-	"createdBy": "lloyd",
+	"id": "0c264bce-ffcf-409e-af8d-9bc360ee6230",
+	"createdAt": "2024-05-31T13:52:36.914Z",
+	"createdBy": "lloyd.trevarthen@neptune-software.com",
 	"globalScripts": [],
-	"externalModules": [
-		{
-			"id": "internal_moment",
-			"name": "moment",
-			"contextname": "moment",
-			"path": "moment"
-		}
-	],
+	"externalModules": [],
 	"entitySets": [
 		{
 			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
-			"name": "equipment",
-			"contextname": "equipment"
-		},
-		{
-			"id": "988B3DAD-64AB-4137-8B22-7C84B30685B3",
 			"name": "equipment",
 			"contextname": "equipment"
 		},
@@ -29,14 +17,14 @@
 		}
 	],
 	"apis": [],
-	"name": "Calculate days_until_check",
-	"ver": "24.04.19.1038",
+	"name": "Calculate days_until_check 2",
+	"ver": "24.05.31.1352",
 	"description": null,
-	"folder": null,
+	"folder": "",
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,
-	"lastRunSuccessful": true,
+	"lastRunSuccessful": false,
 	"isTypescript": false,
 	"language": "javascript",
 	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",

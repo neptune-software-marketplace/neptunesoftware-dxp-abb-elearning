@@ -1,15 +1,10 @@
 {
-	"id": "5f5599ee-5a80-ed11-9f60-0022489e239a",
-	"createdAt": "2022-12-20T11:39:23.460Z",
-	"createdBy": "lloyd",
+	"id": "dc5401d3-db91-4a54-9911-e3e019f4e553",
+	"createdAt": "2024-05-31T15:51:36.000Z",
+	"createdBy": "admin",
 	"globalScripts": [],
 	"externalModules": [],
 	"entitySets": [
-		{
-			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
-			"name": "inspections",
-			"contextname": "inspections"
-		},
 		{
 			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
 			"name": "inspections",
@@ -18,9 +13,9 @@
 	],
 	"apis": [],
 	"name": "CreateInspectionStats",
-	"ver": "24.04.19.1034",
+	"ver": "24.05.31.1651",
 	"description": null,
-	"folder": null,
+	"folder": "",
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
 	"transpiledContent": null,

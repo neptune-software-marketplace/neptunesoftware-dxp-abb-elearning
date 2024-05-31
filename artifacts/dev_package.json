@@ -11,7 +11,6 @@
 	"description": "Package for developing elearning content",
 	"ver": "24.05.31.1353",
 	"enableCICD": true,
-	"excludeTemplateFiles": false,
 	"apps": [
 		{
 			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
@@ -116,12 +115,12 @@
 	],
 	"jsclass": [
 		{
-			"id": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a",
-			"name": "Get Field Worker Tasks",
+			"id": "dc5401d3-db91-4a54-9911-e3e019f4e553",
+			"name": "CreateInspectionStats",
 			"description": null
 		},
 		{
-			"id": "f158fd21-5b80-ed11-9f60-0022489e239a",
+			"id": "d9dea92d-d152-409f-b2a9-d48f26ceede3",
 			"name": "CreateLotsOfEquipment",
 			"description": null
 		},
@@ -131,18 +130,18 @@
 			"description": null
 		},
 		{
+			"id": "c7a47e90-7808-4e9e-9150-dbef30bbc64d",
+			"name": "Get Field Worker Tasks",
+			"description": null
+		},
+		{
 			"id": "65b01aab-2565-4427-b37f-6077dca7bf86",
 			"name": "rejectedWF",
 			"description": null
 		},
 		{
-			"id": "5f5599ee-5a80-ed11-9f60-0022489e239a",
-			"name": "CreateInspectionStats",
-			"description": null
-		},
-		{
 			"id": "0c264bce-ffcf-409e-af8d-9bc360ee6230",
-			"name": "Calculate days_until_check 2",
+			"name": "Calculate days_until_check",
 			"description": null
 		}
 	],

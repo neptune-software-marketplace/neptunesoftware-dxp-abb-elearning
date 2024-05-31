@@ -27,7 +27,7 @@
 					]
 				}
 			],
-			"serverScript": "5f5599ee-5a80-ed11-9f60-0022489e239a"
+			"serverScript": "dc5401d3-db91-4a54-9911-e3e019f4e553"
 		}
 	],
 	"definitions": [
@@ -43,7 +43,7 @@
 	"documentation": [],
 	"name": "inspectionStats",
 	"endpoint": "/api/serverscript/inspectionstats",
-	"ver": "23.4.25.1728",
+	"ver": "24.05.31.1652",
 	"version": null,
 	"description": null,
 	"mediaType": null,

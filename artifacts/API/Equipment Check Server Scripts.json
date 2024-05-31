@@ -45,7 +45,7 @@
 					]
 				}
 			],
-			"serverScript": "f5c61a24-229b-41ae-b0f0-f25e36b7db3a"
+			"serverScript": "c7a47e90-7808-4e9e-9150-dbef30bbc64d"
 		}
 	],
 	"definitions": [
@@ -401,7 +401,7 @@
 	"documentation": [],
 	"name": "Equipment Check Server Scripts",
 	"endpoint": "/api/serverscript/equipmentcheckserverscripts",
-	"ver": "24.05.31.1353",
+	"ver": "24.05.31.1654",
 	"version": null,
 	"description": null,
 	"mediaType": null,

@@ -17,8 +17,8 @@
 		}
 	],
 	"apis": [],
-	"name": "Calculate days_until_check 2",
-	"ver": "24.05.31.1352",
+	"name": "Calculate days_until_check",
+	"ver": "24.05.31.1651",
 	"description": null,
 	"folder": "",
 	"content": "file:///content.js",

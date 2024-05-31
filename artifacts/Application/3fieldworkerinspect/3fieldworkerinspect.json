@@ -1864,7 +1864,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "file:///css.css",
-	"compiledCss": "file:///compiledCss.css",
+	"compiledCss": "file://script/undefined/undefined.script",
 	"header": "file:///header.html",
 	"manifest": "",
 	"globalScript": "",
@@ -1884,7 +1884,7 @@
 		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
 			"name": "Equipment Check Server Scripts",
-			"ver": "24.05.31.1353"
+			"ver": "24.05.31.1654"
 		},
 		{
 			"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",

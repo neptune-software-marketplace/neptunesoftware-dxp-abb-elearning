@@ -2,7 +2,6 @@
 log.info(wfData);
 // wfData.objectKey = Equipment Part Number
 
-
 // First, grab the data for the given inspection
 const inspection = await entities.inspections.createQueryBuilder()
     .where("part_number = :part_number", {part_number: wfData.objectKey})

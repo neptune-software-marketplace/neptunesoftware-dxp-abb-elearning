@@ -3,7 +3,10 @@
 	"createdAt": "2021-04-08T16:15:51.000Z",
 	"createdBy": "lloyd",
 	"translation": [],
-	"tilesOrder": [],
+	"tilesOrder": [
+		"7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
+		"20d64b6a-2f72-4ce4-aa7d-00c53b29e20e"
+	],
 	"tilegroupsOrder": [],
 	"configMessage": {},
 	"title": "Maintenance Manager",
@@ -25,7 +28,7 @@
 	"enableShadeCalc": false,
 	"numTiles": null,
 	"enableMessage": false,
-	"ver": "23.4.25.1042",
+	"ver": "24.06.11.1253",
 	"headColor": null,
 	"headTxtClr": null,
 	"subheadTxtClr": null,
@@ -59,6 +62,19 @@
 	"cockpitTileGroup": false,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"roles": [],
-	"tiles": [],
+	"tiles": [
+		{
+			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
+			"name": "MY INBOX",
+			"title": "Maintenance Inbox",
+			"ver": "23.4.25.1042"
+		},
+		{
+			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
+			"name": "Maintenance Status",
+			"title": "Activities",
+			"ver": "23.4.25.1043"
+		}
+	],
 	"tilegroups": []
 }

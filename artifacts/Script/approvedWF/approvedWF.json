@@ -6,19 +6,19 @@
 	"externalModules": [],
 	"entitySets": [
 		{
-			"id": "A3C973CA-0816-EC11-AE72-0050F255283A",
+			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
 			"name": "inspections",
 			"contextname": "inspections"
 		},
 		{
-			"id": "3299AFD2-0816-EC11-AE72-0050F255283A",
+			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
 			"name": "equipment",
 			"contextname": "equipment"
 		}
 	],
 	"apis": [],
 	"name": "approvedWF",
-	"ver": "24.06.10.0941",
+	"ver": "24.06.11.1254",
 	"description": null,
 	"folder": null,
 	"content": "file:///content.js",

@@ -3,14 +3,7 @@
 	"createdAt": "2021-04-06T13:48:55.000Z",
 	"createdBy": "james",
 	"globalScripts": [],
-	"externalModules": [
-		{
-			"id": "1227f872-d9c3-4e5d-9358-d99692daebaa",
-			"name": "uuid",
-			"contextname": "uuid",
-			"path": "/home/planet9/ext-disk/npm-serverscript/node_modules/uuid"
-		}
-	],
+	"externalModules": [],
 	"entitySets": [
 		{
 			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
@@ -20,7 +13,7 @@
 	],
 	"apis": [],
 	"name": "rejectedWF",
-	"ver": "24.06.10.1029",
+	"ver": "24.06.21.1622",
 	"description": null,
 	"folder": null,
 	"content": "file:///content.js",

@@ -21,7 +21,7 @@ await table.createQueryBuilder().update()
 log.info("Updated currently Submitted inspection to Rejected");
 
 
-var uuidGenerator = modules.uuid.v4;
+
 // CREATE A NEW Inspection with status "Assigned"
 // But with blank fields for the 4 inspection data points
 await entities.inspections.createQueryBuilder()
@@ -39,7 +39,7 @@ await entities.inspections.createQueryBuilder()
         "updatedAt":Date.now(),
         "createdBy":"system",
         "updatedBy":"system",
-        "id":uuidGenerator() // <- Here we use the uuidGeneartor module
+        "id":uuid()
         })
     .execute();
 

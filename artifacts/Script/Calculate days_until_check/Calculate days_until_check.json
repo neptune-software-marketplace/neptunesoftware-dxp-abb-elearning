@@ -3,7 +3,14 @@
 	"createdAt": "2024-05-31T13:52:36.914Z",
 	"createdBy": "lloyd.trevarthen@neptune-software.com",
 	"globalScripts": [],
-	"externalModules": [],
+	"externalModules": [
+		{
+			"id": "internal_moment",
+			"name": "moment",
+			"contextname": "moment",
+			"path": "moment"
+		}
+	],
 	"entitySets": [
 		{
 			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
@@ -18,7 +25,7 @@
 	],
 	"apis": [],
 	"name": "Calculate days_until_check",
-	"ver": "24.05.31.1651",
+	"ver": "24.06.21.1427",
 	"description": null,
 	"folder": "",
 	"content": "file:///content.js",

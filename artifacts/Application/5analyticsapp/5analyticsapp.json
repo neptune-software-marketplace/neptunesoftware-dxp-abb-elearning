@@ -263,12 +263,12 @@
 	"printWidth": null,
 	"generateVersionOnActivation": false,
 	"activationHistoryCount": 0,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"apis": [
 		{
 			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
 			"name": "inspectionStats",
 			"ver": "24.05.31.1652"
 		}
-	],
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+	]
 }

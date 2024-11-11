@@ -1995,6 +1995,7 @@
 	"printWidth": null,
 	"generateVersionOnActivation": false,
 	"activationHistoryCount": 0,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"apis": [
 		{
 			"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
@@ -2016,6 +2017,5 @@
 			"name": "API equipment",
 			"ver": "23.4.25.112"
 		}
-	],
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+	]
 }

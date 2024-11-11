@@ -5,66 +5,53 @@
 	"git": {
 		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-elearning",
 		"targetServers": [],
-		"testServers": []
+		"testServers": [],
+		"branch": "v24"
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
 	"ver": "24.05.31.1353",
 	"enableCICD": true,
+	"internalReadOnly": false,
+	"oeVersion": null,
+	"excludeTemplateFiles": false,
+	"roles": [],
 	"apps": [
 		{
 			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
 			"application": "3fieldworkerinspect",
 			"title": "",
-			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": ""
 		},
 		{
 			"id": "773eb49a-0788-4bb9-a019-f8b083251255",
 			"application": "wf_details_embedded_app",
 			"title": "",
-			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": ""
 		},
 		{
 			"id": "3c9af25e-4fc2-4dec-978e-fbb7d45b603b",
 			"application": "5analyticsapp",
 			"title": "",
-			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": ""
 		},
 		{
 			"id": "3323d8a7-477c-472c-ae04-7ad5095b63d0",
 			"application": "1createnewequipment",
 			"title": "",
-			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": ""
 		},
 		{
 			"id": "3080f44c-3e82-4992-bb4c-e39be159338a",
 			"application": "2viewandeditequipment",
 			"title": "",
-			"description": "For the eLearning package",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": "For the eLearning package"
 		},
 		{
 			"id": "2b9790d7-bc4a-ec11-981f-0050f2794553",
 			"application": "3fieldworkerinspect_offline_version",
 			"title": "",
-			"description": "",
-			"package": {
-				"id": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
-			}
+			"description": ""
 		}
 	],
 	"api": [
@@ -200,6 +187,7 @@
 			"name": "3FieldWorkerInspect"
 		}
 	],
+	"tile_layout": [],
 	"category": [
 		{
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
@@ -217,6 +205,7 @@
 			"name": "Manager Apps"
 		}
 	],
+	"tilegroup_layout": [],
 	"launchpad": [
 		{
 			"id": "e13bae95-5fd0-4e1c-a48c-a8771bfda440",
@@ -224,6 +213,7 @@
 			"description": null
 		}
 	],
+	"launchpad_layout": [],
 	"certificates": [],
 	"role": [
 		{
@@ -266,5 +256,6 @@
 			"name": "eLearning-Inspection Approve",
 			"description": null
 		}
-	]
+	],
+	"theme_ui5": []
 }

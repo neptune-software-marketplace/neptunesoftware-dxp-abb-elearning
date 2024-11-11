@@ -1864,7 +1864,7 @@
 	"ui5_url": "",
 	"cus_theme": "",
 	"css": "file:///css.css",
-	"compiledCss": "file://script/undefined/undefined.script",
+	"compiledCss": "file:///compiledCss.css",
 	"header": "file:///header.html",
 	"manifest": "",
 	"globalScript": "",
@@ -1880,6 +1880,7 @@
 	"printWidth": null,
 	"generateVersionOnActivation": false,
 	"activationHistoryCount": 0,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"apis": [
 		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
@@ -1891,6 +1892,5 @@
 			"name": "API inspections",
 			"ver": "23.4.25.1728"
 		}
-	],
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+	]
 }

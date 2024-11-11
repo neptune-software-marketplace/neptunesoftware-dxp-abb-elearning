@@ -10,11 +10,11 @@
 	},
 	"name": "elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "24.05.31.1353",
+	"ver": "24.11.11.1633",
 	"enableCICD": true,
 	"internalReadOnly": false,
 	"oeVersion": null,
-	"excludeTemplateFiles": false,
+	"excludeTemplateFiles": true,
 	"roles": [],
 	"apps": [
 		{

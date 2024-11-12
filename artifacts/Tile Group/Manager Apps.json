@@ -31,7 +31,7 @@
 	"enableShadeCalc": false,
 	"numTiles": null,
 	"enableMessage": false,
-	"ver": "24.06.11.1253",
+	"ver": "24.11.12.1517",
 	"headColor": null,
 	"headTxtClr": null,
 	"subheadTxtClr": null,
@@ -69,9 +69,9 @@
 	"headerTextLevel": null,
 	"headerSubLevel": null,
 	"groupLayoutLight": null,
-	"groupLayoutDark": null,
+	"groupLayoutDark": "0d8d8268-19b6-4897-a97a-efac9080c227",
 	"tileLayoutLight": null,
-	"tileLayoutDark": null,
+	"tileLayoutDark": "315651aa-d23d-4035-9a94-f02fe0717123",
 	"cardWidth": null,
 	"cardHeight": null,
 	"iconPlacement": null,
@@ -95,7 +95,7 @@
 	"cardFilterOpacity": null,
 	"enableFilterSaturate": false,
 	"cardFilterSaturate": null,
-	"cardBackgroundMaskImage": null,
+	"cardBackgroundMaskImage": "T",
 	"cardBackgroundMaskCustom": null,
 	"headerFilterBlur": null,
 	"enableHeaderBrightness": false,
@@ -127,7 +127,7 @@
 			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
 			"name": "MY INBOX",
 			"title": "Maintenance Inbox",
-			"ver": "23.4.25.1042"
+			"ver": "24.11.12.1514"
 		},
 		{
 			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",

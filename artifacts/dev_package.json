@@ -187,12 +187,22 @@
 			"name": "3FieldWorkerInspect"
 		}
 	],
-	"tile_layout": [],
+	"tile_layout": [
+		{
+			"id": "315651aa-d23d-4035-9a94-f02fe0717123",
+			"NAME": "eLearning-dark"
+		}
+	],
 	"category": [
 		{
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
 			"description": null,
 			"name": "All Apps"
+		},
+		{
+			"id": "4eebe8b3-87a0-48a4-8b43-a66b94bc9a2a",
+			"description": null,
+			"name": "Main Apps - Copy"
 		},
 		{
 			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",

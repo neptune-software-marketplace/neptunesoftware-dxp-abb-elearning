@@ -1122,6 +1122,23 @@
 		"pdf": null
 	},
 	{
+		"id": "0940e360-da98-42f7-be41-d8bb62cdabc3",
+		"createdAt": "1731423605773",
+		"updatedAt": "1731423616936",
+		"createdBy": "admin",
+		"updatedBy": "admin",
+		"name": "test",
+		"part_number": "test",
+		"latitude": 123,
+		"longitude": 123,
+		"checkup_date": "2024-11-14T00:00:00.000Z",
+		"checkup_interval": 84,
+		"days_until_check": 85,
+		"assigned_for_checking": false,
+		"assigned_to": null,
+		"pdf": ""
+	},
+	{
 		"id": "07027ff1-b64d-4ac7-a49a-79df6bddd9c4",
 		"createdAt": "1632732907151",
 		"updatedAt": "1682428234922",

@@ -8,9 +8,9 @@
 		"testServers": [],
 		"branch": "v24"
 	},
-	"name": "elearning-dev",
+	"name": "neptunesoftware-dxp-abb-elearning-dev",
 	"description": "Package for developing elearning content",
-	"ver": "24.11.11.1633",
+	"ver": "24.11.14.1341",
 	"enableCICD": true,
 	"internalReadOnly": false,
 	"oeVersion": "24.10.0-rc.3",

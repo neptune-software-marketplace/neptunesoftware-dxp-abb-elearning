@@ -71,10 +71,12 @@
 		"enhancement": "",
 		"languages": [],
 		"showAccessibilityFocusIndicator": true,
-		"pincode": false,
+		"pincode": true,
 		"pincodeTries": 5,
 		"pincodeLength": 4,
-		"pincodeKeyIterations": 40000
+		"pincodeKeyIterations": 40000,
+		"enableWebAuth": true,
+		"autolock": 60
 	},
 	"enhancement": [],
 	"name": "eLearning Launchpad",
@@ -130,7 +132,7 @@
 	"searchEnableShadeCalc": null,
 	"usedEnableShadeCalc": null,
 	"enableTrace": false,
-	"ver": "24.07.15.1051",
+	"ver": "24.11.14.1547",
 	"pwa_enable": true,
 	"pwa_customImageIos": null,
 	"pwa_customImageAndroidOld": null,

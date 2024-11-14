@@ -78,13 +78,14 @@
 	"imageDarkHeightMedia": null,
 	"imageTabletDarkHeightMedia": null,
 	"imageMobileDarkHeightMedia": null,
+	"forceAttributes": false,
 	"roles": [],
 	"tiles": [
 		{
 			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
 			"name": "MY INBOX",
 			"title": "Maintenance Inbox",
-			"ver": "24.11.12.1514"
+			"ver": "24.11.14.1539"
 		},
 		{
 			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",

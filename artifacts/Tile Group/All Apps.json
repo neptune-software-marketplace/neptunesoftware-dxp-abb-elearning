@@ -86,13 +86,13 @@
 			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
 			"name": "Main Apps",
 			"title": "Field Worker - Inspection Management",
-			"ver": "24.11.12.1517"
+			"ver": "24.11.15.1714"
 		},
 		{
 			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
 			"name": "Manager Apps",
 			"title": "Maintenance Manager",
-			"ver": "24.11.12.1517"
+			"ver": "24.11.15.1715"
 		}
 	]
 }

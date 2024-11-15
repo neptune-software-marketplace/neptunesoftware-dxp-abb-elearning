@@ -191,6 +191,10 @@
 		{
 			"id": "315651aa-d23d-4035-9a94-f02fe0717123",
 			"NAME": "eLearning-dark"
+		},
+		{
+			"id": "0249cdd6-e33c-4938-b082-8c07f2cc5b06",
+			"NAME": "eLearning-light"
 		}
 	],
 	"category": [
@@ -224,7 +228,7 @@
 		{
 			"id": "29fb0de4-c31a-ec11-ae72-dc9840105a9f",
 			"name": "FieldWorkers",
-			"description": null
+			"description": "dfgvbnm"
 		}
 	],
 	"systems": [],

@@ -30,7 +30,7 @@
 	"folder": "",
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
-	"lastRunSuccessful": false,
+	"lastRunSuccessful": true,
 	"isTypescript": false,
 	"language": "javascript",
 	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",

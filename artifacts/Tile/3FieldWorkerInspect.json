@@ -2,6 +2,8 @@
 	"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
 	"createdAt": "2021-04-08T16:02:39.000Z",
 	"createdBy": "lloyd",
+	"lightTileLayouts": null,
+	"darkTileLayouts": null,
 	"translation": [
 		{
 			"language": "FR",
@@ -93,6 +95,7 @@
 	"cockpitTile": false,
 	"cardImageDarkNone": false,
 	"imageDarkNone": false,
+	"oneTileLayout": false,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"roles": []
 }

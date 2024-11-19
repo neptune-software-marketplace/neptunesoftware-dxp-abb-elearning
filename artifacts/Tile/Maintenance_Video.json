@@ -2,6 +2,8 @@
 	"id": "821dfb5a-0e3b-ec11-981f-0050f2794553",
 	"createdAt": "2021-11-01T12:22:19.380Z",
 	"createdBy": "admin",
+	"lightTileLayouts": null,
+	"darkTileLayouts": null,
 	"translation": [],
 	"storeItem": {},
 	"settings": null,
@@ -88,6 +90,7 @@
 	"cockpitTile": false,
 	"cardImageDarkNone": false,
 	"imageDarkNone": false,
+	"oneTileLayout": false,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"roles": []
 }

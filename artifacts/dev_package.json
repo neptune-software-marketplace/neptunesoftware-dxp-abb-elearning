@@ -9,7 +9,7 @@
 		"branch": "v24"
 	},
 	"name": "neptunesoftware-dxp-abb-elearning",
-	"description": "Package for developing elearning content",
+	"description": "A set of applications for equipment inspection, workflow triggering, and data analysis.",
 	"ver": "24.11.14.1352",
 	"enableCICD": true,
 	"internalReadOnly": false,

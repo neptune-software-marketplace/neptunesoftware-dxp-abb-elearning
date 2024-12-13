@@ -8,7 +8,7 @@
 		"testServers": []
 	},
 	"name": "elearning-dev",
-	"description": "Package for developing elearning content",
+	"description": "A set of applications for equipment inspection, workflow triggering, and data analysis.",
 	"ver": "24.05.31.1353",
 	"enableCICD": true,
 	"apps": [

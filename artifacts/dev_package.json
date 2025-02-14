@@ -10,7 +10,7 @@
 	},
 	"name": "neptunesoftware-dxp-abb-elearning",
 	"description": "A set of applications for equipment inspection, workflow triggering, and data analysis.",
-	"ver": "25.02.14.1136",
+	"ver": "25.02.14.1229",
 	"enableCICD": true,
 	"internalReadOnly": false,
 	"oeVersion": "24.11.0-rc.5",

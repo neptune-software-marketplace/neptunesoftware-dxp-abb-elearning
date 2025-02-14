@@ -101,13 +101,13 @@
 			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
 			"name": "neptune-elearning-inbox-tile",
 			"title": "Maintenance Inbox",
-			"ver": "25.02.13.1444"
+			"ver": "25.02.14.1250"
 		},
 		{
 			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
 			"name": "neptune-elearning-inspection-status",
 			"title": "Activities",
-			"ver": "25.02.13.1442"
+			"ver": "25.02.14.1250"
 		}
 	],
 	"tilegroups": [],

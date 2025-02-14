@@ -103,25 +103,25 @@
 			"id": "bdaec96d-680b-49db-a058-e022e4b4fb58",
 			"name": "neptune-elearning-add-equipment-tile",
 			"title": "Add Equipment",
-			"ver": "25.02.13.1441"
+			"ver": "25.02.14.1249"
 		},
 		{
 			"id": "b2d8b76e-6d1b-4c93-a515-6b5cf9f05cfa",
 			"name": "neptune-elearning-field-worker-inspect-offline-tile",
 			"title": "Inspection Portal",
-			"ver": "25.02.13.1442"
+			"ver": "25.02.14.1250"
 		},
 		{
 			"id": "9e3d4088-63cd-4196-9f1f-6249c7b66f60",
 			"name": "neptune-elearning-view-and-edit-equipment-tile",
 			"title": "Equipment MD",
-			"ver": "25.02.13.1441"
+			"ver": "25.02.14.1251"
 		},
 		{
 			"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
 			"name": "neptune-elearning-field-worker-inspect-tile",
 			"title": "Inspection Portal",
-			"ver": "25.02.13.1441"
+			"ver": "25.02.14.1250"
 		}
 	],
 	"tilegroups": [],

@@ -1,0 +1,9 @@
+{
+	"id": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
+	"createdAt": "2021-03-24T11:47:40.000Z",
+	"createdBy": "lloyd",
+	"name": "neptune-elearning-equipment-checkup-scripts",
+	"description": "Server Scripts for generating equipment, calculating the days until check, generate inspection stats and getting the field workers tasks.",
+	"ver": "25.02.14.1117",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

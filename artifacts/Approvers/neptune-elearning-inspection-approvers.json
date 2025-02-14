@@ -1,0 +1,23 @@
+{
+	"id": "8ffb1515-f8fc-450d-b751-9d519470e39f",
+	"createdAt": "2024-02-19T14:41:55.000Z",
+	"createdBy": "admin",
+	"items": [
+		{
+			"id": "1a46d55f-0be7-47a7-97e8-e5657ff6cbc2",
+			"orgUnit": "U",
+			"orgValue": "admin",
+			"amountFrom": 0,
+			"amountTo": "100000",
+			"operation": "O",
+			"taskType": [],
+			"orgId": "9689e62e-f6e3-4bb0-a343-8f4b93625e3c",
+			"taskAction": [
+				"90da28be-1e6e-46bb-a1df-2549d26ccb61"
+			]
+		}
+	],
+	"name": "neptune-elearning-inspection-approvers",
+	"description": "List of users that can approve inspections.",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

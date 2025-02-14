@@ -1,0 +1,79 @@
+{
+	"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
+	"createdAt": "2021-09-21T15:37:40.730Z",
+	"createdBy": "lloyd",
+	"auth": [],
+	"endpoints": [],
+	"paths": [
+		{
+			"id": "c8a5c50f-9273-49dc-fcd3-7a57ace81eb9",
+			"method": "POST",
+			"path": "/Get",
+			"description": "",
+			"parameters": [],
+			"headers": [],
+			"responses": [
+				{
+					"status": "200",
+					"description": "OK",
+					"headers": [],
+					"body": [],
+					"content": [
+						{
+							"id": "ebe77e20-f513-45e7-c889-20ff99cd8a19",
+							"name": "resp",
+							"objectType": "object"
+						}
+					]
+				}
+			],
+			"content": [
+				{
+					"name": "Id",
+					"objectType": "object"
+				}
+			]
+		}
+	],
+	"definitions": [
+		{
+			"id": "61f142b8-058c-4dcd-c3e0-a5dc39c0df15",
+			"name": "Id",
+			"description": "",
+			"isInclude": false,
+			"properties": []
+		},
+		{
+			"id": "5e1e4990-2771-4d0b-8cf1-097e529fa775",
+			"name": "resp",
+			"description": "",
+			"isInclude": false,
+			"properties": []
+		}
+	],
+	"documentation": [],
+	"name": "neptune-elearning-security-group-API",
+	"endpoint": "http://localhost:8080L/api/functions/Department",
+	"ver": "25.02.13.1522",
+	"version": null,
+	"description": "External APIU ssed to get a list of the field workers. Note: Replace the endpoint url with your system url. ",
+	"mediaType": null,
+	"securitySchemes": null,
+	"swaggerURI": null,
+	"swaggerSystem": null,
+	"apiType": "",
+	"about": null,
+	"enableProxy": false,
+	"forwardProxy": null,
+	"restrictAccess": false,
+	"enableTrace": false,
+	"enableIDE": true,
+	"internalAPI": false,
+	"isPublic": false,
+	"tlsAllowUntrusted": false,
+	"useOwnProcess": false,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227",
+	"apiFormat": 0,
+	"roles": []
+}

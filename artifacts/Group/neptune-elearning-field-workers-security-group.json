@@ -1,0 +1,21 @@
+{
+	"id": "429dc3f7-4ee3-ed11-9f73-000d3a672630",
+	"createdAt": "2023-04-25T09:53:09.926Z",
+	"createdBy": "lloyd",
+	"name": "neptune-elearning-field-workers-security-group",
+	"description": "Security group for the field worker role.",
+	"ver": "25.02.13.1439",
+	"parent": null,
+	"isExternal": false,
+	"idpSource": "local",
+	"idpSourceId": null,
+	"idpSourceKey": null,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"roles": [
+		{
+			"id": "29fb0de4-c31a-ec11-ae72-dc9840105a9f",
+			"name": "neptune-elearning-field-worker",
+			"ver": "25.02.13.1430"
+		}
+	]
+}

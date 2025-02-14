@@ -10,80 +10,80 @@
 	},
 	"name": "neptunesoftware-dxp-abb-elearning",
 	"description": "A set of applications for equipment inspection, workflow triggering, and data analysis.",
-	"ver": "24.11.14.1352",
+	"ver": "25.02.14.1136",
 	"enableCICD": true,
 	"internalReadOnly": false,
-	"oeVersion": "24.10.1",
+	"oeVersion": "24.11.0-rc.5",
 	"excludeTemplateFiles": true,
 	"roles": [],
 	"apps": [
 		{
-			"id": "aec2c73b-b9b5-45f9-a181-23edc445e82d",
-			"application": "3fieldworkerinspect",
-			"title": "",
-			"description": ""
+			"id": "f8ba0078-6490-4df6-b80a-e60f6c93fea2",
+			"application": "neptune_elearning_field_worker_inspect",
+			"title": "Field Worker Inpection",
+			"description": "Application for performing inspection on the equipment."
 		},
 		{
-			"id": "773eb49a-0788-4bb9-a019-f8b083251255",
-			"application": "wf_details_embedded_app",
+			"id": "7b380f94-4db6-441f-802d-0afa06b76d75",
+			"application": "neptune_elearning_wf_details_embedded_app",
 			"title": "",
-			"description": ""
+			"description": "Workflow embedded application for displaying inspection details."
 		},
 		{
-			"id": "3c9af25e-4fc2-4dec-978e-fbb7d45b603b",
-			"application": "5analyticsapp",
-			"title": "",
-			"description": ""
+			"id": "5927daab-8a55-4a80-a109-adcac0a1b732",
+			"application": "neptune_elearning_create_new_equipment",
+			"title": "Create New Equipment",
+			"description": "Application for creating new equipment."
 		},
 		{
-			"id": "3323d8a7-477c-472c-ae04-7ad5095b63d0",
-			"application": "1createnewequipment",
-			"title": "",
-			"description": ""
+			"id": "20057f04-a0d8-4f9e-9517-065fd62c51c5",
+			"application": "neptune_elearning_view_and_edit_equipment",
+			"title": "View and Edit Equipment",
+			"description": "Application for viewing and editing equipment details."
 		},
 		{
-			"id": "3080f44c-3e82-4992-bb4c-e39be159338a",
-			"application": "2viewandeditequipment",
-			"title": "",
-			"description": "For the eLearning package"
+			"id": "04bedca7-a5bb-4dd6-81ac-be15aab6ca48",
+			"application": "neptune_elearning_fieldworker_inspect_offline",
+			"title": "Field Worker Inpection Offline",
+			"description": "Application for performing inspection on the equipment - Offline."
 		},
 		{
-			"id": "2b9790d7-bc4a-ec11-981f-0050f2794553",
-			"application": "3fieldworkerinspect_offline_version",
-			"title": "",
-			"description": ""
+			"id": "04898755-2903-4da6-aa71-57425e425f8c",
+			"application": "neptune_elearning_inspection_analytics",
+			"title": "Inspection Analytics",
+			"description": "Application for analysing the inspections status in a chart."
 		}
 	],
 	"api": [
 		{
 			"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
-			"name": "CoreAPI Security_Group eLearning",
-			"description": "Used to get a list of the FieldWorkers",
-			"apiGroup": null
+			"name": "neptune-elearning-security-group-API",
+			"description": "External APIU ssed to get a list of the field workers. Note: Replace the endpoint url with your system url. ",
+			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		},
 		{
 			"id": "c2c34e8b-3148-4020-8791-8f7b3cec84b6",
-			"name": "inspectionStats",
-			"description": null,
-			"apiGroup": null
+			"name": "neptune-elearning-inspection-stats-API",
+			"description": "Server Script API for getting the inspections status.",
+			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		},
 		{
 			"id": "8d54547d-aff9-4e0a-ba13-df649da7b78a",
-			"name": "Equipment Check Server Scripts",
-			"description": null,
-			"apiGroup": null
+			"name": "neptune-elearning-equipment-check-API",
+			"description": "Server Script API for determining when equipment is due for inspection and retrieving inspections for each user.",
+			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		},
 		{
 			"id": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
-			"name": "API inspections",
-			"description": null,
-			"apiGroup": null
+			"name": "neptune-elearning-inspections-API",
+			"description": "Table Definition API for performing operations on the inspections table.",
+			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		},
 		{
 			"id": "14a2137e-9e64-4383-9848-8e468f3834d6",
-			"name": "API equipment",
-			"description": null,
-			"apiGroup": null
+			"name": "neptune-elearning-equipment-API",
+			"description": "Table Definition API for performing operations on the equipment table.",
+			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		}
 	],
 	"odataSource": [],
@@ -92,56 +92,56 @@
 		{
 			"id": "a3c973ca-0816-ec11-ae72-0050f255283a",
 			"name": "inspections",
-			"description": null
+			"description": "Table used to store all the inspections and their details."
 		},
 		{
 			"id": "3299afd2-0816-ec11-ae72-0050f255283a",
 			"name": "equipment",
-			"description": null
+			"description": "Table used to store all the equipment data."
 		}
 	],
 	"jsclass": [
 		{
 			"id": "dc5401d3-db91-4a54-9911-e3e019f4e553",
-			"name": "CreateInspectionStats",
-			"description": null
+			"name": "neptune_elearning_create_inspection_stats",
+			"description": "Server Script for getting the inspections status. "
 		},
 		{
 			"id": "d9dea92d-d152-409f-b2a9-d48f26ceede3",
-			"name": "CreateLotsOfEquipment",
-			"description": null
+			"name": "neptune_elearning_create_equipment",
+			"description": "Server Script for creating mock equipment data."
 		},
 		{
 			"id": "cff149ef-ad51-4e96-b14c-c62e9a568ee9",
-			"name": "approvedWF",
-			"description": null
+			"name": "neptune-elearning-approved-WF",
+			"description": "Server Script for approving inspections."
 		},
 		{
 			"id": "c7a47e90-7808-4e9e-9150-dbef30bbc64d",
-			"name": "Get Field Worker Tasks",
-			"description": null
+			"name": "neptune_elearning_get_field_worker_tasks",
+			"description": "Server Script for getting the inspections for each user."
 		},
 		{
 			"id": "65b01aab-2565-4427-b37f-6077dca7bf86",
-			"name": "rejectedWF",
-			"description": null
+			"name": "neptune-elearning-rejected-WF",
+			"description": "Server Script for rejecting inspections."
 		},
 		{
 			"id": "0c264bce-ffcf-409e-af8d-9bc360ee6230",
-			"name": "Calculate days_until_check",
-			"description": null
+			"name": "neptune_elearning_calculate_days_until_check",
+			"description": "Server Script for calculating the days until an equipment is due for inspection."
 		}
 	],
 	"jsscript_group": [
 		{
 			"id": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
-			"name": "EquipmentCheckupScripts",
-			"description": null
+			"name": "neptune-elearning-equipment-checkup-scripts",
+			"description": "Server Scripts for generating equipment, calculating the days until check, generate inspection stats and getting the field workers tasks."
 		},
 		{
 			"id": "089a48c6-6626-4c48-aade-68129c29a97b",
-			"name": "elearningWFScript",
-			"description": null
+			"name": "neptune-elearning-WF-scripts",
+			"description": "Server Scripts for approving and rejecting the inspections."
 		}
 	],
 	"theme": [],
@@ -149,77 +149,83 @@
 	"rulesengine": [],
 	"reports": [],
 	"api_authentication": [],
-	"api_group": [],
+	"api_group": [
+		{
+			"id": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227",
+			"name": "neptune-elearning-connectivity-group",
+			"description": "Connectivity group for the neptune-elearning APIs."
+		}
+	],
 	"tile": [
 		{
 			"id": "bdaec96d-680b-49db-a058-e022e4b4fb58",
 			"description": null,
-			"name": "1AddEquipment"
+			"name": "neptune-elearning-add-equipment-tile"
 		},
 		{
 			"id": "b2d8b76e-6d1b-4c93-a515-6b5cf9f05cfa",
 			"description": null,
-			"name": "3FieldWorkerInspect - Offline"
+			"name": "neptune-elearning-field-worker-inspect-offline-tile"
 		},
 		{
 			"id": "9e3d4088-63cd-4196-9f1f-6249c7b66f60",
 			"description": null,
-			"name": "2ViewAndEditEquipment_v2"
+			"name": "neptune-elearning-view-and-edit-equipment-tile"
 		},
 		{
 			"id": "821dfb5a-0e3b-ec11-981f-0050f2794553",
 			"description": null,
-			"name": "Maintenance_Video"
+			"name": "neptune-elearning-demo-video-tile"
 		},
 		{
 			"id": "7ddc995c-0e80-eb11-85aa-0003ff1e43fb",
 			"description": null,
-			"name": "MY INBOX"
+			"name": "neptune-elearning-inbox-tile"
 		},
 		{
 			"id": "20d64b6a-2f72-4ce4-aa7d-00c53b29e20e",
 			"description": "",
-			"name": "Maintenance Status"
+			"name": "neptune-elearning-inspection-status"
 		},
 		{
 			"id": "0516c7ed-6910-4343-8d07-3e4115a6e585",
 			"description": null,
-			"name": "3FieldWorkerInspect"
+			"name": "neptune-elearning-field-worker-inspect-tile"
 		}
 	],
 	"tile_layout": [
 		{
 			"id": "315651aa-d23d-4035-9a94-f02fe0717123",
-			"NAME": "eLearning-dark"
+			"NAME": "neptune-elearning-dark-tile-layout"
 		},
 		{
 			"id": "0249cdd6-e33c-4938-b082-8c07f2cc5b06",
-			"NAME": "eLearning-light"
+			"NAME": "neptune-elearning-light-tile-layout"
 		}
 	],
 	"category": [
 		{
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
-			"description": null,
-			"name": "All Apps"
+			"description": "TIle Group containing all the elearning applications.",
+			"name": "neptune-elearning-applications-tile-group"
 		},
 		{
 			"id": "3253ae3e-38cf-4b6a-82f7-1ff998820397",
-			"description": null,
-			"name": "Main Apps"
+			"description": "TIle Group containing the field worker applications.",
+			"name": "neptune-elearning-main-applications-tile-group"
 		},
 		{
 			"id": "2827e03b-2676-4fb8-8140-1f2bdc5c892a",
-			"description": null,
-			"name": "Manager Apps"
+			"description": "TIle Group containing the manager applications.",
+			"name": "neptune-elearning-manager-applications-tile-group"
 		}
 	],
 	"tilegroup_layout": [],
 	"launchpad": [
 		{
 			"id": "e13bae95-5fd0-4e1c-a48c-a8771bfda440",
-			"name": "eLearning Launchpad",
-			"description": null
+			"name": "neptune-elearning-launchpad",
+			"description": "Central entry point for the elearning applications."
 		}
 	],
 	"launchpad_layout": [],
@@ -227,8 +233,8 @@
 	"role": [
 		{
 			"id": "29fb0de4-c31a-ec11-ae72-dc9840105a9f",
-			"name": "FieldWorkers",
-			"description": "dfgvbnm"
+			"name": "neptune-elearning-field-worker",
+			"description": "Assigning the Field Worker role to a user enables them to access the launchpad view designed for field workers. "
 		}
 	],
 	"systems": [],
@@ -237,15 +243,15 @@
 	"department": [
 		{
 			"id": "429dc3f7-4ee3-ed11-9f73-000d3a672630",
-			"name": "FieldWorkers",
-			"description": ""
+			"name": "neptune-elearning-field-workers-security-group",
+			"description": "Security group for the field worker role."
 		}
 	],
 	"script_scheduler": [],
 	"wf_definition": [
 		{
 			"id": "c90c723a-682f-ed11-a27c-0050f27989a1",
-			"title": "Inspection Approval",
+			"title": "neptune-elearning-inspection-approval-workflow",
 			"subTitle": null
 		}
 	],
@@ -255,16 +261,17 @@
 	"wf_determination": [
 		{
 			"id": "8ffb1515-f8fc-450d-b751-9d519470e39f",
-			"name": "eLearning-Inspection Approvers",
-			"description": null
+			"name": "neptune-elearning-inspection-approvers",
+			"description": "List of users that can approve inspections."
 		}
 	],
 	"wf_taskaction": [
 		{
 			"id": "90da28be-1e6e-46bb-a1df-2549d26ccb61",
-			"name": "eLearning-Inspection Approve",
-			"description": null
+			"name": "neptune-elearning-inspection-approve",
+			"description": "Task action for approving inspections."
 		}
 	],
-	"theme_ui5": []
+	"theme_ui5": [],
+	"webapp": []
 }

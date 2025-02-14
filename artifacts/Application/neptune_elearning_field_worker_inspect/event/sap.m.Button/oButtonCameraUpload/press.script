@@ -1,0 +1,2 @@
+fileElem = document.getElementById("file-input");
+fileElem.click();

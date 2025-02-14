@@ -1,0 +1,11 @@
+{
+	"id": "29fb0de4-c31a-ec11-ae72-dc9840105a9f",
+	"createdAt": "2021-09-21T10:08:39.913Z",
+	"createdBy": "admin",
+	"name": "neptune-elearning-field-worker",
+	"description": "Assigning the Field Worker role to a user enables them to access the launchpad view designed for field workers. ",
+	"ver": "25.02.13.1430",
+	"isGlobalAdmin": false,
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"acl": []
+}

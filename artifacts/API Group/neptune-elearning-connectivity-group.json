@@ -1,0 +1,9 @@
+{
+	"id": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227",
+	"createdAt": "2025-02-13T14:19:08.000Z",
+	"createdBy": "admin",
+	"name": "neptune-elearning-connectivity-group",
+	"description": "Connectivity group for the neptune-elearning APIs.",
+	"ver": "25.02.13.1419",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

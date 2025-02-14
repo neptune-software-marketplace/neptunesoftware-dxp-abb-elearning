@@ -1,0 +1,9 @@
+{
+	"id": "089a48c6-6626-4c48-aade-68129c29a97b",
+	"createdAt": "2021-04-06T13:48:38.000Z",
+	"createdBy": "james",
+	"name": "neptune-elearning-WF-scripts",
+	"description": "Server Scripts for approving and rejecting the inspections.",
+	"ver": "25.02.13.1432",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+}

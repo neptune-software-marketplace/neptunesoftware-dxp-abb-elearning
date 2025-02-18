@@ -58,7 +58,7 @@
 		{
 			"id": "fd2d84da-f11a-ec11-ae72-dc9840105a9f",
 			"name": "neptune-elearning-security-group-API",
-			"description": "External APIU ssed to get a list of the field workers. Note: Replace the endpoint url with your system url. ",
+			"description": "This API points to the current system and is used to get a list of the field workers, based on who is assigned to the Group. Note: Replace the endpoint URL with your system URL. ",
 			"apiGroup": "5d6f2da8-a286-4abc-8d25-c8d3f92e1227"
 		},
 		{

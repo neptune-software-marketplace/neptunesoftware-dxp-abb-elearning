@@ -10,8 +10,8 @@
 			"daysUntilOverdue": 1,
 			"title": "User Task",
 			"subTitle": "",
-			"userDeterminationLocal": "8ffb1515-f8fc-450d-b751-9d519470e39f",
-			"taskAction": "90da28be-1e6e-46bb-a1df-2549d26ccb61",
+			"userDeterminationLocal": "34781d5f-2def-4d36-b4d7-05aff8544791",
+			"taskAction": "b85d4673-8f62-4ff0-9e55-ebe076dea1e1",
 			"scriptId": "",
 			"runScriptInFork": false,
 			"customApproverScript": "",
@@ -274,8 +274,8 @@
 				"posX": 441.5054016113281,
 				"posY": 187.53868103027344,
 				"inboxApp": "neptune_elearning_wf_details_embedded_app",
-				"userDeterminationLocal": "8ffb1515-f8fc-450d-b751-9d519470e39f",
-				"taskAction": "90da28be-1e6e-46bb-a1df-2549d26ccb61"
+				"userDeterminationLocal": "34781d5f-2def-4d36-b4d7-05aff8544791",
+				"taskAction": "b85d4673-8f62-4ff0-9e55-ebe076dea1e1"
 			},
 			{
 				"id": "object-77e655ac-cbd6-40e6-8ab8-89961c56dc17",
@@ -505,6 +505,6 @@
 	"omitSaturday": false,
 	"omitSunday": false,
 	"icon": null,
-	"ver": "25.02.13.1535",
+	"ver": "25.02.19.1548",
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 }

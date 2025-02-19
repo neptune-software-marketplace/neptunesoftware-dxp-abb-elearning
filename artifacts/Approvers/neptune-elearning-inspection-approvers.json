@@ -1,19 +1,19 @@
 {
-	"id": "8ffb1515-f8fc-450d-b751-9d519470e39f",
-	"createdAt": "2024-02-19T14:41:55.000Z",
+	"id": "34781d5f-2def-4d36-b4d7-05aff8544791",
+	"createdAt": "2025-02-19T15:46:57.000Z",
 	"createdBy": "admin",
 	"items": [
 		{
-			"id": "1a46d55f-0be7-47a7-97e8-e5657ff6cbc2",
+			"id": "22f63bb7-0101-4472-9228-4128e08a8de3",
 			"orgUnit": "U",
 			"orgValue": "admin",
 			"amountFrom": 0,
-			"amountTo": "100000",
+			"amountTo": "10000",
 			"operation": "O",
 			"taskType": [],
 			"orgId": "9689e62e-f6e3-4bb0-a343-8f4b93625e3c",
 			"taskAction": [
-				"90da28be-1e6e-46bb-a1df-2549d26ccb61"
+				"b85d4673-8f62-4ff0-9e55-ebe076dea1e1"
 			]
 		}
 	],

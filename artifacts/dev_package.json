@@ -260,14 +260,14 @@
 	"code_snippets": [],
 	"wf_determination": [
 		{
-			"id": "8ffb1515-f8fc-450d-b751-9d519470e39f",
+			"id": "34781d5f-2def-4d36-b4d7-05aff8544791",
 			"name": "neptune-elearning-inspection-approvers",
 			"description": "List of users that can approve inspections."
 		}
 	],
 	"wf_taskaction": [
 		{
-			"id": "90da28be-1e6e-46bb-a1df-2549d26ccb61",
+			"id": "b85d4673-8f62-4ff0-9e55-ebe076dea1e1",
 			"name": "neptune-elearning-inspection-approve",
 			"description": "Task action for approving inspections."
 		}

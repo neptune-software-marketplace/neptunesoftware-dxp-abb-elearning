@@ -24,6 +24,13 @@
 					"value": "true",
 					"script": "",
 					"translation": []
+				},
+				{
+					"attribute": "styleClass",
+					"grouping": "Properties",
+					"value": "wfEmbeddedApp",
+					"script": "",
+					"translation": []
 				}
 			],
 			"data": [
@@ -530,7 +537,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.02.13.1536",
+	"ver": "25.02.25.1220",
 	"application": "neptune_elearning_wf_details_embedded_app",
 	"title": "",
 	"description": "Workflow embedded application for displaying inspection details.",

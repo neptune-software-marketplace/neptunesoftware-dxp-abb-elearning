@@ -27,11 +27,3 @@ all.forEach(inspection => {
 result = inspection_ct;
 
 console.log("Completion Dict:: ", inspection_ct);
-
-
-
-// Pieces of equipment
-
-//Could get them all individually like this, but thats no bueno. Muchas llamadas --JB
-// var completed_ct = await entities.inspections.count({status: "Complete"});
-// console.log("Complete Count:: ", completed_ct);

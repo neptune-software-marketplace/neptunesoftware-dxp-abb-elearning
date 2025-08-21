@@ -109,8 +109,7 @@
 		"",
 		"<!-- Signature Pad -->",
 		"<script src=\"https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js\"></script>",
-		"",
-		"<script src=\"https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js\"></script>"
+		""
 	],
 	"customTheme": null,
 	"isExternal": false,
@@ -133,7 +132,7 @@
 	"searchEnableShadeCalc": null,
 	"usedEnableShadeCalc": null,
 	"enableTrace": true,
-	"ver": "25.02.18.1422",
+	"ver": "25.08.21.1147",
 	"pwa_enable": false,
 	"pwa_customImageIos": null,
 	"pwa_customImageAndroidOld": null,
@@ -149,6 +148,7 @@
 	"passwordResetEmail": null,
 	"activationCodeEmail": null,
 	"noSubmenuHover": false,
+	"defaultLanguage": null,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"cat": [
 		{

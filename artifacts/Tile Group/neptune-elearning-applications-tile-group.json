@@ -30,7 +30,7 @@
 	"enableShadeCalc": false,
 	"numTiles": null,
 	"enableMessage": false,
-	"ver": "25.02.14.0906",
+	"ver": "25.11.13.1148",
 	"headColor": null,
 	"headTxtClr": null,
 	"subheadTxtClr": null,
@@ -104,7 +104,7 @@
 	"darkTileLayouts": [
 		{
 			"id": "315651aa-d23d-4035-9a94-f02fe0717123",
-			"ver": "25.02.13.1449"
+			"ver": "25.11.13.1143"
 		}
 	],
 	"tiles": [],

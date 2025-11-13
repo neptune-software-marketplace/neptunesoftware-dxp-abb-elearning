@@ -9,7 +9,6 @@
 			"fieldParent": 0,
 			"fieldType": "sap.ui.layout.form.SimpleForm",
 			"script": "",
-			"customComponent": false,
 			"bindingValue": "API inspections>inspections",
 			"bindingType": "u",
 			"bindingSource": "API",
@@ -40,7 +39,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -60,7 +58,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -80,7 +77,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -100,7 +96,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -120,7 +115,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -140,7 +134,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -160,7 +153,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -180,7 +172,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -200,7 +191,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -220,7 +210,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -240,7 +229,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -260,7 +248,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Text",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -280,7 +267,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Label",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -300,7 +286,6 @@
 					"fieldParent": "9af248d7-7f19-406c-f8c0-338868fdaff2",
 					"fieldType": "sap.m.Carousel",
 					"script": "",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [
@@ -347,7 +332,6 @@
 							"fieldParent": "69f54692-fc82-40dc-edd4-dea2b1925c5c",
 							"fieldType": "sap.m.Page",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -373,7 +357,6 @@
 									"fieldParent": "519cd8ab-c856-44db-fcaf-6c49f3f6959d",
 									"fieldType": "sap.m.Image",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -409,7 +392,6 @@
 							"fieldParent": "69f54692-fc82-40dc-edd4-dea2b1925c5c",
 							"fieldType": "sap.m.Page",
 							"script": "",
-							"customComponent": false,
 							"request": [],
 							"response": [],
 							"attributes": [
@@ -435,7 +417,6 @@
 									"fieldParent": "2a382ffa-0093-4ba2-ded3-b4d694f14c83",
 									"fieldType": "sap.m.Image",
 									"script": "",
-									"customComponent": false,
 									"request": [],
 									"response": [],
 									"attributes": [
@@ -478,7 +459,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.model.array",
 					"script": "",
-					"customComponent": false,
 					"bindingValue": "API inspections>inspections",
 					"bindingType": "h",
 					"bindingSource": "API",
@@ -495,7 +475,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.restapi",
 					"script": "",
-					"customComponent": false,
 					"restSource": "51dcdbec-93ff-4733-b351-dcead0a6e34f",
 					"restOperation": "e2fbff13-678d-4f9b-fb82-c1cba04061a8",
 					"request": [],
@@ -511,7 +490,8 @@
 							"attribute": "ajaxSuccess",
 							"grouping": "Events",
 							"value": "Anonymous Function",
-							"script": "file://event/neptune.restapi/oRestAPIInspectionGet/ajaxSuccess.script",
+							"script": "file://event/neptune.restapi/oRestAPIInspectionGet/ajaxSuccess.js",
+							"language": "javascript",
 							"translation": []
 						}
 					],
@@ -523,7 +503,6 @@
 					"fieldParent": 99999,
 					"fieldType": "neptune.Script",
 					"script": "file://script/neptune.Script/oJavascript.js",
-					"customComponent": false,
 					"request": [],
 					"response": [],
 					"attributes": [],
@@ -537,7 +516,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.02.25.1220",
+	"ver": "25.11.13.1307",
 	"application": "neptune_elearning_wf_details_embedded_app",
 	"title": "",
 	"description": "Workflow embedded application for displaying inspection details.",

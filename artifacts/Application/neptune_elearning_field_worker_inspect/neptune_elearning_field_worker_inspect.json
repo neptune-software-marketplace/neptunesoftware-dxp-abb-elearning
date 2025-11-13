@@ -1773,7 +1773,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.11.12.1617",
+	"ver": "25.11.13.1311",
 	"application": "neptune_elearning_field_worker_inspect",
 	"title": "Field Worker Inpection",
 	"description": "Application for performing inspection on the equipment.",

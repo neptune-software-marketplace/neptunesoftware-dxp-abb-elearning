@@ -1,5 +1,5 @@
 if (sap.n) {
-    sap.n.Shell.attachInit(function (data) {
+    neptune.Shell.attachBeforeDisplay((data) => {
         console.log("WORKFLOW DATA IN APP:");
 
         var options = {
@@ -8,8 +8,6 @@ if (sap.n) {
             }
         };
         
-
-
         apioRestAPIInspectionGet(options);
         jQuery.sap.addUrlWhitelist("blob");
 })};

@@ -1,38 +1,45 @@
 /**
- * Inspection Job Page — Robust Build (Designer + Launchpad) — OFFLINE
- * -------------------------------------------------------------------
- * Guarantees:
- *  - One Leaflet map instance per page.
- *  - First-load-safe: builds only when the host div is visible.
- *  - Works in Designer iframe (injects Leaflet CSS + minimal inline fallback).
- *  - ID-agnostic: no reliance on view IDs / Launchpad prefixes.
- *  - Offline storage logic preserved as-is.
+ * Inspection Job Page — Map + Offline Workflow
+ * --------------------------------------------
+ * Responsibilities
+ *  - Initialise and maintain a single Leaflet map instance bound to `jobLocationMap`.
+ *  - Work reliably in Launchpad, Designer (iframe) and offline runtime.
+ *  - Populate the inspection detail page with data and UI state.
+ *  - Collate partial inspection input and save as a draft (offline-aware).
+ *  - Collate final inspection input and submit it (online).
+ *  - Derive "ready to submit" state from the four sections:
+ *      Comments, Picture, Barcode, Signature.
  *
- * Notes:
- *  - Tiles: OpenStreetMap endpoint (no access token required).
- *  - If preview CSP blocks external tiles, point the tile URL to an allowed endpoint.
+ * Map handling
+ *  - Uses a stable host div `<jobLocationMapId>-host` for Leaflet.
+ *  - Loads Leaflet JS + CSS into the current frame if missing, with a minimal
+ *    inline CSS fallback so tiles/markers render in Designer if the header tags
+ *    are not applied inside the iframe.
+ *  - Waits until the host has non-zero width/height before building the map.
+ *  - Schedules the first build via observers + polling so it is safe when
+ *    `onAfterRendering` is not fired as expected.
+ *
+ * Offline behaviour
+ *  - `savePartialInspectionAndNavigate()`:
+ *      - If `AppCache.isOffline` is true, updates `oModelArrayOfflineStorage`
+ *        and writes back via `setCacheoModelArrayOfflineStorage()`.
+ *      - If online, posts to the backend and refreshes the inspection list.
+ *  - `submitInspection()` always posts to the backend and navigates back.
  */
 
-// =============================
-// Global state
-// =============================
-let map;                 // Leaflet map instance
-let markerLayer;         // Layer group for markers
-let hostId;              // Stable child div for Leaflet to own
-let pendingView = null;  // {lat, lng} queued until first render
+// ===========================================================
+// Global map state
+// ===========================================================
+let map;
+let markerLayer;
+let hostId;
+let pendingView = null;
 
-// Debug toggle (keep false in prod)
-const DBG = { enabled: false };
-function dbg(label, data) {
-  if (!DBG.enabled) return;
-  const ts = new Date().toISOString().split("T")[1].replace("Z", "");
-  console.log(`[eLearningDBG ${ts}] ${label}`, data ?? "");
-}
-
-// =============================
+// ===========================================================
 // DOM helpers
-// =============================
+// ===========================================================
 function getContainerEl() {
+  // Prefer rendered DOM of the control; fall back to ID lookup
   return jobLocationMap.getDomRef() || document.getElementById(jobLocationMap.getId());
 }
 
@@ -43,44 +50,61 @@ function ensureHostDiv(containerEl) {
     host = document.createElement("div");
     host.id = hostId;
     host.style.height = "100%";
-    host.style.width  = "100%";
+    host.style.width = "100%";
     containerEl.appendChild(host);
-    dbg("hostDiv", { action: "created", id: hostId });
   } else if (host.parentNode !== containerEl) {
     containerEl.appendChild(host);
-    dbg("hostDiv", { action: "reparented", id: hostId });
   }
   return host;
 }
 
 function waitUntilVisible(el, cb) {
-  const ready = () => el && el.isConnected && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0;
-  if (ready()) return cb();
+  const ready = () =>
+    el &&
+    el.isConnected &&
+    el.getBoundingClientRect().width > 0 &&
+    el.getBoundingClientRect().height > 0;
+
+  if (ready()) {
+    cb();
+    return;
+  }
 
   let ro;
   try {
-    ro = new ResizeObserver(() => { if (ready()) { ro.disconnect(); cb(); } });
+    ro = new ResizeObserver(() => {
+      if (ready()) {
+        ro.disconnect();
+        cb();
+      }
+    });
     ro.observe(el);
   } catch {}
+
   let tries = 80;
   const t = setInterval(() => {
-    if (ready()) { clearInterval(t); ro && ro.disconnect(); cb(); }
-    else if (--tries <= 0) { clearInterval(t); ro && ro.disconnect(); }
+    if (ready()) {
+      clearInterval(t);
+      ro && ro.disconnect();
+      cb();
+    } else if (--tries <= 0) {
+      clearInterval(t);
+      ro && ro.disconnect();
+    }
   }, 50);
 }
 
-// =============================
+// ===========================================================
 // Leaflet loader (iframe-safe)
-// =============================
+// ===========================================================
 const LEAFLET_VER = "1.9.4";
-const LEAFLET_JS  = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.js`;
+const LEAFLET_JS = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.js`;
 const LEAFLET_CSS = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.css`;
 
 function ensureLeafletCssInline() {
   if (document.getElementById("leaflet-css-inline")) return;
   const style = document.createElement("style");
   style.id = "leaflet-css-inline";
-  // Minimal subset sufficient to render tiles/markers
   style.textContent = `
     .leaflet-container { position:relative; outline:0; height:100%; width:100%; }
     .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow,
@@ -102,33 +126,36 @@ function ensureLeaflet(then) {
     link.id = "leaflet-css";
     link.rel = "stylesheet";
     link.href = LEAFLET_CSS;
-    link.onload = () => { cssReady = true; dbg("leafletCSS", "loaded"); };
-    link.onerror = () => { dbg("leafletCSS", "load-failed"); };
+    link.onload = () => { cssReady = true; };
     document.head.appendChild(link);
   }
   ensureLeafletCssInline();
 
-  if (window.L) return cssReady ? then() : setTimeout(then, 0);
+  if (window.L) {
+    cssReady ? then() : setTimeout(then, 0);
+    return;
+  }
 
   if (!document.getElementById("leaflet-js")) {
     const s = document.createElement("script");
     s.id = "leaflet-js";
     s.src = LEAFLET_JS;
-    s.onload = () => { dbg("leafletJS", "loaded"); then(); };
-    s.onerror = () => dbg("leafletJS", "load-failed");
+    s.onload = then;
     document.head.appendChild(s);
   } else {
-    (function wait(){ if (window.L) then(); else setTimeout(wait, 40); })();
+    (function wait() {
+      if (window.L) then();
+      else setTimeout(wait, 40);
+    })();
   }
 }
 
-// =============================
+// ===========================================================
 // Map build / update
-// =============================
+// ===========================================================
 function performBuildOrUpdate(lat, lng) {
   const containerEl = getContainerEl();
   if (!containerEl) {
-    dbg("map", "container missing; will navigate + retry");
     oApp.to(viewInspectionJob);
     requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
     return;
@@ -143,11 +170,9 @@ function performBuildOrUpdate(lat, lng) {
         try { map.remove(); } catch {}
         map = null;
         markerLayer = null;
-        dbg("map", "detached map container removed");
       }
 
       if (!map) {
-        dbg("map", { build: "new", lat, lng });
         map = L.map(host).setView([lat, lng], 13);
 
         // OpenStreetMap tiles (no token needed)
@@ -158,7 +183,6 @@ function performBuildOrUpdate(lat, lng) {
 
         markerLayer = L.layerGroup().addTo(map);
       } else {
-        dbg("map", { build: "update", lat, lng });
         map.invalidateSize();
         map.setView([lat, lng], 13);
       }
@@ -172,13 +196,12 @@ function performBuildOrUpdate(lat, lng) {
   });
 }
 
-// =============================
+// ===========================================================
 // First build scheduling (Designer-safe fallback)
-// =============================
+// ===========================================================
 let buildFallbackArmed = false;
 function scheduleInitialBuild(lat, lng) {
   pendingView = { lat, lng };
-  dbg("map", { scheduleInitialBuild: pendingView });
 
   if (buildFallbackArmed) return;
   buildFallbackArmed = true;
@@ -192,17 +215,16 @@ function scheduleInitialBuild(lat, lng) {
     if (r.width > 0 && r.height > 0) {
       const { lat, lng } = pendingView;
       pendingView = null;
-      dbg("map", { fallback: "host visible -> perform initial build", lat, lng });
       performBuildOrUpdate(lat, lng);
     }
   };
 
-  // Observe DOM + size; poll as last resort
   let mo, ro;
   try {
     mo = new MutationObserver(() => tryBuildIfReady());
     mo.observe(document.body, { childList: true, subtree: true });
   } catch {}
+
   try {
     const watch = () => {
       const c = getContainerEl();
@@ -212,6 +234,7 @@ function scheduleInitialBuild(lat, lng) {
     };
     setTimeout(watch, 0);
   } catch {}
+
   let ticks = 100;
   const iv = setInterval(() => {
     tryBuildIfReady();
@@ -224,7 +247,9 @@ function scheduleInitialBuild(lat, lng) {
   }, 60);
 }
 
-// Optional: still use onAfterRendering when it fires
+// ===========================================================
+// onAfterRendering hook
+// ===========================================================
 (function attachAfterRenderingOnce() {
   if (!jobLocationMap || !jobLocationMap.addEventDelegate) return;
   let attached = false;
@@ -237,7 +262,6 @@ function scheduleInitialBuild(lat, lng) {
         if (pendingView) {
           const { lat, lng } = pendingView;
           pendingView = null;
-          dbg("map", { afterRendering: "trigger initial build", lat, lng });
           requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
         } else if (map) {
           requestAnimationFrame(() => map && map.invalidateSize());
@@ -248,11 +272,11 @@ function scheduleInitialBuild(lat, lng) {
   }
 })();
 
-// =============================
-// Page logic (offline storage preserved)
-// =============================
+// ===========================================================
+// Page logic (offline-aware)
+// ===========================================================
 function populateInspectionJobPage(data) {
-  // Navigate to detail view (guarded)
+  // Navigate to detail view
   try {
     const current = oApp.getCurrentPage && oApp.getCurrentPage();
     if (!current || current.getId() !== viewInspectionJob.getId()) {
@@ -268,15 +292,18 @@ function populateInspectionJobPage(data) {
   // Start on Comments tab
   oIconTabBar.setSelectedKey("COMM");
 
-  // Map first-load-safe path
+  // Map build path
   const lat = Number(data.equip_latitude);
   const lng = Number(data.equip_longitude);
   if (Number.isFinite(lat) && Number.isFinite(lng)) {
-    if (!map) scheduleInitialBuild(lat, lng);
-    else performBuildOrUpdate(lat, lng);
+    if (!map) {
+      scheduleInitialBuild(lat, lng);
+    } else {
+      performBuildOrUpdate(lat, lng);
+    }
   }
 
-  // ----- Inspection Data (unchanged) -----
+  // ----- Inspection Data -----
   var isAllDataPresent = true;
 
   // Comments
@@ -306,7 +333,6 @@ function populateInspectionJobPage(data) {
     isAllDataPresent = false;
   } else {
     oImagePictureProvided.setSrc(data.inspections_attachments);
-    // ImageBase64InvisiblePlaceholder.setText(data.inspections_attachments)
     oButtonCameraUpload.setEnabled(false);
     oButtonSavePicture.setType("Accept");
     oButtonSavePicture.setEnabled(false);
@@ -349,17 +375,18 @@ function populateInspectionJobPage(data) {
   checkIfReadyToSubmit();
 }
 
-// =============================
-// Submit readiness
-// =============================
+// ===========================================================
+// Readiness / collate / save / submit (offline-aware)
+// ===========================================================
 function checkIfReadyToSubmit() {
-  let ready = true;
-  if (tabComments.getIconColor() === "Default") ready = false;
-  if (tabPicture.getIconColor() === "Default") ready = false;
-  if (tabBarcode.getIconColor() === "Default") ready = false;
-  if (tabSign.getIconColor() === "Default") ready = false;
+  let readyToSubmit = true;
 
-  if (ready) {
+  if (tabComments.getIconColor() === "Default") readyToSubmit = false;
+  if (tabPicture.getIconColor() === "Default") readyToSubmit = false;
+  if (tabBarcode.getIconColor() === "Default") readyToSubmit = false;
+  if (tabSign.getIconColor() === "Default") readyToSubmit = false;
+
+  if (readyToSubmit) {
     sap.m.MessageToast.show("Ready to submit!");
     oButtonSubmitInspection.setEnabled(true);
   } else {
@@ -367,23 +394,24 @@ function checkIfReadyToSubmit() {
   }
 }
 
-// =============================
-// Offline data handling (unchanged behavior)
-// =============================
 function collateInspectionData() {
   var inspectionObject = {};
 
-  if (tabComments.getIconColor() === "Positive") { inspectionObject.comments = oTextArea.getValue(); }
-  else { inspectionObject.comments = null; }
+  // Comments
+  inspectionObject.comments =
+    tabComments.getIconColor() === "Positive" ? oTextArea.getValue() : null;
 
-  if (tabPicture.getIconColor() === "Positive") { inspectionObject.attachments = oImagePictureProvided.getSrc(); }
-  else { inspectionObject.attachments = null; }
+  // Picture
+  inspectionObject.attachments =
+    tabPicture.getIconColor() === "Positive" ? oImagePictureProvided.getSrc() : null;
 
-  if (tabBarcode.getIconColor() === "Positive") { inspectionObject.equipment_barcode_scan = oInputScanResult.getValue(); }
-  else { inspectionObject.equipment_barcode_scan = null; }
+  // Barcode
+  inspectionObject.equipment_barcode_scan =
+    tabBarcode.getIconColor() === "Positive" ? oInputScanResult.getValue() : null;
 
-  if (tabSign.getIconColor() === "Positive") { inspectionObject.signature = oImageExisitingSignature.getSrc(); }
-  else { inspectionObject.signature = null; }
+  // Signature
+  inspectionObject.signature =
+    tabSign.getIconColor() === "Positive" ? oImageExisitingSignature.getSrc() : null;
 
   return inspectionObject;
 }
@@ -395,23 +423,42 @@ function savePartialInspectionAndNavigate() {
   var pageData = modelviewInspectionJob.getData();
 
   if (AppCache && AppCache.isOffline) {
-    var offlineRecord = ModelData.Find(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id);
-    offlineRecord[0].inspections_comments = draftData.comments;
-    offlineRecord[0].inspections_attachments = draftData.attachments;
-    offlineRecord[0].inspections_signature = draftData.signature;
-    offlineRecord[0].inspections_equipment_barcode_scan = draftData.equipment_barcode_scan;
+    // Fully offline: update cached inspection array
+    var offlineRecord = ModelData.Find(
+      oModelArrayOfflineStorage,
+      "inspections_id",
+      pageData.inspections_id
+    );
 
-    ModelData.Update(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id, offlineRecord[0]);
-    setCacheoModelArrayOfflineStorage();
+    if (offlineRecord && offlineRecord[0]) {
+      offlineRecord[0].inspections_comments = draftData.comments;
+      offlineRecord[0].inspections_attachments = draftData.attachments;
+      offlineRecord[0].inspections_signature = draftData.signature;
+      offlineRecord[0].inspections_equipment_barcode_scan =
+        draftData.equipment_barcode_scan;
 
-    modeloListInspectionJobs.setData(modeloModelArrayOfflineStorage.getData());
+      ModelData.Update(
+        oModelArrayOfflineStorage,
+        "inspections_id",
+        pageData.inspections_id,
+        offlineRecord[0]
+      );
+      setCacheoModelArrayOfflineStorage();
+
+      modeloListInspectionJobs.setData(
+        modeloModelArrayOfflineStorage.getData()
+      );
+    }
   } else {
+    // Online: update backend and refresh list
     var options = {
-      parameters: { "where": JSON.stringify({ "id": pageData.inspections_id }) },
+      parameters: { where: JSON.stringify({ id: pageData.inspections_id }) },
       data: draftData
     };
     apipostToInspectionTable(options);
-    setTimeout(function() { apigetInspectionList(); }, 100);
+    setTimeout(function () {
+      apigetInspectionList();
+    }, 100);
   }
 
   oApp.to(myInspectionJobs);
@@ -426,9 +473,10 @@ function submitInspection() {
   var pageData = modelviewInspectionJob.getData();
 
   var options = {
-    parameters: { "where": JSON.stringify({ "id": pageData.inspections_id }) },
+    parameters: { where: JSON.stringify({ id: pageData.inspections_id }) },
     data: inspectionData
   };
+
   apipostToInspectionTable(options);
 
   oApp.to(myInspectionJobs);

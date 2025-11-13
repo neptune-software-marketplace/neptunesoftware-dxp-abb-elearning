@@ -1818,7 +1818,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.11.12.1614",
+	"ver": "25.11.13.1314",
 	"application": "neptune_elearning_fieldworker_inspect_offline",
 	"title": "Field Worker Inpection Offline",
 	"description": "Application for performing inspection on the equipment - Offline.",

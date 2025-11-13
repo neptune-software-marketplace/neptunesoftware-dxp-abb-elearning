@@ -1,56 +1,67 @@
 /**
- * Inspection Job Page — Robust Build (Designer + Launchpad)
- * ---------------------------------------------------------
- * Why this exists
- *  - UI5 rendering differs between Launchpad and Designer (iframe preview).
- *  - In Designer, jobLocationMap may not fire a second `onAfterRendering` after navigation,
- *    so the first Leaflet build can be skipped unless we add a fallback.
+ * Inspection Job Page — Map + Workflow Orchestration
+ * --------------------------------------------------
+ * Responsibilities
+ *  - Initialise and maintain a single Leaflet map instance bound to `jobLocationMap`.
+ *  - Work reliably in both Launchpad and App Designer (iframe) runtimes.
+ *  - Populate the inspection detail page with data and UI state.
+ *  - Collate partial inspection input and save as a draft.
+ *  - Collate final inspection input and submit it.
+ *  - Derive "ready to submit" state from the four sections:
+ *      Comments, Picture, Barcode, Signature.
  *
- * What this code guarantees
- *  - One Leaflet map instance per page (global `map`).
- *  - Always builds when the host div is visible (non-zero size), regardless of runtime.
- *  - Works if Leaflet JS is present but CSS is missing in the iframe (injects CSS + inline fallback).
- *  - Safe re-entry: updates view and marker if the map already exists.
+ * Map handling
+ *  - `getContainerEl()` resolves the UI5 control DOM for `jobLocationMap`.
+ *  - `ensureHostDiv()` creates a stable `<div id="<controlId>-host">` for Leaflet
+ *    so we are independent of UI5’s internal DOM.
+ *  - `ensureLeaflet()` guarantees Leaflet JS + CSS exist in the current frame
+ *    (Designer preview runs inside an iframe, so header tags are not enough).
+ *  - `waitUntilVisible()` waits until the host has non-zero width/height before
+ *    creating or updating the map to avoid the “zero-size map” problem.
+ *  - `scheduleInitialBuild()` stores the target lat/lng and uses
+ *    MutationObserver, ResizeObserver, and a short polling loop to trigger the
+ *    first map build even when `onAfterRendering` does not fire as expected.
+ *  - `performBuildOrUpdate()` (re)uses a single global `map` instance, recenters
+ *    the view, and recreates the marker each time an inspection is opened.
  *
- * Key components
- *  - ensureLeaflet(): Ensures Leaflet JS + CSS in the *current frame*; adds a minimal inline CSS fallback.
- *  - ensureHostDiv(): Creates a stable child div (`<controlId>-host`) for Leaflet to own.
- *  - waitUntilVisible(): Defers first build until container has real size (ResizeObserver + polling).
- *  - scheduleInitialBuild(): Sets `pendingView` then arms a unified fallback:
- *      MutationObserver (DOM attach), ResizeObserver (size changes), and a short poll.
- *    This complements `onAfterRendering` and makes Designer reliable.
- *  - performBuildOrUpdate(): Idempotent builder; creates or updates map + marker; fixes size after layout.
+ * Page behaviour
+ *  - `populateInspectionJobPage(data)`:
+ *      - Navigates to the inspection detail page if needed.
+ *      - Binds the `data` object to `modelviewInspectionJob`.
+ *      - Selects the Comments tab by default.
+ *      - Triggers initial map build or update based on `data.equip_latitude`
+ *        and `data.equip_longitude`.
+ *      - For each section (Comments, Picture, Barcode, Signature), sets the
+ *        control values and icon colour (Positive/Default) based on whether
+ *        data is present.
+ *      - Sets `oTextIsAllDataPresent` to "true"/"false" as a simple flag.
+ *      - Calls `checkIfReadyToSubmit()` to enable/disable the submit button.
  *
- * Behavior summary
- *  - First load:
- *      - populateInspectionJobPage() sets model, sets tab, schedules initial build (or updates existing map).
- *      - Either `onAfterRendering` OR the fallback will trigger performBuildOrUpdate() once.
- *  - Subsequent loads:
- *      - performBuildOrUpdate() reuses the existing map and recenters/updates the marker.
+ * Draft and submit
+ *  - `collateInspectionData()` reads current UI state and returns a plain object
+ *    with `comments`, `attachments`, `equipment_barcode_scan` and `signature`
+ *    (null when the relevant tab is not in a saved/Positive state).
+ *  - `savePartialInspectionAndNavigate()`:
+ *      - Builds the draft object.
+ *      - Updates the inspection row via `apipostToInspectionTable`.
+ *      - Navigates back to `myInspectionJobs` and refreshes the list.
+ *  - `submitInspection()`:
+ *      - Builds the final object.
+ *      - Sets `status = "Submitted"`.
+ *      - Updates the inspection row via `apipostToInspectionTable`.
+ *      - Navigates back to `myInspectionJobs`.
  *
- * Operational notes
- *  - Toggle logs: set `const DBG = { enabled: false }` (default off).
- *  - CSP: if OSM tiles are blocked in preview, swap the tile URL to an allowed internal endpoint.
- *  - Memory safety: if the Leaflet container detaches (UI5 re-render), we remove and rebuild.
- *
+ * Readiness check
+ *  - `checkIfReadyToSubmit()`:
+ *      - Checks the icon colour of the four tabs.
+ *      - Enables the Submit button and shows “Ready to submit!” only when all
+ *        four sections are marked Positive.
  */
-
-// ===========================================================
 
 let map;
 let markerLayer;
 let hostId;
 let pendingView = null;
-
-// ---------- DEBUG ----------
-const DBG = { enabled: false };
-function dbg(label, data) {
-  if (!DBG.enabled) return;
-  try {
-    const ts = new Date().toISOString().split("T")[1].replace("Z", "");
-    console.log(`[eLearningDBG ${ts}] ${label}`, data ?? "");
-  } catch {}
-}
 
 // ---------- UTILITIES ----------
 function getContainerEl() {
@@ -65,47 +76,59 @@ function ensureHostDiv(containerEl) {
     host = document.createElement("div");
     host.id = hostId;
     host.style.height = "100%";
-    host.style.width  = "100%";
+    host.style.width = "100%";
     containerEl.appendChild(host);
-    dbg("hostDiv", { action: "created", id: hostId });
   } else if (host.parentNode !== containerEl) {
     containerEl.appendChild(host);
-    dbg("hostDiv", { action: "reparented", id: hostId });
-  } else {
-    dbg("hostDiv", { action: "exists", id: hostId });
   }
   return host;
 }
 
 function waitUntilVisible(el, cb) {
-  const ready = () => el && el.isConnected && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0;
-  if (ready()) return cb();
+  const ready = () =>
+    el &&
+    el.isConnected &&
+    el.getBoundingClientRect().width > 0 &&
+    el.getBoundingClientRect().height > 0;
 
-  // ResizeObserver to catch size changes
+  if (ready()) {
+    cb();
+    return;
+  }
+
   let ro;
   try {
-    ro = new ResizeObserver(() => { if (ready()) { ro.disconnect(); cb(); } });
+    ro = new ResizeObserver(() => {
+      if (ready()) {
+        ro.disconnect();
+        cb();
+      }
+    });
     ro.observe(el);
   } catch {}
 
-  // Poll as a safety net (Designer can throttle observers)
   let tries = 80;
   const t = setInterval(() => {
-    if (ready()) { clearInterval(t); ro && ro.disconnect(); cb(); }
-    else if (--tries <= 0) { clearInterval(t); ro && ro.disconnect(); }
+    if (ready()) {
+      clearInterval(t);
+      ro && ro.disconnect();
+      cb();
+    } else if (--tries <= 0) {
+      clearInterval(t);
+      ro && ro.disconnect();
+    }
   }, 50);
 }
 
-// ---------- Leaflet loader (CSS + inline minimal fallback) ----------
+// ---------- Leaflet loader (CSS + minimal inline fallback) ----------
 const LEAFLET_VER = "1.9.4";
-const LEAFLET_JS  = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.js`;
+const LEAFLET_JS = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.js`;
 const LEAFLET_CSS = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.css`;
 
 function ensureLeafletCssInline() {
   if (document.getElementById("leaflet-css-inline")) return;
   const style = document.createElement("style");
   style.id = "leaflet-css-inline";
-  // Minimal subset sufficient to render tiles/markers
   style.textContent = `
     .leaflet-container { position:relative; outline:0; height:100%; width:100%; }
     .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow,
@@ -121,32 +144,33 @@ function ensureLeafletCssInline() {
 }
 
 function ensureLeaflet(then) {
-  // Ensure CSS in THIS frame (Designer runs in an iframe)
   let cssReady = !!document.getElementById("leaflet-css");
   if (!cssReady) {
     const link = document.createElement("link");
     link.id = "leaflet-css";
     link.rel = "stylesheet";
     link.href = LEAFLET_CSS;
-    link.onload = () => { cssReady = true; dbg("leafletCSS", "loaded"); };
-    link.onerror = () => { dbg("leafletCSS", "load-failed"); };
+    link.onload = () => { cssReady = true; };
     document.head.appendChild(link);
   }
-  // Always add inline fallback (harmless if link works)
   ensureLeafletCssInline();
 
-  if (window.L) return cssReady ? then() : setTimeout(then, 0);
+  if (window.L) {
+    cssReady ? then() : setTimeout(then, 0);
+    return;
+  }
 
-  // Load JS into THIS frame if missing
   if (!document.getElementById("leaflet-js")) {
     const s = document.createElement("script");
     s.id = "leaflet-js";
     s.src = LEAFLET_JS;
-    s.onload = () => { dbg("leafletJS", "loaded"); then(); };
-    s.onerror = () => dbg("leafletJS", "load-failed");
+    s.onload = then;
     document.head.appendChild(s);
   } else {
-    (function wait(){ if (window.L) then(); else setTimeout(wait, 40); })();
+    (function wait() {
+      if (window.L) then();
+      else setTimeout(wait, 40);
+    })();
   }
 }
 
@@ -154,7 +178,6 @@ function ensureLeaflet(then) {
 function performBuildOrUpdate(lat, lng) {
   const containerEl = getContainerEl();
   if (!containerEl) {
-    dbg("map", "container missing; will navigate + retry");
     oApp.to(viewInspectionJob);
     requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
     return;
@@ -164,19 +187,14 @@ function performBuildOrUpdate(lat, lng) {
     const host = ensureHostDiv(containerEl);
 
     waitUntilVisible(host, () => {
-      // If existing map's container got detached, rebuild cleanly
       if (map && map.getContainer && !map.getContainer().isConnected) {
         try { map.remove(); } catch {}
         map = null;
         markerLayer = null;
-        dbg("map", "detached map container removed");
       }
 
       if (!map) {
-        dbg("map", { build: "new", lat, lng });
         map = L.map(host).setView([lat, lng], 13);
-
-        // If CSP blocks OSM in Designer, point this to an allowed internal URL
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
           attribution: "&copy; OpenStreetMap"
@@ -184,12 +202,10 @@ function performBuildOrUpdate(lat, lng) {
 
         markerLayer = L.layerGroup().addTo(map);
       } else {
-        dbg("map", { build: "update", lat, lng });
         map.invalidateSize();
         map.setView([lat, lng], 13);
       }
 
-      // Replace marker each time
       markerLayer.clearLayers();
       L.marker([lat, lng]).addTo(markerLayer);
 
@@ -198,19 +214,16 @@ function performBuildOrUpdate(lat, lng) {
   });
 }
 
-// ---------- Scheduling (with unified fallback for Designer) ----------
+// ---------- Scheduling (Designer fallback) ----------
 let buildFallbackArmed = false;
 function scheduleInitialBuild(lat, lng) {
   pendingView = { lat, lng };
-  dbg("map", { scheduleInitialBuild: pendingView });
 
-  // Fallback for Designer: observe DOM until the host appears & has size,
-  // then trigger performBuildOrUpdate once. No-op if onAfterRendering fires first.
   if (buildFallbackArmed) return;
   buildFallbackArmed = true;
 
   const tryBuildIfReady = () => {
-    if (!pendingView) return; // already built
+    if (!pendingView) return;
     const containerEl = getContainerEl();
     if (!containerEl) return;
     const host = ensureHostDiv(containerEl);
@@ -218,12 +231,10 @@ function scheduleInitialBuild(lat, lng) {
     if (r.width > 0 && r.height > 0) {
       const { lat, lng } = pendingView;
       pendingView = null;
-      dbg("map", { fallback: "host visible -> perform initial build", lat, lng });
       performBuildOrUpdate(lat, lng);
     }
   };
 
-  // MutationObserver: when jobLocationMap subtree changes (Designer nav)
   let mo;
   try {
     const root = document.body;
@@ -231,7 +242,6 @@ function scheduleInitialBuild(lat, lng) {
     mo.observe(root, { childList: true, subtree: true });
   } catch {}
 
-  // ResizeObserver on container (when it gets sized)
   let ro;
   try {
     const containerEl = () => getContainerEl();
@@ -241,11 +251,9 @@ function scheduleInitialBuild(lat, lng) {
       ro = new ResizeObserver(() => tryBuildIfReady());
       ro.observe(c);
     };
-    // small delay to let container attach
     setTimeout(watch, 0);
   } catch {}
 
-  // Short polling as last resort
   let ticks = 100;
   const iv = setInterval(() => {
     tryBuildIfReady();
@@ -258,21 +266,19 @@ function scheduleInitialBuild(lat, lng) {
   }, 60);
 }
 
-// ---------- Optional: still use onAfterRendering when it does fire ----------
+// ---------- onAfterRendering hook ----------
 (function attachAfterRenderingOnce() {
   if (!jobLocationMap || !jobLocationMap.addEventDelegate) return;
   let attached = false;
   if (!attached) {
     jobLocationMap.addEventDelegate({
       onAfterRendering: function () {
-        dbg("onAfterRendering(jobLocationMap)");
         const containerEl = getContainerEl();
         if (!containerEl) return;
         ensureHostDiv(containerEl);
         if (pendingView) {
           const { lat, lng } = pendingView;
           pendingView = null;
-          dbg("map", { afterRendering: "trigger initial build", lat, lng });
           requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
         } else if (map) {
           requestAnimationFrame(() => map && map.invalidateSize());
@@ -287,23 +293,15 @@ function scheduleInitialBuild(lat, lng) {
 // POPULATE PAGE FUNCTION
 // ===========================================================
 function populateInspectionJobPage(data) {
-  dbg("enter populateInspectionJobPage");
-
-  // Navigate to detail view (guarded)
+  // Navigate to detail view
   try {
     const current = oApp.getCurrentPage && oApp.getCurrentPage();
     if (!current || current.getId() !== viewInspectionJob.getId()) {
       oApp.to(viewInspectionJob);
-      dbg("navigation", "navigating to viewInspectionJob");
-    } else {
-      dbg("navigation", "already on viewInspectionJob");
     }
   } catch (e) {
-    dbg("navigation", { fallback: true, err: String(e) });
     oApp.to(viewInspectionJob);
   }
-
-  dbg("after navigation");
 
   // Bind data
   modelviewInspectionJob.setData(data);
@@ -314,19 +312,19 @@ function populateInspectionJobPage(data) {
   // Map build path
   const lat = Number(data.equip_latitude);
   const lng = Number(data.equip_longitude);
-  dbg("coords", { lat, lng, valid: Number.isFinite(lat) && Number.isFinite(lng) });
 
-  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-    dbg("map-skip", "invalid coords");
-  } else if (!map) {
-    scheduleInitialBuild(lat, lng);
-  } else {
-    performBuildOrUpdate(lat, lng);
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    if (!map) {
+      scheduleInitialBuild(lat, lng);
+    } else {
+      performBuildOrUpdate(lat, lng);
+    }
   }
 
-  // ----- Your original sections -----
+  // ----- Original sections -----
   let isAllDataPresent = true;
 
+  // 1/4 - Comments
   if (!data.inspections_comments) {
     oTextArea.setValue("");
     oButtonSaveComment.setType("Default");
@@ -342,6 +340,7 @@ function populateInspectionJobPage(data) {
     tabComments.setIconColor("Positive");
   }
 
+  // 2/4 - Picture
   if (!data.inspections_attachments) {
     oImagePictureProvided.setSrc("");
     oButtonCameraUpload.setEnabled(true);
@@ -358,6 +357,7 @@ function populateInspectionJobPage(data) {
     tabPicture.setIconColor("Positive");
   }
 
+  // 3/4 - Barcode
   if (!data.inspections_equipment_barcode_scan) {
     oInputScanResult.setValue("");
     oButtonStartScan.setEnabled(true);
@@ -369,6 +369,7 @@ function populateInspectionJobPage(data) {
     tabBarcode.setIconColor("Positive");
   }
 
+  // 4/4 - Signature
   if (!data.inspections_signature) {
     oImageExisitingSignature.setSrc("");
     oButtonSignatureClear.setEnabled(true);
@@ -388,21 +389,84 @@ function populateInspectionJobPage(data) {
 
   oTextIsAllDataPresent.setText(isAllDataPresent ? "true" : "false");
   checkIfReadyToSubmit();
+}
 
-  dbg("exit populateInspectionJobPage");
+// ===========================================================
+// COLLATE + SAVE + SUBMIT
+// ===========================================================
+function collateInspectionData() {
+  var inspectionObject = {};
+
+  // 1/4 - Comments
+  inspectionObject.comments =
+    tabComments.getIconColor() === "Positive" ? oTextArea.getValue() : null;
+
+  // 2/4 - Picture
+  inspectionObject.attachments =
+    tabPicture.getIconColor() === "Positive" ? oImagePictureProvided.getSrc() : null;
+
+  // 3/4 - Barcode
+  inspectionObject.equipment_barcode_scan =
+    tabBarcode.getIconColor() === "Positive" ? oInputScanResult.getValue() : null;
+
+  // 4/4 - Signature
+  inspectionObject.signature =
+    tabSign.getIconColor() === "Positive" ? oImageExisitingSignature.getSrc() : null;
+
+  return inspectionObject;
+}
+
+function savePartialInspectionAndNavigate() {
+  sap.m.MessageToast.show("Saving draft...");
+
+  var draftData = collateInspectionData();
+  var pageData = modelviewInspectionJob.getData();
+
+  var options = {
+    parameters: {
+      "where": JSON.stringify({ id: pageData.inspections_id })
+    },
+    data: draftData
+  };
+
+  apipostToInspectionTable(options);
+
+  oApp.to(myInspectionJobs);
+  apigetInspectionList();
+}
+
+function submitInspection() {
+  sap.m.MessageToast.show("Submitting Inspection...");
+
+  var inspectionData = collateInspectionData();
+  inspectionData.status = "Submitted";
+
+  var pageData = modelviewInspectionJob.getData();
+
+  var options = {
+    parameters: {
+      "where": JSON.stringify({ id: pageData.inspections_id })
+    },
+    data: inspectionData
+  };
+
+  apipostToInspectionTable(options);
+
+  oApp.to(myInspectionJobs);
 }
 
 // ===========================================================
 // SUBMIT CHECK
 // ===========================================================
 function checkIfReadyToSubmit() {
-  let ready = true;
-  if (tabComments.getIconColor() === "Default") ready = false;
-  if (tabPicture.getIconColor() === "Default") ready = false;
-  if (tabBarcode.getIconColor() === "Default") ready = false;
-  if (tabSign.getIconColor() === "Default") ready = false;
+  var readyToSubmit = true;
 
-  if (ready) {
+  if (tabComments.getIconColor() === "Default") readyToSubmit = false;
+  if (tabPicture.getIconColor() === "Default") readyToSubmit = false;
+  if (tabBarcode.getIconColor() === "Default") readyToSubmit = false;
+  if (tabSign.getIconColor() === "Default") readyToSubmit = false;
+
+  if (readyToSubmit) {
     sap.m.MessageToast.show("Ready to submit!");
     oButtonSubmitInspection.setEnabled(true);
   } else {

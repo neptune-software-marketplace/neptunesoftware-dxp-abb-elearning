@@ -1,6 +1,6 @@
 {
-	"id": "c7a47e90-7808-4e9e-9150-dbef30bbc64d",
-	"createdAt": "2024-05-31T15:53:38.000Z",
+	"id": "dc5401d3-db91-4a54-9911-e3e019f4e553",
+	"createdAt": "2024-05-31T15:51:36.000Z",
 	"createdBy": "admin",
 	"globalScripts": [],
 	"externalModules": [],
@@ -13,9 +13,9 @@
 	],
 	"agents": [],
 	"apis": [],
-	"name": "neptune_elearning_get_field_worker_tasks",
-	"ver": "25.02.13.1437",
-	"description": "Server Script for getting the inspections for each user.",
+	"name": "neptune_elearning_create_inspection_stats",
+	"ver": "25.02.13.1515",
+	"description": "Server Script for getting the inspections status. ",
 	"folder": "",
 	"content": "file:///content.js",
 	"useAsGlobalScript": false,
@@ -23,10 +23,5 @@
 	"isTypescript": false,
 	"language": "javascript",
 	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
-	"jsscriptGroupObj": {
-		"id": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
-		"name": "neptune-elearning-equipment-checkup-scripts",
-		"ver": "25.02.14.1117"
-	}
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 }

@@ -1,0 +1,23 @@
+{
+	"id": "e98a79cb-44b1-4fd1-b7e2-8cf71ce1e9b2",
+	"createdAt": "2025-11-12T16:13:24.000Z",
+	"createdBy": "admin",
+	"attributes": [],
+	"locales": [
+		{
+			"isoCode": "EN"
+		}
+	],
+	"name": "neptune_elearning_fieldworker_inspect_offline",
+	"description": null,
+	"fallbackLocale": "EN",
+	"application": "neptune_elearning_fieldworker_inspect_offline",
+	"ver": "25.11.12.1614",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"active": true,
+	"deleted": false,
+	"baseModelId": null,
+	"enhancedBy": [],
+	"apps": [],
+	"baseModel": null
+}

@@ -68,6 +68,7 @@
 	"restrictAccess": false,
 	"enableTrace": false,
 	"enableIDE": true,
+	"enableScriptEditor": false,
 	"internalAPI": false,
 	"isPublic": false,
 	"tlsAllowUntrusted": false,

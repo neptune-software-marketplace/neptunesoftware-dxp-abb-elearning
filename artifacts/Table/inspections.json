@@ -53,6 +53,7 @@
 	],
 	"indices": [],
 	"foreignKeys": [],
+	"vectorStoreConfig": null,
 	"name": "inspections",
 	"description": "Table used to store all the inspections and their details.",
 	"ver": "25.02.13.1516",

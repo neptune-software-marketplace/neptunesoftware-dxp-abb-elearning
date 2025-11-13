@@ -30,10 +30,5 @@
 	"isTypescript": false,
 	"language": "javascript",
 	"jsscriptGroup": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
-	"jsscriptGroupObj": {
-		"id": "e891cad6-6eb4-4711-b05e-dd1234c0cbff",
-		"name": "neptune-elearning-equipment-checkup-scripts",
-		"ver": "25.02.14.1117"
-	}
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
 }

@@ -1,0 +1,23 @@
+{
+	"id": "8c1a2b0c-6b0e-4e0a-9c30-0e74d5beb550",
+	"createdAt": "2025-07-21T08:01:18.626Z",
+	"createdBy": "john@neptune-software.com",
+	"attributes": [],
+	"locales": [
+		{
+			"isoCode": "EN"
+		}
+	],
+	"name": "neptune_elearning_wf_details_embedded_app",
+	"description": null,
+	"fallbackLocale": "EN",
+	"application": "neptune_elearning_wf_details_embedded_app",
+	"ver": "25.07.21.1023",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"active": true,
+	"deleted": false,
+	"baseModelId": null,
+	"enhancedBy": [],
+	"apps": [],
+	"baseModel": null
+}

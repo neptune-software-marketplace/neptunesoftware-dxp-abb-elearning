@@ -5,5 +5,6 @@
 	"name": "neptune-elearning-WF-scripts",
 	"description": "Server Scripts for approving and rejecting the inspections.",
 	"ver": "25.02.13.1432",
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"projectLogLevel": null
 }

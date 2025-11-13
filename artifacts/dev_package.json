@@ -6,14 +6,14 @@
 		"remote": "https://github.com/neptune-software-marketplace/neptunesoftware-dxp-abb-elearning",
 		"targetServers": [],
 		"testServers": [],
-		"branch": "v24"
+		"branch": "24.14"
 	},
 	"name": "neptunesoftware-dxp-abb-elearning",
 	"description": "A set of applications for equipment inspection, workflow triggering, and data analysis.",
 	"ver": "25.02.25.1221",
 	"enableCICD": true,
 	"internalReadOnly": false,
-	"oeVersion": "24.11.0-rc.5",
+	"oeVersion": "24.14.0-beta.7",
 	"excludeTemplateFiles": true,
 	"roles": [],
 	"apps": [
@@ -145,6 +145,7 @@
 		}
 	],
 	"theme": [],
+	"theme_generator": [],
 	"pdf": [],
 	"rulesengine": [],
 	"reports": [],
@@ -256,6 +257,23 @@
 		}
 	],
 	"connector": [],
+	"i18n": [
+		{
+			"id": "e98a79cb-44b1-4fd1-b7e2-8cf71ce1e9b2",
+			"name": "neptune_elearning_fieldworker_inspect_offline",
+			"description": null
+		},
+		{
+			"id": "b3d73af6-dfe3-4e51-a557-285bc35553bb",
+			"name": "neptune_elearning_field_worker_inspect",
+			"description": null
+		},
+		{
+			"id": "8c1a2b0c-6b0e-4e0a-9c30-0e74d5beb550",
+			"name": "neptune_elearning_wf_details_embedded_app",
+			"description": null
+		}
+	],
 	"events": [],
 	"code_snippets": [],
 	"wf_determination": [
@@ -273,5 +291,12 @@
 		}
 	],
 	"theme_ui5": [],
-	"webapp": []
+	"webapp": [],
+	"ui5_control": [],
+	"ai_agent": [],
+	"ai_model": [],
+	"ai_prompt": [],
+	"ai_tool": [],
+	"ai_guardrail": [],
+	"path_rewrite": []
 }

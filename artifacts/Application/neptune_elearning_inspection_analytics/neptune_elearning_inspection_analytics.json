@@ -227,6 +227,7 @@
 	"ui5_table": false,
 	"ui5_tnt": false,
 	"ui5_uxap": false,
+	"ui5_integration": false,
 	"ui5_chart": false,
 	"ui5_theme": "sap_fiori_3",
 	"ui5_version": "",

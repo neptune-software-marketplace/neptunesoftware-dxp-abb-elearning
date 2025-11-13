@@ -1,285 +1,435 @@
-// Map variable requires declaring!
-var Map;
+/**
+ * Inspection Job Page — Robust Build (Designer + Launchpad) — OFFLINE
+ * -------------------------------------------------------------------
+ * Guarantees:
+ *  - One Leaflet map instance per page.
+ *  - First-load-safe: builds only when the host div is visible.
+ *  - Works in Designer iframe (injects Leaflet CSS + minimal inline fallback).
+ *  - ID-agnostic: no reliance on view IDs / Launchpad prefixes.
+ *  - Offline storage logic preserved as-is.
+ *
+ * Notes:
+ *  - Tiles: OpenStreetMap endpoint (no access token required).
+ *  - If preview CSP blocks external tiles, point the tile URL to an allowed endpoint.
+ */
 
-// IF in launchpad, get the ID
-if (sap.n) {
-    var localViewID = this.getId();
+// =============================
+// Global state
+// =============================
+let map;                 // Leaflet map instance
+let markerLayer;         // Layer group for markers
+let hostId;              // Stable child div for Leaflet to own
+let pendingView = null;  // {lat, lng} queued until first render
+
+// Debug toggle (keep false in prod)
+const DBG = { enabled: false };
+function dbg(label, data) {
+  if (!DBG.enabled) return;
+  const ts = new Date().toISOString().split("T")[1].replace("Z", "");
+  console.log(`[eLearningDBG ${ts}] ${label}`, data ?? "");
 }
 
-function populateInspectionJobPage(data) {
+// =============================
+// DOM helpers
+// =============================
+function getContainerEl() {
+  return jobLocationMap.getDomRef() || document.getElementById(jobLocationMap.getId());
+}
 
-    // Set 'data' to the Page Model
-    modelviewInspectionJob.setData(data);
+function ensureHostDiv(containerEl) {
+  hostId = jobLocationMap.getId() + "-host";
+  let host = document.getElementById(hostId);
+  if (!host) {
+    host = document.createElement("div");
+    host.id = hostId;
+    host.style.height = "100%";
+    host.style.width  = "100%";
+    containerEl.appendChild(host);
+    dbg("hostDiv", { action: "created", id: hostId });
+  } else if (host.parentNode !== containerEl) {
+    containerEl.appendChild(host);
+    dbg("hostDiv", { action: "reparented", id: hostId });
+  }
+  return host;
+}
 
-    // Always start on the (first) Comments panel
-    oIconTabBar.setSelectedKey("COMM");
+function waitUntilVisible(el, cb) {
+  const ready = () => el && el.isConnected && el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0;
+  if (ready()) return cb();
 
-    // ----- MAP -----
-    // Check if Map component exists
-    var jobLocationMapDiv = jobLocationMap.getDomRef()
-    console.log("jobLocationMapDiv:")
-    console.log(jobLocationMapDiv)
+  let ro;
+  try {
+    ro = new ResizeObserver(() => { if (ready()) { ro.disconnect(); cb(); } });
+    ro.observe(el);
+  } catch {}
+  let tries = 80;
+  const t = setInterval(() => {
+    if (ready()) { clearInterval(t); ro && ro.disconnect(); cb(); }
+    else if (--tries <= 0) { clearInterval(t); ro && ro.disconnect(); }
+  }, 50);
+}
 
-    // If NOT already rendered on the page...
-    if (jobLocationMapDiv === null) {
+// =============================
+// Leaflet loader (iframe-safe)
+// =============================
+const LEAFLET_VER = "1.9.4";
+const LEAFLET_JS  = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.js`;
+const LEAFLET_CSS = `https://unpkg.com/leaflet@${LEAFLET_VER}/dist/leaflet.css`;
 
-        // --- Build Map ---
-        console.log("Build Map")
+function ensureLeafletCssInline() {
+  if (document.getElementById("leaflet-css-inline")) return;
+  const style = document.createElement("style");
+  style.id = "leaflet-css-inline";
+  // Minimal subset sufficient to render tiles/markers
+  style.textContent = `
+    .leaflet-container { position:relative; outline:0; height:100%; width:100%; }
+    .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow,
+    .leaflet-tile-container, .leaflet-zoom-box { position:absolute; left:0; top:0; }
+    .leaflet-pane { z-index: 400; }
+    .leaflet-tile { visibility:hidden; }
+    .leaflet-tile-loaded { visibility:inherit; }
+    .leaflet-marker-pane { z-index: 600; }
+    .leaflet-popup-pane { z-index: 700; }
+    .leaflet-container img { max-width:none !important; }
+  `;
+  document.head.appendChild(style);
+}
 
-        // Navigate to the page
-        // (Need to load the page before we can set the map)
-        oApp.to(viewInspectionJob);
+function ensureLeaflet(then) {
+  let cssReady = !!document.getElementById("leaflet-css");
+  if (!cssReady) {
+    const link = document.createElement("link");
+    link.id = "leaflet-css";
+    link.rel = "stylesheet";
+    link.href = LEAFLET_CSS;
+    link.onload = () => { cssReady = true; dbg("leafletCSS", "loaded"); };
+    link.onerror = () => { dbg("leafletCSS", "load-failed"); };
+    document.head.appendChild(link);
+  }
+  ensureLeafletCssInline();
 
-        // Check if running on a Launchpad...
-        // Handle the localViewID prefix if so
-        if (sap.n) {
-            var reference = (localViewID+'--jobLocationMap');
-        } else {
-            var reference = 'jobLocationMap';
+  if (window.L) return cssReady ? then() : setTimeout(then, 0);
+
+  if (!document.getElementById("leaflet-js")) {
+    const s = document.createElement("script");
+    s.id = "leaflet-js";
+    s.src = LEAFLET_JS;
+    s.onload = () => { dbg("leafletJS", "loaded"); then(); };
+    s.onerror = () => dbg("leafletJS", "load-failed");
+    document.head.appendChild(s);
+  } else {
+    (function wait(){ if (window.L) then(); else setTimeout(wait, 40); })();
+  }
+}
+
+// =============================
+// Map build / update
+// =============================
+function performBuildOrUpdate(lat, lng) {
+  const containerEl = getContainerEl();
+  if (!containerEl) {
+    dbg("map", "container missing; will navigate + retry");
+    oApp.to(viewInspectionJob);
+    requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
+    return;
+  }
+
+  ensureLeaflet(() => {
+    const host = ensureHostDiv(containerEl);
+
+    waitUntilVisible(host, () => {
+      // If UI5 detached the container, rebuild cleanly
+      if (map && map.getContainer && !map.getContainer().isConnected) {
+        try { map.remove(); } catch {}
+        map = null;
+        markerLayer = null;
+        dbg("map", "detached map container removed");
+      }
+
+      if (!map) {
+        dbg("map", { build: "new", lat, lng });
+        map = L.map(host).setView([lat, lng], 13);
+
+        // OpenStreetMap tiles (no token needed)
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+
+        markerLayer = L.layerGroup().addTo(map);
+      } else {
+        dbg("map", { build: "update", lat, lng });
+        map.invalidateSize();
+        map.setView([lat, lng], 13);
+      }
+
+      // Replace marker each time
+      markerLayer.clearLayers();
+      L.marker([lat, lng]).addTo(markerLayer);
+
+      requestAnimationFrame(() => { if (map) map.invalidateSize(); });
+    });
+  });
+}
+
+// =============================
+// First build scheduling (Designer-safe fallback)
+// =============================
+let buildFallbackArmed = false;
+function scheduleInitialBuild(lat, lng) {
+  pendingView = { lat, lng };
+  dbg("map", { scheduleInitialBuild: pendingView });
+
+  if (buildFallbackArmed) return;
+  buildFallbackArmed = true;
+
+  const tryBuildIfReady = () => {
+    if (!pendingView) return;
+    const containerEl = getContainerEl();
+    if (!containerEl) return;
+    const host = ensureHostDiv(containerEl);
+    const r = host.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) {
+      const { lat, lng } = pendingView;
+      pendingView = null;
+      dbg("map", { fallback: "host visible -> perform initial build", lat, lng });
+      performBuildOrUpdate(lat, lng);
+    }
+  };
+
+  // Observe DOM + size; poll as last resort
+  let mo, ro;
+  try {
+    mo = new MutationObserver(() => tryBuildIfReady());
+    mo.observe(document.body, { childList: true, subtree: true });
+  } catch {}
+  try {
+    const watch = () => {
+      const c = getContainerEl();
+      if (!c) return;
+      ro = new ResizeObserver(() => tryBuildIfReady());
+      ro.observe(c);
+    };
+    setTimeout(watch, 0);
+  } catch {}
+  let ticks = 100;
+  const iv = setInterval(() => {
+    tryBuildIfReady();
+    if (!pendingView || --ticks <= 0) {
+      clearInterval(iv);
+      mo && mo.disconnect();
+      ro && ro.disconnect();
+      buildFallbackArmed = false;
+    }
+  }, 60);
+}
+
+// Optional: still use onAfterRendering when it fires
+(function attachAfterRenderingOnce() {
+  if (!jobLocationMap || !jobLocationMap.addEventDelegate) return;
+  let attached = false;
+  if (!attached) {
+    jobLocationMap.addEventDelegate({
+      onAfterRendering: function () {
+        const containerEl = getContainerEl();
+        if (!containerEl) return;
+        ensureHostDiv(containerEl);
+        if (pendingView) {
+          const { lat, lng } = pendingView;
+          pendingView = null;
+          dbg("map", { afterRendering: "trigger initial build", lat, lng });
+          requestAnimationFrame(() => performBuildOrUpdate(lat, lng));
+        } else if (map) {
+          requestAnimationFrame(() => map && map.invalidateSize());
         }
-        console.log(reference);
+      }
+    });
+    attached = true;
+  }
+})();
 
-        // setView(Lat, Long , Zoom level)
-        Map = L.map(reference).setView([data.equip_latitude, data.equip_longitude], 13);
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoibGxveWRuZXB0dW5lIiwiYSI6ImNrbXZ3MWM3djA3Z2cydXA5YWxzeTJtYmkifQ.DS3_2MJUUfwksiEZmD8EZQ'
-        }).addTo(Map);
-
-        L.marker([data.equip_latitude, data.equip_longitude]).addTo(Map);
-
-    } else {
-        // --- Update Map ---
-        console.log("Update Map")
-
-        Map.setView([data.equip_latitude, data.equip_longitude], 13);
-        L.marker([data.equip_latitude, data.equip_longitude]).addTo(Map);
-
-        oApp.to(viewInspectionJob);
+// =============================
+// Page logic (offline storage preserved)
+// =============================
+function populateInspectionJobPage(data) {
+  // Navigate to detail view (guarded)
+  try {
+    const current = oApp.getCurrentPage && oApp.getCurrentPage();
+    if (!current || current.getId() !== viewInspectionJob.getId()) {
+      oApp.to(viewInspectionJob);
     }
+  } catch {
+    oApp.to(viewInspectionJob);
+  }
 
-    // ----- Inspection Data -----
-    // Check if any inspection data is already present, if so, 
-    // populate and the mark section complete
+  // Bind data
+  modelviewInspectionJob.setData(data);
 
-    // Flag - Will be set to false if any data 
-    // (from the Comments, Attachments, Barcode & Signature)
-    // isn't present..
-    var isAllDataPresent = true;
+  // Start on Comments tab
+  oIconTabBar.setSelectedKey("COMM");
 
-    // For each section
-    // If the data is missing, reset the page...
-    // If the data is present, set it to the correct component!
-    // 1/4 - Comments
-    if (data.inspections_comments === null || data.inspections_comments === "") {
-        oTextArea.setValue("")
-        oButtonSaveComment.setType("Default")
-        oButtonSaveComment.setEnabled(true);
-        oTextArea.setEditable(true);
-        tabComments.setIconColor("Default");
+  // Map first-load-safe path
+  const lat = Number(data.equip_latitude);
+  const lng = Number(data.equip_longitude);
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    if (!map) scheduleInitialBuild(lat, lng);
+    else performBuildOrUpdate(lat, lng);
+  }
 
-        isAllDataPresent = false;
-    } else {
-        oTextArea.setValue(data.inspections_comments)
-        oButtonSaveComment.setType("Accept")
-        oButtonSaveComment.setEnabled(false);
-        oTextArea.setEditable(false);
-        tabComments.setIconColor("Positive");
-    }
+  // ----- Inspection Data (unchanged) -----
+  var isAllDataPresent = true;
 
-    // 2/4 - Picture
-    if (data.inspections_attachments === null || data.inspections_attachments === "") {
-        oImagePictureProvided.setSrc("")
-        oButtonCameraUpload.setEnabled(true);
-        oButtonSavePicture.setType("Default")
-        oButtonSavePicture.setEnabled(true);
-        tabPicture.setIconColor("Default");
-        oButtonSavePicture.setEnabled(false);
+  // Comments
+  if (data.inspections_comments === null || data.inspections_comments === "") {
+    oTextArea.setValue("");
+    oButtonSaveComment.setType("Default");
+    oButtonSaveComment.setEnabled(true);
+    oTextArea.setEditable(true);
+    tabComments.setIconColor("Default");
+    isAllDataPresent = false;
+  } else {
+    oTextArea.setValue(data.inspections_comments);
+    oButtonSaveComment.setType("Accept");
+    oButtonSaveComment.setEnabled(false);
+    oTextArea.setEditable(false);
+    tabComments.setIconColor("Positive");
+  }
 
-        isAllDataPresent = false;
-    } else {
-        oImagePictureProvided.setSrc(data.inspections_attachments)
-        //ImageBase64InvisiblePlaceholder.setText(data.inspections_attachments)
-        oButtonCameraUpload.setEnabled(false);
-        oButtonSavePicture.setType("Accept")
-        oButtonSavePicture.setEnabled(false);
-        tabPicture.setIconColor("Positive");
-    }
+  // Picture
+  if (data.inspections_attachments === null || data.inspections_attachments === "") {
+    oImagePictureProvided.setSrc("");
+    oButtonCameraUpload.setEnabled(true);
+    oButtonSavePicture.setType("Default");
+    oButtonSavePicture.setEnabled(true);
+    tabPicture.setIconColor("Default");
+    oButtonSavePicture.setEnabled(false);
+    isAllDataPresent = false;
+  } else {
+    oImagePictureProvided.setSrc(data.inspections_attachments);
+    // ImageBase64InvisiblePlaceholder.setText(data.inspections_attachments)
+    oButtonCameraUpload.setEnabled(false);
+    oButtonSavePicture.setType("Accept");
+    oButtonSavePicture.setEnabled(false);
+    tabPicture.setIconColor("Positive");
+  }
 
-    // 3/4 - Barcode
-    if (data.inspections_equipment_barcode_scan === null || data.inspections_equipment_barcode_scan === "") {
-        oInputScanResult.setValue("");
-        oButtonStartScan.setEnabled(true);
-        tabBarcode.setIconColor("Default");
+  // Barcode
+  if (data.inspections_equipment_barcode_scan === null || data.inspections_equipment_barcode_scan === "") {
+    oInputScanResult.setValue("");
+    oButtonStartScan.setEnabled(true);
+    tabBarcode.setIconColor("Default");
+    isAllDataPresent = false;
+  } else {
+    oInputScanResult.setValue(data.inspections_equipment_barcode_scan);
+    oButtonStartScan.setEnabled(false);
+    tabBarcode.setIconColor("Positive");
+  }
 
-        isAllDataPresent = false;
-    } else {
-        oInputScanResult.setValue(data.inspections_equipment_barcode_scan);
-        oButtonStartScan.setEnabled(false);
-        tabBarcode.setIconColor("Positive");
-    }
+  // Signature
+  if (data.inspections_signature === null || data.inspections_signature === "") {
+    oImageExisitingSignature.setSrc("");
+    oButtonSignatureClear.setEnabled(true);
+    oButtonSignatureOK.setType("Default");
+    oButtonSignatureOK.setEnabled(true);
+    tabSign.setIconColor("Default");
+    oHTMLObjectSignaturePad.setVisible(true);
+    isAllDataPresent = false;
+  } else {
+    oImageExisitingSignature.setSrc(data.inspections_signature);
+    oButtonSignatureClear.setEnabled(false);
+    oButtonSignatureOK.setType("Accept");
+    oButtonSignatureOK.setEnabled(false);
+    oHTMLObjectSignaturePad.setVisible(false);
+    tabSign.setIconColor("Positive");
+  }
 
-    // 4/4 - Signature
-    if (data.inspections_signature === null || data.inspections_signature === "") {
-        oImageExisitingSignature.setSrc("");
-        oButtonSignatureClear.setEnabled(true);
-        oButtonSignatureOK.setType("Default")
-        oButtonSignatureOK.setEnabled(true);
-        tabSign.setIconColor("Default");
-        oHTMLObjectSignaturePad.setVisible(true);
+  // Invisible “complete” flag
+  oTextIsAllDataPresent.setText(isAllDataPresent ? "true" : "false");
 
-        isAllDataPresent = false;
-    } else {
-        oImageExisitingSignature.setSrc(data.inspections_signature);
-        oButtonSignatureClear.setEnabled(false);
-        oButtonSignatureOK.setType("Accept")
-        oButtonSignatureOK.setEnabled(false);
-        oHTMLObjectSignaturePad.setVisible(false);
-        tabSign.setIconColor("Positive");
-    }
-
-    // After loading in the data, if all data is present
-    // Set an invisible text element in the page footer to 'true'
-    if (isAllDataPresent === true) {
-        oTextIsAllDataPresent.setText("true");
-    } else {
-        oTextIsAllDataPresent.setText("false");
-    }
-    // This is so when navigating away from a complete inspection draft
-    // No navigation confirmation box will be shown
-
-    checkIfReadyToSubmit();
-
+  checkIfReadyToSubmit();
 }
 
+// =============================
+// Submit readiness
+// =============================
 function checkIfReadyToSubmit() {
+  let ready = true;
+  if (tabComments.getIconColor() === "Default") ready = false;
+  if (tabPicture.getIconColor() === "Default") ready = false;
+  if (tabBarcode.getIconColor() === "Default") ready = false;
+  if (tabSign.getIconColor() === "Default") ready = false;
 
-    var readyToSubmit = true;
-
-    // Check state of each tab
-    if (tabComments.getIconColor() === "Default") {readyToSubmit = false;}
-    if (tabPicture.getIconColor() === "Default") {readyToSubmit = false;}
-    if (tabBarcode.getIconColor() === "Default") {readyToSubmit = false;}
-    if (tabSign.getIconColor() === "Default") {readyToSubmit = false;}
-
-    if (readyToSubmit === true) {
-        sap.m.MessageToast.show("Ready to submit!");
-        oButtonSubmitInspection.setEnabled(true);
-    } else {
-        oButtonSubmitInspection.setEnabled(false);
-    }
+  if (ready) {
+    sap.m.MessageToast.show("Ready to submit!");
+    oButtonSubmitInspection.setEnabled(true);
+  } else {
+    oButtonSubmitInspection.setEnabled(false);
+  }
 }
 
+// =============================
+// Offline data handling (unchanged behavior)
+// =============================
 function collateInspectionData() {
+  var inspectionObject = {};
 
-    var inspectionObject = {}
+  if (tabComments.getIconColor() === "Positive") { inspectionObject.comments = oTextArea.getValue(); }
+  else { inspectionObject.comments = null; }
 
-    //Check if saved data present
-    if (tabComments.getIconColor() === "Positive") {inspectionObject.comments = oTextArea.getValue()
-    } else {inspectionObject.comments = null};
+  if (tabPicture.getIconColor() === "Positive") { inspectionObject.attachments = oImagePictureProvided.getSrc(); }
+  else { inspectionObject.attachments = null; }
 
-    // if (tabPicture.getIconColor() === "Positive") {inspectionObject.attachments2 = ImageBase64InvisiblePlaceholder.getText()
-    // } else {inspectionObject.attachments2 = null}
+  if (tabBarcode.getIconColor() === "Positive") { inspectionObject.equipment_barcode_scan = oInputScanResult.getValue(); }
+  else { inspectionObject.equipment_barcode_scan = null; }
 
-    if (tabPicture.getIconColor() === "Positive") {inspectionObject.attachments = oImagePictureProvided.getSrc()
-    } else {inspectionObject.attachments = null}
+  if (tabSign.getIconColor() === "Positive") { inspectionObject.signature = oImageExisitingSignature.getSrc(); }
+  else { inspectionObject.signature = null; }
 
-
-    if (tabBarcode.getIconColor() === "Positive") {inspectionObject.equipment_barcode_scan = oInputScanResult.getValue()
-    } else {inspectionObject.equipment_barcode_scan = null}
-
-    if (tabSign.getIconColor() === "Positive") {inspectionObject.signature = oImageExisitingSignature.getSrc()
-    } else {inspectionObject.signature = null}
-
-    return inspectionObject;
-
+  return inspectionObject;
 }
 
 function savePartialInspectionAndNavigate() {
+  sap.m.MessageToast.show("Saving draft...");
 
-    sap.m.MessageToast.show("Saving draft...");
+  var draftData = collateInspectionData();
+  var pageData = modelviewInspectionJob.getData();
 
-    var draftData = collateInspectionData();
-    console.log("draftData:");
-    console.log(draftData);
+  if (AppCache && AppCache.isOffline) {
+    var offlineRecord = ModelData.Find(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id);
+    offlineRecord[0].inspections_comments = draftData.comments;
+    offlineRecord[0].inspections_attachments = draftData.attachments;
+    offlineRecord[0].inspections_signature = draftData.signature;
+    offlineRecord[0].inspections_equipment_barcode_scan = draftData.equipment_barcode_scan;
 
-    var pageData = modelviewInspectionJob.getData();
-    
-    if (AppCache.isOffline) {
-        
-        console.log("Offline start savePartialInspectionAndNavigate...");
+    ModelData.Update(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id, offlineRecord[0]);
+    setCacheoModelArrayOfflineStorage();
 
-        var offlineRecord = ModelData.Find(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id);
+    modeloListInspectionJobs.setData(modeloModelArrayOfflineStorage.getData());
+  } else {
+    var options = {
+      parameters: { "where": JSON.stringify({ "id": pageData.inspections_id }) },
+      data: draftData
+    };
+    apipostToInspectionTable(options);
+    setTimeout(function() { apigetInspectionList(); }, 100);
+  }
 
-        console.log("Offline record current state:");
-        console.log(offlineRecord[0]);
-
-        offlineRecord[0].inspections_comments = draftData.comments;
-        offlineRecord[0].inspections_attachments = draftData.attachments;
-        offlineRecord[0].inspections_signature = draftData.signature;
-        offlineRecord[0].inspections_equipment_barcode_scan = draftData.equipment_barcode_scan;
-
-        ModelData.Update(oModelArrayOfflineStorage, "inspections_id", pageData.inspections_id, offlineRecord[0]);
-        setCacheoModelArrayOfflineStorage();
-
-        console.log("Updated Offline Storage Array:")
-        console.log(modeloModelArrayOfflineStorage.getData())
-
-        modeloListInspectionJobs.setData(modeloModelArrayOfflineStorage.getData());
-
-
-    } else {
-        // Update inspection record with data
-        var options = {
-            parameters: {
-                //"where": JSON.stringify({"part_number": oObjectAttributePartNumber.getText()})
-                "where": JSON.stringify({"id": pageData.inspections_id})
-            },
-            data: draftData
-        };
-        apipostToInspectionTable(options);
-        
-        setTimeout(function() {
-
-            apigetInspectionList();
-
-        }, 100);
-        
-    }
-
-
-    // Navigate
-    oApp.to(myInspectionJobs);
-    
-
+  oApp.to(myInspectionJobs);
 }
 
 function submitInspection() {
+  sap.m.MessageToast.show("Submitting Inspection...");
 
-    sap.m.MessageToast.show("Submitting Inspection...");
+  var inspectionData = collateInspectionData();
+  inspectionData.status = "Submitted";
 
-    var inspectionData = collateInspectionData();
-    inspectionData.status = "Submitted";
+  var pageData = modelviewInspectionJob.getData();
 
-    var pageData = modelviewInspectionJob.getData();
+  var options = {
+    parameters: { "where": JSON.stringify({ "id": pageData.inspections_id }) },
+    data: inspectionData
+  };
+  apipostToInspectionTable(options);
 
-    // Update inspection record with data
-    var options = {
-        parameters: {
-            //"where": JSON.stringify({"part_number": oObjectAttributePartNumber.getText()})
-            "where": JSON.stringify({"id": pageData.inspections_id})
-        },
-        data: inspectionData
-    };
-
-    apipostToInspectionTable(options);
-
-    // Navigate and re-trigger getInspectionList
-    oApp.to(myInspectionJobs);
-
+  oApp.to(myInspectionJobs);
 }

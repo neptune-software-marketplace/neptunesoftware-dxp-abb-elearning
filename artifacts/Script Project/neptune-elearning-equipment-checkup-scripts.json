@@ -5,5 +5,6 @@
 	"name": "neptune-elearning-equipment-checkup-scripts",
 	"description": "Server Scripts for generating equipment, calculating the days until check, generate inspection stats and getting the field workers tasks.",
 	"ver": "25.02.14.1117",
-	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3"
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"projectLogLevel": null
 }

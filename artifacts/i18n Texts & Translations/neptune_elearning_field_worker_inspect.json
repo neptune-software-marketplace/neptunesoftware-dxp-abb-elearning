@@ -1,0 +1,23 @@
+{
+	"id": "b3d73af6-dfe3-4e51-a557-285bc35553bb",
+	"createdAt": "2025-11-12T13:31:11.000Z",
+	"createdBy": "admin",
+	"attributes": [],
+	"locales": [
+		{
+			"isoCode": "EN"
+		}
+	],
+	"name": "neptune_elearning_field_worker_inspect",
+	"description": null,
+	"fallbackLocale": "EN",
+	"application": "neptune_elearning_field_worker_inspect",
+	"ver": "25.11.12.1617",
+	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"active": true,
+	"deleted": false,
+	"baseModelId": null,
+	"enhancedBy": [],
+	"apps": [],
+	"baseModel": null
+}

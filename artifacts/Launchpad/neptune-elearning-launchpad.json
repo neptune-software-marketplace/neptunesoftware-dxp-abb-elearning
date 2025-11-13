@@ -148,8 +148,8 @@
 	"passwordResetEmail": null,
 	"activationCodeEmail": null,
 	"noSubmenuHover": false,
-	"defaultLanguage": null,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
+	"agentId": null,
 	"cat": [
 		{
 			"id": "9881522d-c327-4ee7-8627-b31a8e879da7",
@@ -157,5 +157,6 @@
 			"title": "All Apps",
 			"ver": "25.02.14.0906"
 		}
-	]
+	],
+	"roles": []
 }

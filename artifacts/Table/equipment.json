@@ -18,13 +18,13 @@
 		{
 			"id": "fef182c1-9d31-41d1-a75b-c4c4e06e25f4",
 			"fieldName": "latitude",
-			"fieldType": "decimal",
+			"fieldType": "integer",
 			"isNullable": true
 		},
 		{
 			"id": "5e1d6d88-12a6-4c95-816e-cf24bc6a53f8",
 			"fieldName": "longitude",
-			"fieldType": "decimal",
+			"fieldType": "integer",
 			"isNullable": true
 		},
 		{
@@ -67,9 +67,10 @@
 	],
 	"indices": [],
 	"foreignKeys": [],
+	"vectorStoreConfig": {},
 	"name": "equipment",
 	"description": "Table used to store all the equipment data.",
-	"ver": "25.02.13.1516",
+	"ver": "25.11.12.1557",
 	"enableAudit": false,
 	"includeDataInPackage": true,
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",

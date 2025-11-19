@@ -4,14 +4,14 @@
 	"createdBy": "admin",
 	"items": [
 		{
-			"id": "345db9c0-b293-4feb-c90b-6fdde2a111eb",
+			"id": "22f63bb7-0101-4472-9228-4128e08a8de3",
 			"orgUnit": "U",
 			"orgValue": "admin",
 			"amountFrom": 0,
-			"amountTo": 0,
+			"amountTo": "10000",
 			"operation": "O",
 			"taskType": [],
-			"orgId": "c157ac4d-02d3-4259-8c8b-06bce55347ac",
+			"orgId": "9689e62e-f6e3-4bb0-a343-8f4b93625e3c",
 			"taskAction": [
 				"b85d4673-8f62-4ff0-9e55-ebe076dea1e1"
 			]

@@ -4,7 +4,7 @@
 	"createdBy": "lloyd",
 	"name": "neptune-elearning-field-workers-security-group",
 	"description": "Security group for the field worker role.",
-	"ver": "25.02.13.1439",
+	"ver": "25.11.19.1247",
 	"parent": null,
 	"isExternal": false,
 	"idpSource": "local",

@@ -258,5 +258,6 @@
 			"name": "neptune-elearning-inspection-stats-API",
 			"ver": "25.02.13.1421"
 		}
-	]
+	],
+	"i18n": []
 }

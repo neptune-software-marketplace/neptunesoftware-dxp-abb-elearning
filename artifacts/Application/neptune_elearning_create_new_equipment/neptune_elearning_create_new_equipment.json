@@ -936,5 +936,6 @@
 			"name": "neptune-elearning-equipment-API",
 			"ver": "25.02.13.1420"
 		}
-	]
+	],
+	"i18n": []
 }

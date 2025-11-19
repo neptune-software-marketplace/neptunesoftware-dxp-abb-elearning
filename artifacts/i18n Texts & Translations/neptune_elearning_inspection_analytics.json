@@ -1,18 +1,18 @@
 {
-	"id": "8c1a2b0c-6b0e-4e0a-9c30-0e74d5beb550",
-	"createdAt": "2025-07-21T08:01:18.626Z",
-	"createdBy": "john@neptune-software.com",
+	"id": "11a201bf-f4c6-458d-97ce-581cd623bb83",
+	"createdAt": "2025-11-19T18:16:59.000Z",
+	"createdBy": "admin",
 	"attributes": [],
 	"locales": [
 		{
 			"isoCode": "EN"
 		}
 	],
-	"name": "neptune_elearning_wf_details_embedded_app",
+	"name": "neptune_elearning_inspection_analytics",
 	"description": null,
 	"fallbackLocale": "EN",
-	"application": "neptune_elearning_wf_details_embedded_app",
-	"ver": "25.11.19.1816",
+	"application": "neptune_elearning_inspection_analytics",
+	"ver": "25.11.19.1822",
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"active": true,
 	"deleted": false,

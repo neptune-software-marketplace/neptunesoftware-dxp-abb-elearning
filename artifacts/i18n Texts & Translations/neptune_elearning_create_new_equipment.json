@@ -1,17 +1,17 @@
 {
-	"id": "8c1a2b0c-6b0e-4e0a-9c30-0e74d5beb550",
-	"createdAt": "2025-07-21T08:01:18.626Z",
-	"createdBy": "john@neptune-software.com",
+	"id": "6ef24096-345b-4bb5-800d-334e5ebc35ec",
+	"createdAt": "2025-11-19T18:16:48.000Z",
+	"createdBy": "admin",
 	"attributes": [],
 	"locales": [
 		{
 			"isoCode": "EN"
 		}
 	],
-	"name": "neptune_elearning_wf_details_embedded_app",
+	"name": "neptune_elearning_create_new_equipment",
 	"description": null,
 	"fallbackLocale": "EN",
-	"application": "neptune_elearning_wf_details_embedded_app",
+	"application": "neptune_elearning_create_new_equipment",
 	"ver": "25.11.19.1816",
 	"package": "1d063863-5ccb-42c8-a7df-323605fe1ee3",
 	"active": true,

@@ -66,6 +66,13 @@
 													"value": "Work Order Statuses",
 													"script": "",
 													"translation": []
+												},
+												{
+													"attribute": "chart.styledMode",
+													"grouping": "Properties",
+													"value": "true",
+													"script": "",
+													"translation": []
 												}
 											],
 											"data": [
@@ -102,7 +109,15 @@
 											"script": "",
 											"request": [],
 											"response": [],
-											"attributes": [],
+											"attributes": [
+												{
+													"attribute": "chart.styledMode",
+													"grouping": "Properties",
+													"value": "true",
+													"script": "",
+													"translation": []
+												}
+											],
 											"data": [
 												{
 													"fieldNo": "2d20e3cd-839c-4d89-dfca-439251bc502d",
@@ -198,7 +213,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.11.19.1822",
+	"ver": "25.11.20.1626",
 	"application": "neptune_elearning_inspection_analytics",
 	"title": "Inspection Analytics",
 	"description": "Application for analysing the inspections status in a chart.",
@@ -225,7 +240,7 @@
 	"cus_theme": "",
 	"css": "",
 	"compiledCss": null,
-	"header": "",
+	"header": "file:///header.html",
 	"manifest": "",
 	"globalScript": null,
 	"deleted": false,

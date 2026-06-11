@@ -1773,7 +1773,7 @@
 		}
 	],
 	"componentInterface": [],
-	"ver": "25.11.19.1816",
+	"ver": "26.06.11.0936",
 	"application": "neptune_elearning_field_worker_inspect",
 	"title": "Field Worker Inpection",
 	"description": "Application for performing inspection on the equipment.",
@@ -1793,6 +1793,7 @@
 	"ui5_uxap": false,
 	"ui5_integration": false,
 	"ui5_chart": false,
+	"ui5_dxp_ui": false,
 	"ui5_theme": "",
 	"ui5_version": "1.136",
 	"ui5_language": null,
